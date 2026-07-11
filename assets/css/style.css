@@ -184,9 +184,8 @@
   padding: 2px 4px;
   border-radius: 3px;
   color: #000000;
-  font-family: "QuoteSerifItalic", "FZKai-Z03";
+  font-family: "Times New Roman", "FZKai-Z03", serif;
   font-style: italic;
-  font-synthesis-style: none;
   border-left: 2px solid #dcb48c;
 }
 .markdown-body .gold {

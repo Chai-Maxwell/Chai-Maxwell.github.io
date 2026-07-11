@@ -178,7 +178,7 @@ $$
 
 ### 群的定义和乘法表
 
->==群== 称保持系统不变的变换为系统的对称变换, 研究一个系统的对称变换集合$\mathcal{G}$总结出群的概念：
+><mark>群</mark> 称保持系统不变的变换为系统的对称变换, 研究一个系统的对称变换集合$\mathcal{G}$总结出群的概念：
 >一个满足以下性质的系统$(\mathcal{G},\cdot)$, 一个配有复合乘法$(\cdot)$的非空集合$\mathcal{G}$
 >
 >1. 封闭性
@@ -221,9 +221,9 @@ $$
 
 ### 群的同态与同构
 
->==同态== 若群$\mathcal{G}$和$\mathcal{G}'$间
+><mark>同态</mark> 若群$\mathcal{G}$和$\mathcal{G}'$间
 >$$\exist f:(\mathcal{G},\cdot)\to(\mathcal{G}',*)\ \text{s.t.}\ f(r\cdot s)=f(r)*f(s),$$
 >则称$\mathcal{G}$与$\mathcal{G}$同态.
 >
->==同构== 若$f$还是双射(bijection), 则称$\mathcal{G}$与$\mathcal{G}'$同构, 记$\mathcal{G}\cong\mathcal{G}'$.
+><mark>同构</mark> 若$f$还是双射(bijection), 则称$\mathcal{G}$与$\mathcal{G}'$同构, 记$\mathcal{G}\cong\mathcal{G}'$.
 {% endraw %}
