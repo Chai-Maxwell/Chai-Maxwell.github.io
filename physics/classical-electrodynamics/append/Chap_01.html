@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>*Helmholtz*定理 | MyBlogs</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1/texmath.min.js"></script>
+</head>
+<body>
+<div class="markdown-body" id="content"></div>
+
+<script id="source" type="text/markdown">
+## *Helmholtz*定理
+\par任意矢量$\mathbf{a}(\mathbf{r})$若满足
+$$
+\begin{equation}
+|\mathbf{a}(\mathbf{r})|=O\left(\frac{1}{r^{1+\varepsilon}}\right)\ (r\to\infty),\ \varepsilon>0,
+\end{equation}
+$$
+则可分解为
+$$
+    \mathbf{a}(\mathbf{r})=\mathbf{a}_{l}(\mathbf{r})+\mathbf{a}_{t}(\mathbf{r}),
+$$
+其中$\mathbf{a}_{l}(\mathbf{r})$是散度分量(longtitudinal)，$\mathbf{a}_{t}(\mathbf{r})$是旋度分量(transversal)，满足
+$$
+\nabla\times\mathbf{a}_{l}(\mathbf{r})=0,\quad\nabla\cdot\mathbf{a}_{t}(\mathbf{r})=0,
+$$
+具体而言
+$$
+    \begin{equation}
+    \mathbf{a}_{l}(\mathbf{r})=\nabla_{\mathbf{r}}\left(-\frac{1}{4\pi}\int_{\mathbb{R}^3}\upd^3\mathbf{r}'\frac{\nabla_{\mathbf{r}'}\cdot\mathbf{a}(\mathbf{r}')}{|\mathbf{r}'-\mathbf{r}|}\right),\quad \mathbf{a}_{t}(\mathbf{r})=\nabla_{\mathbf{r}}\times\left(\frac{1}{4\pi}\int_{\mathbb{R}^3}\upd^3\mathbf{r}'\frac{\nabla_{\mathbf{r}'}\times\mathbf{a}(\mathbf{r}')}{|\mathbf{r}'-\mathbf{r}|}\right).
+    \end{equation}
+$$
+证明过程用到以下几个关系
+$$
+\begin{align}
+&\nabla\times\nabla\times\mathbf{A}=\nabla(\nabla\cdot\mathbf{A})-\Delta\mathbf{A},\\
+&\nabla\cdot(\varphi\mathbf{A})=\varphi\nabla\cdot\mathbf{A}+\nabla\varphi\cdot\mathbf{A},\\
+&\nabla\times(\varphi\mathbf{A})=\varphi\nabla\times\mathbf{A}+\nabla\varphi\times\mathbf{A},\\
+&\delta(\mathbf{r}'-\mathbf{r})=-\frac{1}{4\pi}\Delta_{\mathbf{r}}\frac{1}{|\mathbf{r}'-\mathbf{r}|},\\
+&\int_{V}\upd^3\mathbf{r}'\nabla_{\mathbf{r}'}\times\mathbf{A}=\int_{S}\upd\mathbf{f}'\times\mathbf{A}.
+\end{align}    
+$$
+考虑
+$$
+\begin{aligned}
+\frac{1}{4\pi}\nabla_{\mathbf{r}}\times\nabla_{\mathbf{r}}\times\int_{V}\upd^3\mathbf{r}'\frac{\mathbf{a}(\mathbf{r}')}{|\mathbf{r}'-\mathbf{r}|}&\overset{(3)}{=}
+\frac{1}{4\pi}\nabla_{\mathbf{r}}\int_{V}\upd^3\mathbf{r}'\nabla_{\mathbf{r}}\cdot\left(\frac{\mathbf{a}(\mathbf{r}')}{|\mathbf{r}'-\mathbf{r}|}\right)-\frac{1}{4\pi}\int_{V}\upd^3\mathbf{r}'\Delta_{\mathbf{r}}\left(\frac{\mathbf{a}(\mathbf{r}')}{|\mathbf{r}'-\mathbf{r}|}\right)\\
+&\overset{(6)}{=}\int_{V}\upd^3\mathbf{r}'\delta(\mathbf{r}'-\mathbf{r})\mathbf{a}(\mathbf{r}')-\frac{1}{4\pi}\nabla_{\mathbf{r}}\int_{V}\upd^3\mathbf{r}'\mathbf{a}(\mathbf{r}')\cdot\nabla_{\mathbf{r}'}\left(\frac{1}{|\mathbf{r}'-\mathbf{r}|}\right)\\
+&\overset{(4)}{=}\mathbf{a}(\mathbf{r})-\frac{1}{4\pi}\nabla_{\mathbf{r}}\int_{V}\upd^3\mathbf{r}'\nabla_{\mathbf{r}'}\cdot\left(\frac{\mathbf{a}(\mathbf{r}')}{|\mathbf{r}'-\mathbf{r}|}\right)+\frac{1}{4\pi}\nabla_{\mathbf{r}}\int_{V}\upd^3\mathbf{r}'\frac{\nabla_{\mathbf{r}'}\cdot\mathbf{a}(\mathbf{r}')}{|\mathbf{r}'-\mathbf{r}|}\\
+&=\mathbf{a}(\mathbf{r})-\frac{1}{4\pi}\nabla_{\mathbf{r}}\int_{S}\upd\mathbf{f}'\cdot\left(\frac{\mathbf{a}(\mathbf{r}')}{|\mathbf{r}'-\mathbf{r}|}\right)+\frac{1}{4\pi}\nabla_{\mathbf{r}}\int_{S}\upd^3\mathbf{r}'\frac{\nabla_{\mathbf{r}'}\cdot\mathbf{a}(\mathbf{r}')}{|\mathbf{r}'-\mathbf{r}|}\\
+&\underset{V\to\mathbb{R}^3}{\overset{(1)(2)}{=}}\mathbf{a}(\mathbf{r})-\mathbf{a}_{l}(\mathbf{r}),
+\end{aligned}
+$$
+又因为
+$$
+\begin{aligned}
+\frac{1}{4\pi}\nabla_{\mathbf{r}}\times\nabla_{\mathbf{r}}\times\int_{V}\upd^3\mathbf{r}'\frac{\mathbf{a}(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|}&\overset{(5)}{=}-\frac{1}{4\pi}\nabla_{\mathbf{r}}\times\int_{V}\upd^3\mathbf{r}'\mathbf{a}(\mathbf{r}')\times\nabla_{\mathbf{r}}\left(\frac{1}{|\mathbf{r}'-\mathbf{r}|}\right)\\
+&=\frac{1}{4\pi}\nabla_{\mathbf{r}}\times\int_{V}\upd^3\mathbf{r}'\mathbf{a}(\mathbf{r}')\times\nabla_{\mathbf{r}'}\left(\frac{1}{|\mathbf{r}'-\mathbf{r}|}\right)\\
+&\overset{(5)}{=}-\frac{1}{4\pi}\nabla_{\mathbf{r}}\times\int_{V}\upd^3\mathbf{r}'\nabla_{\mathbf{r}'}\times\left(\frac{\mathbf{a}(\mathbf{r}')}{|\mathbf{r}'-\mathbf{r}|}\right)+\frac{1}{4\pi}\nabla_{\mathbf{r}}\times\int_{V}\upd^3\mathbf{r}'\frac{\nabla_{\mathbf{r}'}\times\mathbf{a}(\mathbf{r}')}{|\mathbf{r}'-\mathbf{r}|}\\
+&\overset{(7)}{=}-\frac{1}{4\pi}\nabla_{\mathbf{r}}\times\int_{S}\upd\mathbf{f}'\times\left(\frac{\mathbf{a}(\mathbf{r}')}{|\mathbf{r}'-\mathbf{r}|}\right)+\frac{1}{4\pi}\nabla_{\mathbf{r}}\times\int_{V}\upd^3\mathbf{r}'\frac{\nabla_{\mathbf{r}'}\times\mathbf{a}(\mathbf{r}')}{|\mathbf{r}'-\mathbf{r}|}\\
+&\underset{V\to\mathbb{R}^3}{\overset{(1)(2)}{=}}\mathbf{a}_{t}(\mathbf{r}),
+\end{aligned}
+$$
+故
+$$
+    \mathbf{a}(\mathbf{r})=\mathbf{a}_{l}(\mathbf{r})+\mathbf{a}_{t}(\mathbf{r}).
+$$
+\par在(1)的条件下也有矢量的唯一性定理：已知矢量的散度和旋度，则该矢量可唯一确定
+$$
+\leftBrace
+&\nabla\cdot\mathbf{a}_{1}(\mathbf{r})=\nabla\cdot\mathbf{a}_{2}(\mathbf{r})\\
+&\nabla\times\mathbf{a}_{1}(\mathbf{r})=\nabla\times\mathbf{a}_{2}(\mathbf{r})
+\rightEnd\Longrightarrow\mathbf{a}_{1}(\mathbf{r})=\mathbf{a}_{2}(\mathbf{r}).
+$$
+证明过程用到格林第一等式
+$$
+\begin{equation}
+\int_{S}\upd\mathbf{f}\cdot\psi\nabla\psi=\int_{V}\upd^3\mathbf{r}\nabla\cdot(\psi\nabla\psi)\overset{(4)}{=}\int_{V}\upd^3\mathbf{r}[\Delta\psi+(\nabla\psi)^2],
+\end{equation}
+$$
+设$\mathbf{d}(\mathbf{r})=\mathbf{a}_{1}(\mathbf{r})-\mathbf{a}_{2}(\mathbf{r})$,由$\nabla\cdot\mathbf{d}(\mathbf{r})=0$可设$\mathbf{d}(\mathbf{r})=\nabla\psi$，那么$\Delta\psi=0$
+$$
+\int_{S}\upd\mathbf{f}\cdot\psi\nabla\psi\overset{(8)}{=}\int_{V}\upd^3\mathbf{r}(\nabla\psi)^2\overset{V\to\mathbb{R}^3}{\Longrightarrow}\int_{V}\upd^3\mathbf{r}(\nabla\psi)^2=0\Longleftrightarrow\mathbf{d}(\mathbf{r})=\nabla\psi=\mathbf{0},
+$$
+故$\mathbf{a}_{1}(\mathbf{r})=\mathbf{a}_{2}(\mathbf{r})$.
+</script>
+
+<script>
+(function() {
+  var md = window.markdownit({ html: true })
+    .use(texmath, {
+      engine: katex,
+      delimiters: 'dollars',
+      katexOptions: { throwOnError: false }
+    });
+  var src = document.getElementById('source').textContent;
+  document.getElementById('content').innerHTML = md.render(src);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Killing Vector 的微分几何基础（系统整理） | MyBlogs</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1/texmath.min.js"></script>
+</head>
+<body>
+<div class="markdown-body" id="content"></div>
+
+<script id="source" type="text/markdown">
+# Killing Vector 的微分几何基础（系统整理）
+
+本文从最基础的微分几何结构出发，逐步建立到 Killing 向量与守恒量之间的联系。风格尽量保持“定义 → 结构 → 例子 → 物理意义”的技术化展开。
+
+---
+
+# 1. 流形（Manifold）
+
+## 定义
+流形是一个局部看起来像 \(\mathbb{R}^n\) 的空间。
+
+- 每一点都有一个邻域，可用坐标 \(x^\mu\) 描述
+- 不同坐标之间通过光滑函数变换
+
+## 例子
+
+- \(\mathbb{R}^n\)
+- 球面 \(S^2\)：局部像 \(\mathbb{R}^2\)，但整体不是平直空间
+- 时空（广义相对论）：4维流形
+
+---
+
+# 2. 切空间（Tangent Space）
+
+## 定义（关键）
+在一点 \(p\)，切空间 \(T_pM\) 是“所有方向导数算符”的集合：
+
+$$
+V: C^\infty(M) \to \mathbb{R}
+$$
+满足
+$$
+V(fg) = fV(g) + gV(f)
+$$
+
+这一定义比“箭头”更本质。
+
+## 坐标基
+选定坐标 \(x^\mu\)，定义：
+
+$$
+\partial_\mu := \frac{\partial}{\partial x^\mu}
+$$
+
+它们构成一组基：
+
+$$
+T_pM = \text{span}\{\partial_\mu\}
+$$
+
+## 任意向量展开
+
+$$
+V = V^\mu \partial_\mu
+$$
+
+## 例子
+
+- 在 \(\mathbb{R}^2\)：
+  $$
+  V = x \partial_x + y \partial_y
+  $$
+  表示“向外发散”的方向场
+
+- 纯平移：
+  $$
+  V = \partial_x
+  $$
+  表示沿 x 方向移动
+
+---
+
+# 3. 向量场（Vector Field）
+
+## 定义
+
+给每个点一个切向量：
+
+$$
+V(p) \in T_pM
+$$
+
+## 作为微分算符
+
+$$
+V(f) = V^\mu \partial_\mu f
+$$
+
+## 流（Flow）
+
+由向量场定义曲线：
+
+$$
+\frac{dx^\mu}{d\lambda} = V^\mu
+$$
+
+## 例子
+
+- \(V = \partial_t\)：时间平移
+- \(V = x\partial_y - y\partial_x\)：平面旋转
+
+---
+
+# 4. 对偶空间与协变向量
+
+## 定义
+
+对偶空间 \(T_p^*M\)：线性映射
+
+$$
+\omega: T_pM \to \mathbb{R}
+$$
+
+## 基
+
+$$
+dx^\mu(\partial_\nu) = \delta^\mu_{\nu}
+$$
+
+## 展开
+
+$$
+\omega = \omega_\mu dx^\mu
+$$
+
+## 例子
+
+- 梯度：
+  $$
+  df = \partial_\mu f \, dx^\mu
+  $$
+
+---
+
+# 5. 度规（Metric）
+
+## 定义
+
+$$
+g: T_pM \times T_pM \to \mathbb{R}
+$$
+
+给出内积：
+
+$$
+g(V,W) = g_{\mu\nu} V^\mu W^\nu
+$$
+
+## 功能
+
+- 升降指标
+- 定义长度与角度
+
+## 例子
+
+- 欧氏空间：\(g_{\mu\nu} = \delta_{\mu\nu}\)
+- Minkowski：\((-+++ )\)
+
+---
+
+# 6. 协变导数（Covariant Derivative）
+
+## 动机
+
+普通导数不保持张量性，需要连接（connection）
+
+## 定义
+
+$$
+\nabla_\mu V^\nu = \partial_\mu V^\nu + \Gamma^\nu_{\mu\lambda} V^\lambda
+$$
+
+## 例子
+
+- 平直空间：\(\Gamma = 0\)
+- 球面：\(\Gamma \neq 0\)
+
+---
+
+# 7. 测地线（Geodesic）
+
+## 定义
+
+“最直路径”：
+
+$$
+p^\mu \nabla_\mu p^\nu = 0
+$$
+
+## 例子
+
+- 平直空间：直线
+- 球面：大圆
+
+---
+
+# 8. Lie 导数（Lie Derivative）
+
+## 定义（核心）
+
+描述沿向量场的“拖动”：
+
+$$
+\mathcal{L}_K g_{\mu\nu}
+$$
+
+## 对度规
+
+$$
+\mathcal{L}_K g_{\mu\nu} = \nabla_\mu K_\nu + \nabla_\nu K_\mu
+$$
+
+---
+
+# 9. Killing 向量
+
+## 定义
+
+若
+
+$$
+\mathcal{L}_K g_{\mu\nu} = 0
+$$
+
+则 \(K\) 为 Killing 向量
+
+等价：
+
+$$
+\nabla_{(\mu} K_{\nu)} = 0
+$$
+
+## 几何意义
+
+沿该方向移动，不改变度规
+
+→ 时空对称性
+
+## 例子
+
+- 平直时空：
+  - \(\partial_t\)：时间平移
+  - \(\partial_x\)：空间平移
+
+- 旋转：
+  $$
+  K = x\partial_y - y\partial_x
+  $$
+
+---
+
+# 10. 守恒量的出现
+
+## 构造
+
+$$
+C = K_\mu p^\mu
+$$
+
+## 沿测地线
+
+$$
+p^\nu \nabla_\nu C = 0
+$$
+
+## 条件
+
+成立当且仅当
+
+$$
+\nabla_{(\mu}K_{\nu)} = 0
+$$
+
+## 例子
+
+- 时间 Killing 向量 → 能量守恒
+- 空间 Killing 向量 → 动量守恒
+- 旋转 Killing 向量 → 角动量守恒
+
+---
+
+# 11. 特殊坐标中的形式
+
+若度规不依赖某坐标 \(x^\sigma\)：
+
+$$
+\partial_\sigma g_{\mu\nu} = 0
+$$
+
+则
+
+$$
+K = \partial_\sigma
+$$
+
+分量为：
+
+$$
+K^\mu = \delta^\mu_{\sigma}
+$$
+
+## 例子
+
+- Schwarzschild：
+  - \(K = \partial_t\)
+
+---
+
+# 12. 总体结构总结
+
+逻辑链：
+
+1. 流形 → 定义空间
+2. 切空间 → 定义方向
+3. 向量场 → 生成流
+4. 度规 → 定义几何
+5. Lie 导数 → 描述对称
+6. Killing 方程 → 对称条件
+7. 测地线 → 粒子运动
+8. 守恒量 → 对称性的结果
+
+核心关系：
+
+$$
+\text{对称性} \leftrightarrow \text{Killing 向量} \leftrightarrow \text{守恒量}
+$$
+
+---
+
+# 13. 建议进一步理解路径
+
+- 从 Lie 导数推导 Killing 方程
+- 计算具体时空的 Killing 向量
+- 研究 Killing 张量（Carter 常数）
+
+---
+
+（完）
+
+
+</script>
+
+<script>
+(function() {
+  var md = window.markdownit({ html: true })
+    .use(texmath, {
+      engine: katex,
+      delimiters: 'dollars',
+      katexOptions: { throwOnError: false }
+    });
+  var src = document.getElementById('source').textContent;
+  document.getElementById('content').innerHTML = md.render(src);
+})();
+</script>
+</body>
+</html>

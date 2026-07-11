@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电磁波的辐射 | MyBlogs</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1/texmath.min.js"></script>
+</head>
+<body>
+<div class="markdown-body" id="content"></div>
+
+<script id="source" type="text/markdown">
+# 电磁波的辐射
+
+## *Lorenz*规范
+
+¶在真空中，考虑自由电荷和电流的*Maxwell*方程组
+
+$$
+\begin{align}
+&\nabla\cdot\bm{E}=\frac{\rho_{f}}{\varepsilon_{0}},\\
+&\nabla\times\bm{E}=-\frac{\partial \bm{B}}{\partial t},\\
+&\nabla\cdot\bm{B}=0,\\
+&\nabla\times\bm{B}=\mu_{0}\bm{J}_{f}+\mu_{0}\varepsilon_{0}\frac{\partial \bm{E}}{\partial t},
+\end{align}
+$$
+
+由(2),(3)式得到电磁场的势表示
+
+$$
+\bm{B}=\nabla\times\bm{A},\quad
+\bm{E}=-\nabla\varphi-\frac{\partial \bm{A}}{\partial t},
+$$
+
+带入(1),(4)式
+
+$$
+\begin{equation}
+\begin{aligned}
+&\nabla^2\varphi+\frac{\partial }{\partial t}\nabla\cdot\bm{A}=-\frac{\rho_{f}}{\varepsilon_{0}},\\
+&\nabla^2\bm{A}-\frac{1}{c^2}\frac{\partial ^2\bm{A}}{\partial t^2}-\nabla\left(\nabla\cdot\bm{A}+\frac{1}{c^2}\frac{\partial \varphi}{\partial t}\right)=-\mu_{0}\bm{J}_{f}.
+\end{aligned}
+\end{equation}
+$$
+
+在规范变换下，$\bm{E},\bm{B}$不变
+
+$$
+\left\{\begin{aligned}
+&\bm{A}\to\bm{A}'=\bm{A}+\nabla\psi,\\
+&\varphi\to\varphi'=\varphi-\frac{\partial \psi}{\partial t}.
+\end{aligned}\right.
+$$
+
+¶选定*Lorenz*规范
+
+$$
+\nabla\cdot\bm{A}^{(\text{L})}+\frac{1}{c^2}\frac{\partial \varphi^{(\text{L})}}{\partial t}=0,
+$$
+
+则(5)式化为*d'Alembert*方程
+
+$$
+\begin{equation}
+\begin{aligned}
+&\nabla^2\varphi^{(\text{L})}-\frac{1}{c^2}\frac{\partial ^2\varphi^{(\text{L})}}{\partial t^2}=-\frac{\rho_{f}}{\varepsilon_{0}},\\
+&\nabla^2\bm{A}^{(\text{L})}-\frac{1}{c^2}\frac{\partial ^2\bm{A}^{(\text{L})}}{\partial t^2}=-\mu_{0}\bm{J}_{f}.
+\end{aligned}
+\end{equation}
+$$
+
+在无界自由空间中$\rho_{f}=0,\ \bm{J}_{f}=\bm{0}$得到时谐波解
+
+$$
+\tilde{\bm{A}}^{(\text{L})}=\tilde{\bm{A}}^{(\text{L})}_{0}\mathrm{e}^{-\mathrm{i}(\omega t-\bm{k}\cdot\bm{r})},\quad\tilde{\varphi}^{(\text{L})}=\tilde{\varphi}^{(\text{L})}_{0}\mathrm{e}^{-\mathrm{i}(\omega t-\bm{k}\cdot\bm{r})},
+$$
+
+其中$\bm{k}=\frac{\omega}{c}\hat{\bm{e}}_{k}$，*Lorenz*规范约束$\tilde{\varphi}^{(\text{L})}_{0}=\frac{c^2}{\omega}\bm{k}\cdot\tilde{\bm{A}}^{(\text{L})}_{0}$，进而解得
+
+$$
+\tilde{\bm{E}}=\mathrm{i}\omega\tilde{\bm{A}}^{(\text{L})},\quad\tilde{\bm{B}}=\mathrm{i}\bm{k}\times\tilde{\bm{A}}^{(\text{L})}.
+$$
+
+## 推迟势
+
+### *d'Alembert*方程的*Green*函数
+
+¶为了求解方程
+
+$$
+\left(\nabla^2-\frac{1}{c^2}\frac{\partial ^2}{\partial t^2}\right)\Psi(\bm{r},t)=-f(\bm{r},t),
+$$
+
+可以考虑*Green*函数
+
+$$
+\begin{equation}
+\left(\nabla_{\bm{r}}^2-\frac{1}{c^2}\frac{\partial ^2}{\partial t^2}\right)G(\bm{r},t|\bm{r}',t')=-\delta(\bm{r}-\bm{r}')\delta(t-t'),
+\end{equation}
+$$
+
+假定*Green*函数具有如下对称性
+
+$$
+G(\bm{r},t|\bm{r}',t')=G(\|\bm{r}-\bm{r}'\|,t-t'),
+$$
+
+这样一来
+
+$$
+\begin{aligned}
+\Psi(\bm{r},t)&=\int_{t_{1}}^{t_{2}}\mathrm{d} t'\int_{\Sigma}\mathrm{d}^3\bm{r}'\Psi(\bm{r}',t')\delta(\bm{r}-\bm{r}')\delta(t-t')\\
+&=\frac{1}{c^2}\int_{t_{1}}^{t_{2}}\mathrm{d} t'\int_{\Sigma}\mathrm{d}^3\bm{r}'\underset{\text{integrate by parts}}{\underline{\Psi(\bm{r}',t')\frac{\partial ^2}{\partial t'^2}G(\bm{r},t|\bm{r}',t')}}-\int_{t_{1}}^{t_{2}}\mathrm{d} t'\int_{\Sigma}\mathrm{d}^3\bm{r}'\underset{\text{apply Green's second identity}}{\underline{\Psi(\bm{r}',t')\nabla_{\bm{r}'}^2G(\bm{r},t|\bm{r}',t')}}\\
+&=\int_{t_{1}}^{t_{2}}\mathrm{d} t'\int_{\Sigma}\mathrm{d}^3\bm{r}'G(\bm{r},t|\bm{r}',t')f(\bm{r}',t')\\
+&\quad+\frac{1}{c^2}\int_{\Sigma}\mathrm{d}^3\bm{r}'\left.\left[\frac{\partial }{\partial t'}G(\bm{r},t|\bm{r}',t')\Psi(\bm{r}',t')-G(\bm{r},t|\bm{r}',t')\frac{\partial }{\partial t'}\Psi(\bm{r}',t')\right]\right|_{t'=t_{1}}^{t_{2}}\\
+&\quad+\int_{t_1}^{t_2}\mathrm{d} t'\int_{\partial\Sigma}\mathrm{d}\bm{f}'\cdot\left[G(\bm{r},t|\bm{r}',t')\nabla_{\bm{r}'}\Psi(\bm{r}',t')-\Psi(\bm{r}',t')\nabla_{\bm{r}'}G(\bm{r},t|\bm{r}',t')\right].
+\end{aligned}
+$$
+
+其中$t\in[t_{1},t_{2}],\ \bm{r}\in\Sigma$.令$\bm{R}=\bm{r}-\bm{r}',\ \tau=t-t'$，(7)式化为
+
+$$
+\frac{1}{R}\left(\frac{\partial ^2}{\partial R^2}-\frac{1}{c^2}\frac{\partial ^2}{\partial \tau^2}\right)RG(R,\tau)=-\delta(\bm{R})\delta(\tau),
+$$
+
+在$\bm{R}\neq0,\ \tau\neq0$的区域容易得到两个独立解
+
+$$
+G_{\pm}(R,\tau)=\frac{1}{R}g_{\pm}(\tau\pm R/c),
+$$
+
+考虑
+
+$$
+\begin{aligned}
+\left(\nabla_{\bm{R}}^2-\frac{1}{c^2}\frac{\partial ^2}{\partial \tau^2}\right)G_{\pm}&=\nabla_{\bm{R}}^2\left(\frac{1}{R}\right)g_{\pm}+2\nabla_{\bm{R}}\left(\frac{1}{R}\right)\cdot\nabla_{\bm{R}}(g_{\pm})+\frac{1}{R}\nabla_{\bm{R}}^2\left(g_{\pm}\right)-\frac{1}{c^2R}\frac{\partial ^2g_{\pm}}{\partial \tau^2}\\
+&=-4\pi\delta(\bm{R})g_{\pm}+2\left(-\frac{\bm{R}}{R^3}\right)\cdot\left(\pm g'_{\pm}\frac{\bm{R}}{cR}\right)+\frac{2}{R^2}(\pm g'_{\pm}/c)\\
+&=-4\pi\delta(\bm{R})g_{\pm},
+\end{aligned}
+$$
+
+$g_{\pm}$应使得上式与(7)式保持一致，故
+
+$$
+G_{\pm}(\bm{r},t|\bm{r}',t')=\frac{\delta(t-t'\pm\|\bm{r}-\bm{r}'\|/c)}{4\pi\|\bm{r}-\bm{r}'\|},
+$$
+
+且有$G_{+}(\bm{r},t|\bm{r}',t')=G_{-}(\bm{r}',t'|\bm{r},t).$注意假定的*Green*函数对称性暗含了$\Sigma=\mathbb{R}^3$，这样$\Psi(\bm{r},t)$中消去了边界项
+
+$$
+\begin{aligned}
+\Psi(\bm{r},t)&=\int_{t_{1}}^{t_{2}}\mathrm{d} t\int_{\Sigma}\mathrm{d}^3\bm{r}'G(\bm{r},t|\bm{r}',t')f(\bm{r}',t')\\
+&\quad+\frac{1}{c^2}\int_{\Sigma}\mathrm{d}^3\bm{r}'\left.\left[\frac{\partial }{\partial t'}G(\bm{r},t|\bm{r}',t')\Psi(\bm{r}',t')-G(\bm{r},t|\bm{r}',t')\frac{\partial }{\partial t'}\Psi(\bm{r}',t')\right]\right|_{t'=t_{1}}^{t_{2}}.
+\end{aligned}
+$$
+
+### 超前波与推迟波
+
+¶$G_{\pm}$的选取分别对应着超前波解(advanced wave)与推迟波解(retarded wave)
+
+$$
+\begin{aligned}
+&\Psi_{\text{ret}}(\bm{r},t)=\Psi_{\text{in}}(\bm{r},t)+\frac{1}{4\pi}\int_{\{\bm{r}'|\|\bm{r}'-\bm{r}\|<c(t-t_{1})\}}\mathrm{d}^3\bm{r}'\frac{f(\bm{r}',t-\|\bm{r}-\bm{r}'\|/c)}{\|\bm{r}-\bm{r}'\|},\\
+&\Psi_{\text{adv}}(\bm{r},t)=\Psi_{\text{out}}(\bm{r},t)+\frac{1}{4\pi}\int_{\{\bm{r}'|\|\bm{r}'-\bm{r}\|<c(t_{2}-t)\}}\mathrm{d}^3\bm{r}'\frac{f(\bm{r}',t+\|\bm{r}-\bm{r}'\|/c)}{\|\bm{r}-\bm{r}'\|},
+\end{aligned}
+$$
+
+其中
+
+$$
+\begin{aligned}
+\Psi_{\text{in}}(\bm{r},t)&=\frac{1}{c^2}\int_{\Sigma}\mathrm{d}^3\bm{r}'\left.\left[\frac{\partial }{\partial t'}G_{-}(\bm{r},t|\bm{r}',t')\Psi(\bm{r}',t')-G_{-}(\bm{r},t|\bm{r}',t')\frac{\partial }{\partial t'}\Psi(\bm{r}',t')\right]\right|_{t'=t_{1}}\\
+&=\frac{1}{4\pi c^2}\int_{\Sigma}\mathrm{d}^3\bm{r}'\left.\left\{\frac{\partial }{\partial t'}\left[\frac{\delta(t-t'-\|\bm{r}-\bm{r}'\|/c)}{\|\bm{r}-\bm{r}'\|}\Psi(\bm{r}',t')\right]-2\frac{\delta(t-t'-\|\bm{r}-\bm{r}'\|/c)}{\|\bm{r}-\bm{r}'\|}\frac{\partial }{\partial t'}\Psi(\bm{r}',t')\right\}\right|_{t'=t_{1}}\\
+&=-\frac{1}{4\pi}\int_{0}^{2\pi}\mathrm{d}\varphi\int_{0}^{\pi}\mathrm{d}\theta\sin\theta\left[\Psi + c(t-t_1)\frac{\partial \Psi}{\partial R} + (t-t_{1})\frac{\partial \Psi}{\partial t'}\right]_{t'=t_{1}},\\\\
+\Psi_{\text{out}}(\bm{r},t)&=\frac{1}{c^2}\int_{\Sigma}\mathrm{d}^3\bm{r}'\left.\left[\frac{\partial }{\partial t'}G_{+}(\bm{r},t|\bm{r}',t')\Psi(\bm{r}',t')-G_{+}(\bm{r},t|\bm{r}',t')\frac{\partial }{\partial t'}\Psi(\bm{r}',t')\right]\right|_{t'=t_{2}}\\
+&=\frac{1}{4\pi c^2}\int_{\Sigma}\mathrm{d}^3\bm{r}'\left.\left\{\frac{\partial }{\partial t'}\left[\frac{\delta(t-t'+\|\bm{r}-\bm{r}'\|/c)}{\|\bm{r}-\bm{r}'\|}\Psi(\bm{r}',t')\right]-2\frac{\delta(t-t'+\|\bm{r}-\bm{r}'\|/c)}{\|\bm{r}-\bm{r}'\|}\frac{\partial }{\partial t'}\Psi(\bm{r}',t')\right\}\right|_{t'=t_{2}}\\
+&=\frac{1}{4\pi}\int_{0}^{2\pi}\mathrm{d}\varphi\int_{0}^{\pi}\mathrm{d}\theta\sin\theta\left[\Psi + c(t_{2}-t)\frac{\partial \Psi}{\partial R} - (t_{2}-t)\frac{\partial \Psi}{\partial t'}\right]_{t'=t_{2}}.
+\end{aligned}
+$$
+
+在物理问题中，我们更青睐使用推迟波求解.$\Psi$通常在无穷远处衰减为零，因此令$t_{1}\to-\infty$
+
+$$
+\begin{equation}
+\Psi(\bm{r},t)=\frac{1}{4\pi}\int_{\{\bm{r}'|f\neq0\}}\mathrm{d}^3\bm{r}'\frac{f(\bm{r}',t-\|\bm{r}-\bm{r}'\|/c)}{\|\bm{r}-\bm{r}'\|}.
+\end{equation}
+$$
+
+### 时谐源的推迟波
+
+¶考虑时谐源$\tilde{f}(\bm{r},t)=\tilde{f}(\bm{r}|\omega)\mathrm{e}^{-\mathrm{i}\omega t}$则
+
+$$
+\tilde{\Psi}(\bm{r},t)=\int_{\{\bm{r}'|\tilde{f}\neq0\}}\mathrm{d}^3\bm{r}'\frac{\mathrm{e}^{\mathrm{i} k\|\bm{r}-\bm{r}'\|}}{4\pi\|\bm{r}-\bm{r}'\|}\tilde{f}(\bm{r}',t)\equiv\int_{\{\bm{r}'|\tilde{f}\neq0\}}\mathrm{d}^3\bm{r}'G_{0}(\bm{r},\bm{r}')\tilde{f}(\bm{r}',t).
+$$
+
+### 推迟势与*Schott*公式
+
+¶由(6)(8)式立即得到
+
+$$
+\begin{aligned}
+&\varphi^{(\text{L})}(\bm{r},t)=\frac{1}{4\pi\varepsilon_{0}}\int_{\{\bm{r}'|\rho_{f}\neq0\}}\mathrm{d}^3\bm{r}'\frac{\rho_{f}(\bm{r}',t-\|\bm{r}-\bm{r}'\|/c)}{\|\bm{r}-\bm{r}'\|},\\
+&\bm{A}^{(\text{L})}(\bm{r},t)=\frac{\mu_{0}}{4\pi}\int_{\{\bm{r}'|\bm{J}_{f}\neq0\}}\mathrm{d}^3\bm{r}'\frac{\bm{J}_{f}(\bm{r}',t-\|\bm{r}-\bm{r}'\|/c)}{\|\bm{r}-\bm{r}'\|},
+\end{aligned}
+$$
+
+对于时谐场，可将推迟时间写作相位因子.简写$t_{\text{ret}}=t-\|\bm{r}-\bm{r}'\|/c$，$f_{\text{ret}}(\bm{r}')=f(\bm{r}',t_{\text{ret}})$得到*Schott*公式
+
+$$
+\begin{aligned}
+\bm{E}(\bm{r},t)&=-\frac{1}{4\pi\varepsilon_{0}}\nabla_{\bm{r}}\int\mathrm{d}^3\bm{r}'\frac{\rho_{f,\text{ret}}(\bm{r}')}{\|\bm{r}-\bm{r}'\|}-\frac{\mu_{0}}{4\pi}\frac{\partial }{\partial t}\int\mathrm{d}^3\bm{r}'\frac{\bm{J}_{f,\text{ret}}(\bm{r}')}{\|\bm{r}-\bm{r}'\|}\\
+&=\frac{1}{4\pi\varepsilon_{0}}\int\mathrm{d}^3\bm{r}'\left[\left(\frac{\bm{r}-\bm{r}'}{\|\bm{r}-\bm{r}'\|^3}+\frac{\bm{r}-\bm{r}'}{c\|\bm{r}-\bm{r}'\|^2}\frac{\partial }{\partial t}\right)\rho_{f,\text{ret}}-\frac{1}{c^2\|\bm{r}-\bm{r}'\|}\frac{\partial \bm{J}_{f,\text{ret}}}{\partial t}\right],\\\\
+\bm{B}(\bm{r},t)&=\frac{\mu_{0}}{4\pi}\nabla_{\bm{r}}\times\int\mathrm{d}^3\bm{r}'\frac{\bm{J}_{f,\text{ret}}}{\|\bm{r}-\bm{r}'\|}\\
+&=\frac{\mu_{0}}{4\pi}\int\mathrm{d}^3\bm{r}'\left(\frac{1}{\|\bm{r}-\bm{r}'\|^3}+\frac{1}{c\|\bm{r}-\bm{r}'\|^2}\frac{\partial }{\partial t}\right)\bm{J}_{f,\text{ret}}\times(\bm{r}-\bm{r}').
+\end{aligned}
+$$
+
+### 振荡电偶极子
+
+¶振荡点电偶极子的含时电荷分布与电流密度
+
+$$
+\rho_{d}(\bm{r},t)=-\bm{p}(t)\cdot\nabla\delta(\bm{r}),\quad\bm{J}_{d}=\dot{\bm{p}}(t)\delta(\bm{r}),
+$$
+
+其激发的矢势
+
+$$
+\bm{A}^{(\text{L})}(\bm{r},t)=\frac{\mu_{0}}{4\pi}\int\mathrm{d}^3\bm{r}'\delta(\bm{r}')\frac{\dot{\bm{p}}(t-\|\bm{r}-\bm{r}'\|/c)}{\|\bm{r}-\bm{r}'\|}=\frac{\mu_{0}}{4\pi}\frac{\dot{\bm{p}}(t-r/c)}{r},
+$$
+
+标势
+
+$$
+\begin{aligned}
+\varphi^{(\text{L})}(\bm{r},t)&=\frac{1}{4\pi\varepsilon_{0}}\int\mathrm{d}^3\bm{r}'\frac{-\bm{p}(t-\|\bm{r}-\bm{r}'\|/c)\cdot\nabla_{\bm{r}'}\delta(\bm{r'})}{\|\bm{r}-\bm{r}'\|}\\
+&=\frac{1}{4\pi\varepsilon_{0}}\int\mathrm{d}^3\bm{r}'\delta(\bm{r'})\nabla_{\bm{r}'}\frac{\bm{p}(t-\|\bm{r}-\bm{r}'\|/c)}{\|\bm{r}-\bm{r}'\|}\\
+&=\frac{1}{4\pi\varepsilon_{0}}\left[\frac{\bm{r}}{r^3}\cdot\bm{p}(t-r/c)+\frac{\bm{r}}{cr^2}\cdot\dot{\bm{p}}(t-r/c)\right],
+\end{aligned}
+$$
+
+简写$\bm{p}_{\text{ret}}=\bm{p}(t-r/c)$，得到
+
+$$
+\begin{aligned}
+&\bm{B}(\bm{r},t)=\frac{\mu_{0}}{4\pi}\left(\underset{\text{induction}}{\underline{\frac{\dot{\bm{p}}_{\text{ret}}}{r^2}}}+\underset{\text{radiation}}{\underline{\frac{\ddot{\bm{p}}_{\text{ret}}}{cr}}}\right)\times\hat{\bm{r}},\\
+&\bm{E}(\bm{r},t)=\frac{1}{4\pi\varepsilon_{0}}\left[\underset{\text{radiation}}{\underline{\frac{(\hat{\bm{r}}\cdot\ddot{\bm{p}}_{\text{ret}})\hat{\bm{r}}-\ddot{\bm{p}}_{\text{ret}}}{c^2r}}}+\underset{\text{induction}}{\underline{\frac{3(\hat{\bm{r}}\cdot\dot{\bm{p}}_{\text{ret}})\hat{\bm{r}}-\dot{\bm{p}}_{\text{ret}}}{cr^2}}}+\underset{\text{quasi-electrostatic}}{\underline{\frac{3(\hat{\bm{r}}\cdot\bm{p}_{\text{ret}})\hat{\bm{r}}-\bm{p}_{\text{ret}}}{r^3}}}\right],
+\end{aligned}
+$$
+
+注意到电磁场的$\bm{p}_{\text{ret}}$的导数阶数与衰减速度相关的特点，假定振荡的特征时间$\tau$，我们划分辐射场
+
+$$
+r\ll c\tau:\text{近场},\quad r\sim c\tau:\text{过渡带},\quad r\gg c\tau:\text{远场}.
+$$
+
+¶利用坡印廷矢量，计算得方向固定的振荡电偶极子通过电磁场向$r=R$的球面传递出的功率
+
+$$
+P(t)=\frac{2}{3}\frac{1}{4\pi\varepsilon_{0}}\left[\frac{\ddot{p}_{\text{ret}}^2}{c^3}+\frac{\mathrm{d}}{\mathrm{d}t}\left(\frac{\dot{p}^2}{c^2R}+\frac{p\dot{p}}{cR^2}+\frac{p^2}{2R^3}\right)_{\text{ret}}\right],
+$$
+
+对于时谐振荡的电偶极子$p(t)=\operatorname{Re}[\tilde{p}_{0}\mathrm{e}^{-\mathrm{i}\omega t}]$，其功率的时间平均
+
+$$
+\left\langle P\right\rangle=\frac{1}{4\pi\varepsilon_{0}}\frac{2\langle\ddot{p}_{\text{ret}}^2\rangle}{3c^3}=\frac{1}{4\pi\varepsilon_{0}}\frac{\omega^4|\tilde{p}_{0}|^2}{3c^3}.
+$$
+
+## 辐射
+
+### 辐射的定义
+
+¶辐射指电磁场能够脱离源向无穷远处传播能量的行为，即辐射源的一定立体角中无穷远处向外传递功率非零（可根据源的空间延展情况适时更改定义）
+
+$$
+\mathrm{d} P(t)=\lim_{r\to\infty}\hat{\bm{r}}\cdot\bm{S}(\bm{r},t)r^2\mathrm{d}\Omega>0.
+$$
+
+坡印廷定理说明克服电场对电荷做功是辐射能量的来源
+
+$$
+-\int_{\lim\limits_{r\to\infty}\Sigma}\mathrm{d}^3\bm{r}'\bm{J}_{f}\cdot\bm{E}=P(t)+\frac{\mathrm{d}U_{\text{EM}}}{\mathrm{d}t},
+$$
+
+其中$U_{\text{EM}}$为积分区域内电磁场能量.特殊地，对于时谐电流源
+
+$$
+\langle P\rangle=-\frac{1}{2}\operatorname{Re}\int_{\lim\limits_{r\to\infty}\Sigma}\mathrm{d}^3\bm{r}'\bm{J}_{f}\cdot\bm{E}^{*}.
+$$
+
+¶*Hertz*引入力线重联(field line reconnection)的概念来解释电磁场脱离源开始辐射的过程.
+
+### 时域中的辐射场
+
+¶为简便起见，我们取强度正比于$1/r$且能反应推迟时间的主要变化的势项作为辐射项$\bm{A}^{(\text{L})}_{\text{rad}}(\bm{r},t)$和$\varphi^{(\text{L})}_{\text{rad}}(\bm{r},t)$以直接计算辐射场强分布（注意取其中正比于$1/r$的项）与功率角分布.在远场
+
+$$
+\|\bm{r}-\bm{r}'\|=r\sqrt{1-2\frac{\hat{\bm{r}}\cdot\bm{r}'}{r}+\left(\frac{r'}{r}\right)^2}=r\left\{1-\hat{\bm{r}}\cdot\hat{\bm{r}'}\left(\frac{r'}{r}\right)-\frac{1}{2}[1-(\hat{\bm{r}}\cdot\hat{\bm{r}'})^2]\left(\frac{r'}{r}\right)^2+\cdots\right\},
+$$
+
+记$t_{\text{rad}}=t-r/c+\hat{\bm{r}}\cdot\bm{r}'/c$，辐射项
+
+$$
+\begin{aligned}
+&\bm{A}^{(\text{L})}_{\text{rad}}(\bm{r},t)=\frac{\mu_{0}}{4\pi r}\int\mathrm{d}^3\bm{r}'\bm{J}_{f}(\bm{r}',t_{\text{rad}}),\\
+&\varphi^{(\text{L})}_{\text{rad}}(\bm{r},t)=\frac{1}{4\pi\varepsilon_{0}r}\int\mathrm{d}^3\bm{r}'\rho_{f}(\bm{r}',t_{\text{rad}}),
+\end{aligned}
+$$
+
+进而得到
+
+$$
+\begin{aligned}
+\bm{B}_{\text{rad}}(\bm{r},t)&=-\frac{\mu_{0}}{4\pi c}\frac{\hat{\bm{r}}}{r}\times\int\mathrm{d}^3\bm{r}'\frac{\partial }{\partial t}\bm{J}_{f}(\bm{r}',t_{\text{rad}}),\\
+\bm{E}_{\text{rad}}(\bm{r},t)&=\frac{1}{4\pi\varepsilon_{0}c}\frac{\hat{\bm{r}}}{r}\int\mathrm{d}^3\bm{r}'\frac{\partial }{\partial t}\rho_{f}(\bm{r}',t_{\text{rad}})-\frac{\mu_{0}}{4\pi r}\int\mathrm{d}^3\bm{r}'\frac{\partial }{\partial t}\bm{J}_{f}(\bm{r}',t_{\text{rad}}),
+\end{aligned}
+$$
+
+利用连续性方程
+
+$$
+\begin{aligned}
+\nabla_{\bm{r}'}\cdot\bm{J}_{f}(\bm{r}',t_{\text{rad}})&=[\nabla_{\bm{r}'}\cdot\bm{J}_{f}(\bm{r}',t')]|_{t'=t_{\text{rad}}}+\frac{\partial \bm{J}_{f}}{\partial t}\cdot\frac{\hat{\bm{r}}}{c}\\
+&=-\frac{\partial \rho_{f}}{\partial t}+\frac{\partial \bm{J}_{f}}{\partial t}\cdot\frac{\hat{\bm{r}}}{c},
+\end{aligned}
+$$
+
+带回上式
+
+$$
+\begin{aligned}
+\bm{E}_{\text{rad}}(\bm{r},t)&=\frac{\mu_{0}}{4\pi r}\left[\hat{\bm{r}}\int\mathrm{d}^3\bm{r}'\hat{\bm{r}}\cdot\frac{\partial }{\partial t}\bm{J}_{f}(\bm{r}',t_{\text{rad}})-\int\mathrm{d}^3\bm{r}'\frac{\partial }{\partial t}\bm{J}_{f}(\bm{r}',t_{\text{rad}})\right]\\
+&=\frac{\mu_{0}}{4\pi r}\hat{\bm{r}}\times\left[\hat{\bm{r}}\times\int\mathrm{d}^3\bm{r}'\frac{\partial }{\partial t}\bm{J}_{f}(\bm{r}',t_{\text{rad}})\right].
+\end{aligned}
+$$
+
+¶由以上推导
+
+$$
+\boxed{
+\begin{aligned}
+&c\bm{B}_{\text{rad}}(\bm{r},t)=-\hat{\bm{r}}\times\frac{\partial \bm{A}^{(\text{L})}_{\text{rad}}}{\partial t},\\
+&\bm{E}_{\text{rad}}(\bm{r},t)=-\hat{\bm{r}}\times c\bm{B}_{\text{rad}}(\bm{r},t),\\
+&c\bm{B}_{\text{rad}}(\bm{r},t)=\hat{\bm{r}}\times\bm{E}_{\text{rad}},
+\end{aligned}
+}
+$$
+
+说明辐射场表现为TEM波，其功率角分布
+
+$$
+\frac{\mathrm{d}P}{\mathrm{d}\Omega}=\frac{r^2}{\mu_{0}}|\bm{E}_{\text{rad}}\times\bm{B}_{\text{rad}}|=\frac{1}{c\mu_{0}}\left|\bm{r}\times\frac{\partial \bm{A}^{(\text{L})}_{\text{rad}}}{\partial t}\right|^2.
+$$
+
+### *Larmor*公式
+
+¶对于慢速运动的带电粒子
+
+$$
+\bm{J}_{f}(\bm{r},t_{\text{rad}})\approx q\bm{v}(t-r/c)\delta[\bm{r}-\bm{r}_{0}(t)],
+$$
+
+得到
+
+$$
+\bm{E}_{\text{rad}}=\frac{\mu_{0}q}{4\pi r}\hat{\bm{r}}\times(\hat{\bm{r}}\times\bm{a}_{\text{rad}})=-\frac{\mu_{0}q}{4\pi r}(\bm{a}_{\text{rad}})_{\perp},
+$$
+
+假设$\bm{a}_{\text{rad}}$与$\hat{\bm{r}}$成$\theta$角，则
+
+$$
+\frac{\mathrm{d}P}{\mathrm{d}\Omega}=\frac{\mu_{0}q^2}{(4\pi)^2c}|\bm{a}_{\text{rad}}|^2\sin^2\theta,
+$$
+
+或
+
+$$
+P=\frac{1}{4\pi\varepsilon_{0}}\frac{2q^2|\bm{a}_{\text{rad}}|^2}{3c^3}.
+$$
+
+### 频域中的辐射场
+
+¶利用*Fourier*变换（约定时域上正变换用$\mathrm{e}^{\mathrm{i}\omega t}$，下文空域上正变换用$\mathrm{e}^{-\mathrm{i}\bm{k}\cdot\bm{r}}$，$1/2\pi$的因子均分配给逆变换）的性质
+
+$$
+\mathcal{F}[f(t-t_{0})](\omega)=\mathrm{e}^{\mathrm{i}\omega t_{0}}\mathcal{F}[f(t)](\omega),
+$$
+
+得到
+
+$$
+\begin{aligned}
+\bm{A}_{\text{rad}}^{(\text{L})}(\bm{r}|\omega)&=\mathcal{F}[\bm{A}_{\text{rad}}^{(\text{L})}(\bm{r},t)]\\
+&=\frac{\mu_{0}}{4\pi r}\int\mathrm{d}^3\bm{r}'\mathcal{F}[\bm{J}_{f}(\bm{r}',t_{\text{rad}})]\\
+&=\frac{\mu_{0}}{4\pi}\frac{\mathrm{e}^{\mathrm{i} kr}}{r}\int\mathrm{d}^3\bm{r}'\bm{J}_{f}(\bm{r}'|\omega)\mathrm{e}^{-\mathrm{i} k\hat{\bm{r}}\cdot\bm{r}'}\\
+&=\frac{\mu_{0}}{4\pi}\frac{\mathrm{e}^{\mathrm{i} kr}}{r}\bm{J}_{f}(k\hat{\bm{r}}|\omega),
+\end{aligned}
+$$
+
+考虑时谐场中的场强
+
+$$
+c\bm{B}_{\text{rad}}(\bm{r}|\omega)=\mathrm{i}\omega\hat{\bm{r}}\times\bm{A}_{\text{rad}}(\bm{r}|\omega),\quad\bm{E}_{\text{rad}}(\bm{r}|\omega)=-\mathrm{i}\omega\hat{\bm{r}}\times[\hat{\bm{r}}\times\bm{A}_{\text{rad}}(\bm{r}|\omega)],
+$$
+
+则辐射功率的时间频率平均角分布
+
+$$
+\begin{aligned}
+\left\langle\frac{\mathrm{d}P}{\mathrm{d}\Omega}(\Omega|\omega)\right\rangle&=\frac{r^2}{2\mu_{0}}\operatorname{Re}[{E}_{\text{rad}}(\bm{r}|\omega)\times\bm{B}^{*}_{\text{rad}}(\bm{r}|\omega)]\\
+&=\frac{\omega^2}{2c\mu_{0}}|\hat{\bm{r}}\times\bm{A}_{\text{rad}}(\bm{r}|\omega)|^2\\
+&=\frac{\mu_{0}\omega^2}{2(4\pi)^2c}|\bm{J}_{f,\perp}(k\hat{\bm{r}}|\omega)|^2.
+\end{aligned}
+$$
+
+### 多极辐射
+
+¶记辐射矢量
+
+$$
+\bm{\alpha}(\bm{r},t)=\frac{\partial }{\partial t}\int\mathrm{d}^3\bm{r}'\bm{J}_{f}(\bm{r}',t_{\text{rad}}).
+$$
+
+将电流密度做多极展开
+
+$$
+\bm{J}_{f}(\bm{r}',t_{\text{rad}})=\sum_{k=0}^{\infty}\frac{1}{k!}\left(\frac{\hat{\bm{r}}\cdot\bm{r}'}{c}\right)^{k}\frac{\partial ^k}{\partial t^k}\bm{J}_{f}(\bm{r}',t-r/c),
+$$
+
+以上展开在源的特征长度较短或源振荡周期较长的情况下（远场条件）合法.
+
+¶观察辐射矢量展开中$k=0$的电偶极子项
+
+$$
+\begin{aligned}
+\bm{\alpha}_{\text{E1}}&=\frac{\partial }{\partial t}\int\mathrm{d}^3\bm{r}'\bm{J}_{f}(\bm{r}',t-r/c)\\
+&=\frac{\partial }{\partial t}\int\mathrm{d}^3\bm{r}'\{\nabla_{\bm{r}'}\cdot[\bm{J}_{f}(\bm{r}',t-r/c)\bm{r}']-[\nabla_{\bm{r}'}\cdot\bm{J}_{f}(\bm{r}',t-r/c)]\bm{r}'\}\\
+&=\frac{\partial }{\partial t}\int\mathrm{d}^3\bm{r}'\frac{\partial }{\partial t}\rho_{f}(\bm{r}',t-r/c)\bm{r}'=\ddot{\bm{p}}(t-r/c),
+\end{aligned}
+$$
+
+观察$k=1$项，因为
+
+$$
+\begin{aligned}
+(\hat{\bm{r}}\cdot\bm{r}')\bm{J}_{f}&=\underset{\text{anti-symmetric}}{\underline{\frac{1}{2}(\bm{r}'\times\bm{J}_{f})\times\hat{\bm{r}}}}+\underset{\text{symmetric}}{\underline{\frac{1}{2}(\bm{r}'\bm{J}_{f}+\bm{J}_{f}\bm{r}')\cdot\hat{\bm{r}}}}\\
+&=\frac{1}{2}(\bm{r}'\times\bm{J}_{f})\times\hat{\bm{r}}+\frac{1}{2}[\nabla\cdot(\bm{J}_{f}\bm{r}'\bm{r}')-(\nabla\cdot\bm{J}_{f})\bm{r}'\bm{r}']\cdot\hat{\bm{r}}\\
+&=\frac{1}{2}(\bm{r}'\times\bm{J}_{f})\times\hat{\bm{r}}+\frac{1}{2}\left(\frac{\partial \rho_{f}}{\partial t}\bm{r}'\bm{r}'\right)\cdot\hat{\bm{r}}+\frac{1}{2}\nabla\cdot(\bm{J}_{f}\bm{r}'\bm{r}')\cdot\hat{\bm{r}},
+\end{aligned}
+$$
+
+上式中散度项不对积分贡献，故
+
+$$
+\begin{aligned}
+\bm{\alpha}_{k1}&=\frac{1}{c}\frac{\partial ^2}{\partial t^2}\int\mathrm{d}^3\bm{r}'\frac{1}{2}(\bm{r}'\times\bm{J}_{f})\times\hat{\bm{r}}+\frac{1}{2c}\frac{\partial ^3}{\partial t^3}\int\mathrm{d}^3\bm{r}'\left(\rho_{f}\bm{r}'\bm{r}'\right)\cdot\hat{\bm{r}}\\
+&=\frac{1}{c}\ddot{\bm{m}}(t-r/c)\times\hat{\bm{r}}+\frac{1}{2c}\frac{\mathrm{d}^3}{\mathrm{d}t^3}{\mathcal{Q}}(t-r/c)\cdot\hat{\bm{r}}\equiv\bm{\alpha}_{\text{M1}}+\bm{\alpha}_{\text{E2}}.
+\end{aligned}
+$$
+
+¶计算电磁量
+
+$$
+\begin{aligned}
+&\bm{B}_{\text{rad}}=-\frac{\mu_{0}}{4\pi c}\frac{\hat{\bm{r}}}{r}\times\bm{\alpha},\\
+&\bm{E}_{\text{rad}}=\frac{\mu_{0}}{4\pi}\frac{\hat{\bm{r}}}{r}\times(\hat{\bm{r}}\times\bm{\alpha}),\\
+&\frac{\mathrm{d}P}{\mathrm{d}\Omega}=\frac{\mu_{0}}{(4\pi)^2c}|\hat{\bm{r}}\times\bm{\alpha}|^2.
+\end{aligned}
+$$
+
+### 短波天线
+
+## 散射和衍射
+
+</script>
+
+<script>
+(function() {
+  var md = window.markdownit({ html: true })
+    .use(texmath, {
+      engine: katex,
+      delimiters: 'dollars',
+      katexOptions: { throwOnError: false }
+    });
+  var src = document.getElementById('source').textContent;
+  document.getElementById('content').innerHTML = md.render(src);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>静磁场 | MyBlogs</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1/texmath.min.js"></script>
+</head>
+<body>
+<div class="markdown-body" id="content"></div>
+
+<script id="source" type="text/markdown">
+# 静磁场
+
+## 磁矢势与磁标势
+
+¶磁场无散度，可以用矢势表示$\bm{B}=\nabla\times\bm{A}$.在线性均匀介质中考虑静磁场，选择*Coulomb*规范$\nabla\cdot\bm{A}=0$后得到
+
+$$
+\begin{equation}
+\nabla^2\bm{A}=-\mu\bm{J},
+\end{equation}
+$$
+
+附有稳态电流条件$\nabla\cdot\bm{J}=0$.由[Biot-Savart定律与介质磁化](Chap_01.md#biot-savart定律与介质磁化)可知*Coulomb*规范下静磁场矢势可表达为
+
+$$
+\begin{equation}
+\bm{A}=\frac{\mu}{4\pi}\int_{\Sigma}\mathrm{d}^3\bm{r}'\frac{\bm{J}(\bm{r}')}{|\bm{r}-\bm{r}'|}.
+\end{equation}
+$$
+
+¶在无电流分布的单连通区域内，由于$\oint_{L}\bm{H}\cdot\mathrm{d}\bm{l}=0,\ \forall L$，可引入磁标势，使得
+
+$$
+\bm{H}=-\nabla\varphi_{m},
+$$
+
+定义磁荷密度，满足
+
+$$
+\rho_{m}=-\mu_{0}\nabla\cdot\bm{M}=\mu_{0}\nabla\cdot\bm{H},
+$$
+
+得到*Poisson*方程
+
+$$
+\begin{equation}
+\nabla^2\varphi_{m}=-\frac{\rho_{m}}{\mu_{0}}.
+\end{equation}
+$$
+
+¶矢势边值关系
+
+$$
+\begin{aligned}
+&\bm{e}_{n}\cdot(\bm{B}_{2}-\bm{B}_{1})=0,\\
+&\bm{e}_{n}\times(\bm{H}_{2}-\bm{H}_{1})=\bm{\alpha}_{f},
+\end{aligned}
+$$
+
+设
+
+$$
+\bm{A}_{2}-\bm{A}_{1}=\bm{\chi},
+$$
+
+由磁感应强度法向连续可得
+
+$$
+\bm{e}_{n}\cdot\nabla\times\bm{\chi}=0,\quad\nabla\cdot\bm{\chi}=0,
+$$
+
+由磁场强度矢量的切向跃变
+
+$$
+\bm{e}_{n}\times(\nabla\times\bm{\chi})=\mu_{0}(\bm{\alpha}_{f}+\nabla\times(\bm{M}_{2}-\bm{M}_{1})),
+$$
+
+根据*Helmholtz*定理，$\bm{\chi}$确定.
+¶标势边值关系
+
+$$
+\begin{aligned}
+&\frac{\partial (\varphi_{m})_{2}}{\partial n}-\frac{\partial (\varphi_{m})_{1}}{\partial n}=\bm{e}_{n}\cdot(\bm{M}_{2}-\bm{M}_{1}),\\
+&\left[(\varphi_{m})_{2}-(\varphi_{m})_{1}\right]|_{\bm{r}_1}^{\bm{r}_2}=-\int_{\bm{r}_{1}}^{\bm{r}_{2}}\bm{\alpha}_{f}\cdot\mathrm{d}\bm{l}.
+\end{aligned}
+$$
+
+## 静磁场能量
+
+¶静磁场能量
+
+$$
+\begin{aligned}
+W_{m}&=\frac{1}{2}\int_{\mathbb{R}^3}\bm{H}\cdot\bm{B}\ \mathrm{d}^3\bm{r}'\\
+&=\frac{1}{2}\int_{\mathbb{R}^3}\nabla\cdot(\bm{A}\times\bm{H})\ \mathrm{d}^3\bm{r}'+\frac{1}{2}\int_{\mathbb{R}^3}(\nabla\times\bm{H})\cdot\bm{A}\ \mathrm{d}^3\bm{r}'\\
+&=\frac{1}{2}\lim_{\Sigma\to\mathbb{R}^3}\oint_{\partial\Sigma}(\bm{A}\times\bm{H})\cdot\mathrm{d}\bm{f}'+\frac{1}{2}\int_{\mathbb{R}^3}\bm{J}_{f}\cdot\bm{A}\ \mathrm{d}^3\bm{r}'\\
+&=\frac{1}{2}\int_{\{\bm{r}'|\bm{J}_{f}\neq\bm{0}\}}\bm{J}_{f}\cdot\bm{A}\ \mathrm{d}^3\bm{r}',
+\end{aligned}
+$$
+
+在载流线圈中$\bm{J}_{f}\ \mathrm{d}^3\bm{r}'=I\ \mathrm{d}\bm{l}'$,故
+
+$$
+W_{m}=\frac{I}{2}\oint_{L}\bm{A}\cdot\mathrm{d}\bm{l}'=\frac{1}{2}I\varPhi.
+$$
+
+有两个载流线圈$(I_1,\bm{A}_1)$和$(I_2,\bm{A}_2)$，仿照[静电体系的互能](Chap_02.md#静电体系的能量)易证明$I_{1}\varPhi_{12}=I_{2}\varPhi_{21}$，且
+
+$$
+W_{1+2}-W_{1}-W_{2}=\frac{1}{2}(I_{1}\varPhi_{12}+I_{2}\varPhi_{21}).
+$$
+
+依然通过搬运过程定义互能，注意由于搬运过程中$\varPhi_{12}$和$\varPhi_{21}$的变化会引起感生电动势，若想维持电流恒稳直至$W_{1+2}$的状态还需外电压源做功
+
+$$
+V=\int_{-\infty}^{t}-I_{1}\mathscr{E}_{12}-I_{2}\mathscr{E}_{21}\ \mathrm{d} t=\int_{0}^{\varPhi_{12}}I_{1}\mathrm{d}\varPhi'_{12}+\int_{0}^{\varPhi_{21}}I_{2}\mathrm{d}\varPhi'_{21}=I_{1}\varPhi_{12}+I_{2}\varPhi_{21},
+$$
+
+于是
+
+$$
+W_{12}=W_{1+2}-W_{1}-W_{2}-V=-\frac{1}{2}(I_{1}\varPhi_{12}+I_{2}\varPhi_{21})=-I_{1}\varPhi_{12}=-I_{2}\varPhi_{21}.
+$$
+
+对于一个小载流线圈，其在磁场中的势能
+
+$$
+W_{m}=-i\varPhi=-\bm{m}\cdot\bm{B},
+$$
+
+其行为类似于一个电偶极子，称为磁偶极子.
+
+## 磁多极展开
+
+¶将(2)式展开($\|\bm{r}\|\gg\max\limits_{\bm{r}'\in\Sigma}\|\bm{r}'\|$)
+
+$$
+\begin{aligned}
+\bm{A}(\bm{r})&=\frac{\mu_{0}}{4\pi}\int_{\Sigma}\frac{\bm{J}(\bm{r}')}{\|\bm{r}-\bm{r}'\|}\ \mathrm{d}^3\bm{r}'\\
+&=\frac{\mu_{0}}{4\pi}\int_{\Sigma}\bm{J}(\bm{r}')\sum_{k=0}^{\infty}\frac{1}{k!}(-\bm{r}'\cdot\nabla)^{k}\frac{1}{\|\bm{r}\|}\ \mathrm{d}^3\bm{r}'\\
+&=\bm{A}^{(0)}+\bm{A}^{(1)}+\cdots,
+\end{aligned}
+$$
+
+其中
+
+$$
+\begin{aligned}
+\bm{A}^{(0)}&=\frac{\mu_{0}}{4\pi\|\bm{r}\|}\int_{\Sigma}\bm{J}(\bm{r}')\ \mathrm{d}^3\bm{r}'\\
+&=\frac{\mu_{0}}{4\pi\|\bm{r}\|}\int_{\Sigma}\nabla\cdot(\bm{J}\bm{r'})-\underbrace{(\nabla\cdot\bm{J})}_{=0}\bm{r}'\ \mathrm{d}^3\bm{r}'\\
+&=\frac{\mu_{0}}{4\pi\|\bm{r}\|}\oint_{\partial\Sigma}\mathrm{d}\bm{f}'\cdot\underbrace{\bm{J}\bm{r}'}_{=0}=0,
+\end{aligned}
+$$
+
+而
+
+$$
+\begin{aligned}
+\bm{A}^{(1)}&=\frac{\mu_{0}}{4\pi}\left(\int_{\Sigma}-\bm{J}\bm{r}'\ \mathrm{d}^3\bm{r}'\right)\cdot\nabla\frac{1}{\|\bm{r}\|}\\
+&=\frac{\mu_{0}}{4\pi}\left(\int_{\Sigma}\frac{1}{2}\left(\bm{J}\bm{r}'-\bm{r}'\bm{J}\right)\mathrm{d}^3\bm{r}'+\int_{\Sigma}\frac{1}{2}\left(\bm{J}\bm{r}'+\bm{r}'\bm{J}\right)\mathrm{d}^3\bm{r}'\right)\cdot\frac{\bm{r}}{\|\bm{r}\|^3}\\
+&=\frac{\mu_{0}}{4\pi}\left\{\int_{\Sigma}\frac{1}{2}\left(\bm{J}\bm{r}'-\bm{r}'\bm{J}\right)\mathrm{d}^3\bm{r}'+\int_{\Sigma}\frac{1}{2}\left[\nabla\cdot(\bm{J}\bm{r}'\bm{r}')-\underbrace{(\nabla\cdot\bm{J})}_{=0}\bm{r}'\bm{r}'\right]\mathrm{d}^3\bm{r}'\right\}\cdot\frac{\bm{r}}{\|\bm{r}\|^3}\\
+&=\frac{\mu_{0}}{4\pi}\left(\int_{\Sigma}\frac{1}{2}\left(\bm{J}\bm{r}'-\bm{r}'\bm{J}\right)\mathrm{d}^3\bm{r}'+\oint_{\partial\Sigma}\frac{1}{2}\underbrace{\bm{J}\bm{r}'\bm{r}'}_{=0}\ \mathrm{d}\bm{f}'\right)\cdot\frac{\bm{r}}{\|\bm{r}\|^3}\\
+&=\frac{\mu_{0}}{4\pi}\left(\frac{1}{2}\int_{\Sigma}\bm{r}'\times\bm{J}\ \mathrm{d}^3\bm{r}'\right)\times\frac{\bm{r}}{\|\bm{r}\|^3}\equiv\frac{\mu_{0}}{4\pi}\frac{\bm{m}\times\bm{r}}{\|\bm{r}\|^3}.
+\end{aligned}
+$$
+
+¶计算载流线圈在远场处产生的磁场
+
+$$
+\begin{aligned}
+\bm{B}&\approx\nabla\times\bm{A}^{(1)}=\frac{\mu_{0}}{4\pi}\nabla\times\left(\bm{m}\times\frac{\bm{r}}{\|\bm{r}\|^3}\right)\\
+&=-\frac{\mu_{0}}{4\pi}(\bm{m}\cdot\nabla)\frac{\bm{r}}{\|\bm{r}\|^3}\\
+&=-\mu_{0}\nabla\left(\frac{1}{4\pi}\frac{\bm{m}\cdot\bm{r}}{\|\bm{r}\|^3}\right),
+\end{aligned}
+$$
+
+即磁标势
+
+$$
+\varphi_{m}=\dfrac{1}{4\pi}\dfrac{\bm{m}\cdot\bm{r}}{\|\bm{r}\|^3}.
+$$
+
+例子见[点磁偶极子的电流分布](../examples/Chap_03.md#点磁偶极子的电流分布)和[点磁偶极子层](../examples/Chap_03.md#点磁偶极子层).
+
+## 小区域电流受力与力矩
+
+¶关注小区域$\Sigma$的恒稳电流分布$\bm{J}(\bm{r}')$受外磁场$\bm{B}_{e}(\bm{r}')$作用
+
+$$
+\begin{aligned}
+\bm{F}&=\int_{\Sigma}\bm{J}(\bm{r}')\times\bm{B}_{e}(\bm{r}')\ \mathrm{d}^3\bm{r}'\\
+&=\int_{\Sigma}\bm{J}(\bm{r}')\times\sum_{k=0}^{\infty}\frac{1}{k!}(\bm{r}'\cdot\nabla_{\bm{r}})^{k}\bm{B}_{e}(\bm{0})\ \mathrm{d}^3\bm{r}'\\
+&=\bm{F}^{(0)}+\bm{F}^{(1)}+\cdots,
+\end{aligned}
+$$
+
+其中
+
+$$
+\bm{F}^{(0)}=\underbrace{\int_{\Sigma}\bm{J}(\bm{r}')\ \mathrm{d}^3\bm{r}'}_{=0}\times\bm{B}_{e}(\bm{0})=\bm{0},
+$$
+
+而
+
+$$
+\begin{aligned}
+\bm{F}^{(1)}&=\int_{\Sigma}\bm{J}(\bm{r}')\times(\bm{r}'\cdot\nabla_{\bm{r}})\bm{B}_{e}(\bm{0})\ \mathrm{d}^3\bm{r}'\\
+&=\int_{\Sigma}\bm{J}(\bm{r}')\times(\nabla_{\bm{r}}(\bm{r}'\cdot\bm{B}_{e}(\bm{r}))-\bm{r}'\times\underbrace{(\nabla\times\bm{B}_{e}(\bm{r}))}_{=0})|_{\bm{r}=\bm{0}}\ \mathrm{d}^3\bm{r}'\\
+&=\left.-\nabla\times\int_{\Sigma}(\bm{r}'\cdot\bm{B}_{e}(\bm{r}))\bm{J}(\bm{r}')\ \mathrm{d}^3\bm{r}'\right|_{\bm{r}=\bm{0}}\\
+&=\left.\left\{-\nabla\times\left[\frac{1}{2}\int_{\Sigma}\bm{J}(\bm{r}')\bm{r}'-\bm{r}'\bm{J}(\bm{r}')\ \mathrm{d}^3\bm{r}'+\frac{1}{2}\underbrace{\int_{\Sigma}\bm{J}(\bm{r}')\bm{r}'+\bm{r}'\bm{J}(\bm{r}')\ \mathrm{d}^3\bm{r}'}_{=0}\right]\cdot\bm{B}_{e}(\bm{r})\right\}\right|_{\bm{r}=\bm{0}}\\
+&=-\nabla\times(\bm{m}\times\bm{B}_{e}(\bm{r}))|_{\bm{r}=\bm{0}}=(\bm{m}\cdot\nabla)\bm{B}_{e}(\bm{0})\\
+&=-\nabla(-\bm{m}\cdot\bm{B}_{e}(\bm{r}))|_{\bm{r}=\bm{0}},
+\end{aligned}
+$$
+
+这与之前对势能的计算吻合.
+
+¶计算力矩
+
+$$
+\begin{aligned}
+\bm{L}&\approx\bm{L}^{(0)}=\int_{\Sigma}\bm{r}'\times(\bm{J}(\bm{r}')\times\bm{B}_{e}(\bm{0}))\ \mathrm{d}^3\bm{r}'\\
+&=\int_{\Sigma}(\bm{r}'\cdot\bm{B}_{e}(\bm{0}))\bm{J}(\bm{r}')\ \mathrm{d}^3\bm{r}'-\bm{B}_{e}(\bm{0})\int_{\Sigma}\bm{r}'\cdot\bm{J}(\bm{r}')\ \mathrm{d}^3\bm{r}'\\
+&=\bm{m}\times\bm{B}_{e}(\bm{0})-\frac{1}{2}\bm{B}_{e}(\bm{0})\left(\oint_{\partial\Sigma}\underbrace{(\bm{r}')^2\bm{J}(\bm{r}')}_{=0}\cdot\mathrm{d}\bm{f}'-\int_{\Sigma}(\bm{r}')^2\underbrace{\nabla\cdot\bm{J}(\bm{r}')}_{=0}\ \mathrm{d}^3\bm{r}'\right)\\
+&=\bm{m}\times\bm{B}_{e}(\bm{0}).
+\end{aligned}
+$$
+
+</script>
+
+<script>
+(function() {
+  var md = window.markdownit({ html: true })
+    .use(texmath, {
+      engine: katex,
+      delimiters: 'dollars',
+      katexOptions: { throwOnError: false }
+    });
+  var src = document.getElementById('source').textContent;
+  document.getElementById('content').innerHTML = md.render(src);
+})();
+</script>
+</body>
+</html>

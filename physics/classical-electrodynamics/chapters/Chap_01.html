@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电磁场基础 | MyBlogs</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1/texmath.min.js"></script>
+</head>
+<body>
+<div class="markdown-body" id="content"></div>
+
+<script id="source" type="text/markdown">
+# 电磁场基础
+
+## *Maxwell*方程组的导出
+
+### 高斯公式与介质极化
+
+¶高斯公式是库伦定理与叠加定理的结果，是电场力作为长程力符合平方反比定律的表现
+
+$$
+\oint_{S}\bm{E}\cdot\mathrm{d}\bm{f}=\frac{Q_f+Q_p}{\varepsilon_{0}}\Longleftrightarrow\nabla\cdot\bm{E}=\frac{\rho_f+\rho_p}{\varepsilon_{0}},
+$$
+
+其中$Q_f$是自由电荷，$Q_p$是束缚电荷，$\rho$表示相应的电荷密度.
+
+¶对于束缚电荷，考察穿出面积元$\mathrm{d}\bm{f}$的正电荷
+
+$$
+\mathrm{d} q_{p}=n q\bm{l}\cdot\mathrm{d}\bm{f}=\bm{P}\cdot\mathrm{d}\bm{f},
+$$
+
+其中$\bm{P}=n\bm{p}=nq\bm{l}$为电极化强度矢量，因此留在$S$内的负电荷
+
+$$
+Q_p=-\oint_{S}\mathrm{d} q_{p}=-\oint_{S}\bm{P}\cdot\mathrm{d}\bm{f}\Longleftrightarrow\nabla\cdot\bm{P}=-\rho_{p},
+$$
+
+若定义电位移矢量$\bm{D}=\varepsilon_{0}\bm{E}+\bm{P}$，则
+
+$$
+\begin{equation}
+\nabla\cdot\bm{D}=\rho_{f}.
+\end{equation}
+$$
+
+### 法拉第定律与感应电场
+
+¶法拉第定律描述感应电动势
+
+$$
+\mathscr{E}=-\frac{\mathrm{d}}{\mathrm{d}t}\oint_{S}\bm{B}\cdot\mathrm{d}\bm{f},
+$$
+
+引入感应电场
+
+$$
+\mathscr{E}=\oint_{L}\bm{E}\cdot\mathrm{d}\bm{l},
+$$
+
+若取$L$为空间中的一固定回路
+
+$$
+\begin{equation}
+\nabla\times\bm{E}=-\frac{\partial \bm{B}}{\partial t}.
+\end{equation}
+$$
+
+### *Biot-Savart*定律与介质磁化
+
+¶*Biot-Savart*定律描述恒稳定载流体系在空间中产生的磁场
+
+$$
+\bm{B}(\bm{r})=\frac{\mu_{0}}{4\pi}\oint_{L}I(\bm{r}')\mathrm{d}\bm{l}'\times\frac{\bm{r}-\bm{r}'}{|\bm{r}-\bm{r}'|^3}\ (\text{线分布})\Longleftrightarrow
+\bm{B}(\bm{r})=\frac{\mu_{0}}{4\pi}\int_{V}\bm{J}(\bm{r}')\mathrm{d}^3\bm{r}'\times\frac{\bm{r}-\bm{r}'}{|\bm{r}-\bm{r}'|^3}\ (\text{体分布}),
+$$
+
+因为
+
+$$
+\begin{aligned}
+\bm{B}(\bm{r})&=\frac{\mu_{0}}{4\pi}\int_{V}\bm{J}(\bm{r}')\mathrm{d}^3\bm{r}'\times\frac{\bm{r}-\bm{r}'}{|\bm{r}-\bm{r}'|^3}=-\frac{\mu_{0}}{4\pi}\int_{V}\mathrm{d}^3\bm{r}'\bm{J}(\bm{r}')\times\nabla_{\bm{r}}\frac{1}{|\bm{r}-\bm{r}'|}\\&=\nabla_{\bm{r}}\times\frac{\mu_{0}}{4\pi}\int_{V}\mathrm{d}^3\bm{r}'\frac{\bm{J}(\bm{r}')}{|\bm{r}-\bm{r}'|}
+\equiv\nabla_{\bm{r}}\times\bm{A},
+\end{aligned}
+$$
+
+故
+
+$$
+\begin{equation}
+\nabla\cdot\bm{B}=0.
+\end{equation}
+$$
+
+又
+
+$$
+\nabla\times\bm{B}=\nabla\times(\nabla\times\bm{A})=\nabla(\nabla\cdot\bm{A})-\nabla^2\bm{A},
+$$
+
+其中
+
+$$
+\begin{aligned}
+\nabla_{\bm{r}}\cdot\bm{A}&=-\frac{\mu_{0}}{4\pi}\int_{V}\mathrm{d}^3\bm{r}'\bm{J}(\bm{r}')\cdot\nabla_{\bm{r}'}\frac{1}{|\bm{r}-\bm{r}'|}\\
+&=-\frac{\mu_{0}}{4\pi}\int_{V}\mathrm{d}^3\bm{r}'\nabla_{\bm{r}'}\cdot\frac{\bm{J}(\bm{r}')}{|\bm{r}-\bm{r}'|}+\frac{\mu_{0}}{4\pi}\int_{V}\mathrm{d}^3\bm{r}'\frac{\nabla_{\bm{r}'}\cdot\bm{J}(\bm{r}')}{|\bm{r}-\bm{r}'|}\\
+&=-\frac{\mu_{0}}{4\pi}\int_{S}\mathrm{d}\bm{f}'\cdot\frac{\bm{J}(\bm{r}')}{|\bm{r}-\bm{r}'|}+\frac{\mu_{0}}{4\pi}\int_{V}\mathrm{d}^3\bm{r}'\frac{\nabla_{\bm{r}'}\cdot\bm{J}(\bm{r}')}{|\bm{r}-\bm{r}'|},
+\end{aligned}
+$$
+
+在考虑整个载流体系引起的磁场时，闭合曲面$S$会包裹所有电流，故第一项积分为零，且考虑恒稳电流时$\nabla_{\bm{r}'}\cdot\bm{J}(\bm{r}')=0$，故$\nabla_{\bm{r}}\cdot\bm{A}=0$.而
+
+$$
+\begin{aligned}
+\nabla_{\bm{r}}^2\bm{A}&=-\mu_{0}\int_{V}\mathrm{d}^3\bm{r}'\bm{J}(\bm{r}')\left(-\frac{1}{4\pi}\Delta_{\bm{r}}\frac{1}{|\bm{r}-\bm{r}'|}\right)\\
+&=-\mu_{0}\int_{V}\mathrm{d}^3\bm{r}'\bm{J}(\bm{r}')\delta(\bm{r}'-\bm{r})=-\mu_{0}\bm{J}(\bm{r}).
+\end{aligned}
+$$
+
+因此
+
+$$
+\nabla\times\bm{B}=\mu_{0}\bm{J}.
+$$
+
+¶以上恒稳电流密度$\bm{J}=\bm{J}_{f}+\bm{J}_{M}$分为自由电流密度$\bm{J}_{f}$和磁化电流密度$\bm{J}_{M}$，而由分子环流假说考虑一环路$L$的长度元$\mathrm{d}\bm{l}$旁净流入磁化电流（非边缘区域电流一进一出，没有贡献）
+
+$$
+\mathrm{d} i_{M}=ni\mathrm{d} V=ni\bm{a}\cdot\mathrm{d}\bm{l}=n\bm{m}\cdot\mathrm{d}\bm{l}=\bm{M}\cdot\mathrm{d}\bm{l},
+$$
+
+其中$\bm{M}=n\bm{m}$为磁化强度，$\bm{m}$是分子磁矩，因此环路$L$净流入磁化电流
+
+$$
+I_{M}=\oint_{L}\mathrm{d} i_{M}=\oint\bm{M}\cdot\mathrm{d}\bm{l}\Longleftrightarrow \bm{J}_{M}=\nabla\times\bm{M},
+$$
+
+若定义磁场强度$\bm{H}=\dfrac{\bm{B}}{\mu_{0}}-\bm{M}$，则
+
+$$
+\begin{equation}
+\nabla\times\bm{H}=\bm{J}_{f}.
+\end{equation}
+$$
+
+### 电流连续性方程与位移电流
+
+¶对于一段时间$\mathrm{d} t$内固定体积$V$的自由电荷出入
+
+$$
+\oint_{S}\bm{J}_{f}\cdot\mathrm{d}\bm{f}=-\frac{\mathrm{d}}{\mathrm{d}t}\oint_{V}\rho_{f}\ \mathrm{d}^3\bm{r}'=-\int_{V}\frac{\partial \rho_{f}}{\partial t}\ \mathrm{d}^3\bm{r}',
+$$
+
+即得到电流连续性方程
+
+$$
+\begin{equation}
+\nabla\cdot\bm{J}_{f}+\frac{\partial \rho_f}{\partial t}=0.
+\end{equation}
+$$
+
+¶为了使(4)式适用于任意条件，应该找寻一个形式上满足恒稳条件且包含$\bm{J}_{f}$而不违背电流连续性的物理量.将(1)式结合(5)式得到
+
+$$
+    \nabla\cdot\left(\bm{J}_{f}+\frac{\partial \bm{D}}{\partial t}\right)=0,
+$$
+
+而
+
+$$
+\bm{J}_{D}\equiv\frac{\partial \bm{D}}{\partial t}=\varepsilon_{0}\frac{\partial \bm{E}}{\partial t}+\frac{\partial \bm{P}}{\partial t}\equiv\varepsilon_{0}\frac{\partial \bm{E}}{\partial t}+\bm{J}_{P},
+$$
+
+其中位移电流密度$\bm{J}_{D}$和极化电流密度$\bm{J}_{P}$均能通过实验验证其效应，补足了(4)式
+
+$$
+\begin{equation}
+\nabla\times\bm{H}=\bm{J}_{f}+\frac{\partial \bm{D}}{\partial t}.
+\end{equation}
+$$
+
+### *Maxwell*方程组的不同形式
+
+¶总结(1)(2)(3)(6)式得到介质中微分形式*Maxwell*方程组
+
+$$
+\left\{\begin{aligned}
+&\nabla\cdot\bm{D}=\rho_{f},\\
+&\nabla\times\bm{E}=-\frac{\partial \bm{B}}{\partial t},\\
+&\nabla\cdot\bm{B}=0,\\
+&\nabla\times\bm{H}=\bm{J}_{f}+\frac{\partial \bm{D}}{\partial t}.
+\end{aligned}\right.
+$$
+
+在真空中$\bm{D}=\varepsilon_{0}\bm{E},\ \bm{H}=\bm{B}/\mu_{0}$
+
+$$
+\left\{\begin{aligned}
+&\nabla\cdot\bm{E}=\frac{\rho_{f}}{\varepsilon_{0}},\\
+&\nabla\times\bm{E}=-\frac{\partial \bm{B}}{\partial t},\\
+&\nabla\cdot\bm{B}=0,\\
+&\nabla\times\bm{B}=\mu_{0}\bm{J}_{f}+\mu_{0}\varepsilon_{0}\frac{\partial \bm{E}}{\partial t}.
+\end{aligned}\right.
+$$
+
+以上方程组（含边界条件）的恰定性由[Helmholtz定理](../append/Chap_01.md#helmholtz定理)保证.
+
+¶积分形式
+
+$$
+\begin{equation}
+\left\{\begin{aligned}
+&\oint_{S}\bm{D}\cdot\mathrm{d}\bm{f}=Q_{f},&(\text{a})\\
+&\oint_{L}\bm{E}\cdot\mathrm{d}\bm{l}=-\frac{\mathrm{d}}{\mathrm{d}t}\int_{S}\bm{B}\cdot\mathrm{d}\bm{f},&(\text{b})\\
+&\oint_{S}\bm{B}\cdot\mathrm{d}\bm{f}=0,&(\text{c})\\
+&\oint_{L}\bm{H}\cdot\mathrm{d}\bm{l}=I_{f}+\frac{\mathrm{d}}{\mathrm{d}t}\int_{S}\bm{D}\cdot\mathrm{d}\bm{f}.&(\text{d})
+\end{aligned}\right.
+\end{equation}
+$$
+
+## 边值关系
+
+¶为了处理介质分界面处的面电荷和电流分布导致的电磁场跃变，需要从(7)式出发推导边值关系.
+
+### 法向分量的跃变
+
+¶取介质1和介质2分界面上一小块扁平柱体，底面平行于分界面，用有向面积$\Delta\bm{S}=\Delta S\bm{e}_{n}$表示，其中$\bm{e}_{n}$是单位法向量，规定方向由介质1指向2，由(7-a)式
+
+$$
+(\bm{D}_1-\bm{D}_{2})\cdot\Delta\bm{S}=\Delta Q_{f}=\sigma_{f}\Delta S,
+$$
+
+即
+
+$$
+\begin{equation}
+\bm{e}_{n}\cdot(\bm{D}_{2}-\bm{D}_{1})=\sigma_{f},
+\end{equation}
+$$
+
+同理由(7-c)式
+
+$$
+\begin{equation}
+\bm{e}_{n}\cdot(\bm{B}_{2}-\bm{B}_{1})=0.
+\end{equation}
+$$
+
+### 切向分量的跃变
+
+¶分界面上面电流可由线密度矢量$\bm{\alpha}$描述，流过分界面上$\Delta\bm{l}$的自由电流
+
+$$
+\begin{equation}
+I_{f}=\bm{\alpha}_{f}\times\mathbf{e}_{n}\cdot\Delta\bm{l},
+\end{equation}
+$$
+
+任取一面积任意小的狭长矩形回路，长边$\Delta\bm{l}$平行于分界面.根据(7-d)式，位移电流项随面积趋于零，为使(10)式与右手定则含义一致，取介质1一侧为$-\Delta\bm{l}$，介质2一侧为$\Delta\bm{l}$
+
+$$
+(\bm{H}_2-\bm{H}_1)\cdot\Delta\bm{l}=I_f=(\bm{\alpha}_{f}\times\mathbf{e}_{n})\cdot\Delta\bm{l},\quad\forall\Delta\bm{l}\perp\bm{e}_{n},
+$$
+
+即
+
+$$
+\bm{H}_2-\bm{H}_1-\left[(\bm{H}_2-\bm{H}_1)\cdot\bm{e}_{n}\right]\bm{e}_{n}=\bm{\alpha}_{f}\times\bm{e}_{n}-\left[(\bm{\alpha}_{f}\times\bm{e}_{n})\cdot\bm{e}_{n}\right]\cdot\bm{e}_{n}=\bm{\alpha}_{f}\times\bm{e}_{n},
+$$
+
+两侧同左叉$\bm{e}_{n}$乘以简化
+
+$$
+\begin{equation}
+\bm{e}_{n}\times(\bm{H}_{2}-\bm{H}_{1})=\bm{e}_{n}\times(\bm{\alpha}_{f}\times\bm{e}_{n})=\bm{\alpha}_{f}.
+\end{equation}
+$$
+
+¶类似地，由(7-b)式
+
+$$
+\begin{equation}
+\bm{e}_{n}\times(\bm{E}_2-\bm{E}_{1})=\bm{0}.
+\end{equation}
+$$
+
+¶总结(8)(9)(11)(12)式得到介质中电磁场边值关系
+
+$$
+\left\{\begin{aligned}
+&\bm{e}_{n}\cdot(\bm{D}_{2}-\bm{D}_{1})=\sigma_{f},\\
+&\bm{e}_{n}\cdot(\bm{B}_{2}-\bm{B}_{1})=0,\\
+&\bm{e}_{n}\times(\bm{H}_{2}-\bm{H}_{1})=\bm{\alpha}_{f},\\
+&\bm{e}_{n}\times(\bm{E}_2-\bm{E}_{1})=\bm{0}.
+\end{aligned}\right.
+$$
+
+## 能量、动量与角动量
+
+### 能量与能流
+
+¶考虑
+
+$$
+\begin{aligned}
+\nabla\cdot(\bm{E}\times\bm{H})&=(\nabla\times\bm{E})\cdot\bm{H}-(\nabla\times\bm{H})\cdot\bm{E}\\
+&=-\frac{\partial \bm{B}}{\partial t}\cdot\bm{H}-\frac{\partial D}{\partial t}\cdot\bm{E}-\bm{J}_{f}\cdot\bm{E}\\
+&=-\frac{\partial \bm{B}}{\partial t}\cdot\bm{H}-\frac{\partial D}{\partial t}\cdot\bm{E}-\left[\rho_{f}\bm{v}\cdot\bm{E}+\rho_{f}(\bm{v}\times\bm{B})\cdot\bm{v}\right],
+\end{aligned}
+$$
+
+可见第三项表示电磁场对单位体积电荷的做功功率密度.将上式移项并体积分得
+
+$$
+\oint_{S}(\bm{E}\times\bm{H})\cdot\mathrm{d}\bm{f}'+\int_{V}\mathrm{d}^3\bm{r}'\left(\frac{\partial \bm{B}}{\partial t}\cdot\bm{H}+\frac{\partial \bm{D}}{\partial t}\cdot\bm{E}\right)+\frac{\mathrm{d}A}{\mathrm{d}t}=0,
+$$
+
+其中场本身的能量密度变化率
+
+$$
+\begin{equation}
+\frac{\mathrm{d}w}{\mathrm{d}t}=\frac{\partial \bm{B}}{\partial t}\cdot\bm{H}+\frac{\partial \bm{D}}{\partial t}\cdot\bm{E}\equiv\frac{\mathrm{d}w_{M}}{\mathrm{d}t}+\frac{\mathrm{d}w_{E}}{\mathrm{d}t},
+\end{equation}
+$$
+
+单位面积向外辐射功率即为坡印廷矢量
+
+$$
+\begin{equation}
+\bm{S}=\bm{E}\times\bm{H}.
+\end{equation}
+$$
+
+在线性介质中选定$(E,B)=(0,0)$为能量零点后
+
+$$
+w_{E}=\frac{1}{2}\bm{D}\cdot\bm{E},\quad w_{M}=\frac{1}{2}\bm{B}\cdot\bm{H},
+$$
+
+注意这一能量零点的选取与$\varphi(\infty)=0,\ \bm{A}(\infty)=\bm{0}$等价.
+
+### 动量与动量流
+
+¶考察自由电子受电磁力的力密度
+
+$$
+\begin{equation}
+\begin{aligned}
+\bm{f}&=\rho_{f}\bm{E}+\bm{J}_{f}\times\bm{B}\\
+&=(\nabla\cdot\bm{D})\bm{E}-\bm{B}\times\left(\nabla\times\bm{H}-\frac{\partial \bm{D}}{\partial t}\right)+\underbrace{(\nabla\cdot\bm{B})\bm{H}}_{=0}-\underbrace{\bm{D}\times\left(\nabla\times\bm{E}+\frac{\partial \bm{B}}{\partial t}\right)}_{=0}\\
+&=(\nabla\cdot\bm{D})\bm{E}-\bm{D}\times(\nabla\times\bm{E})+(\nabla\cdot\bm{B})\bm{H}-\bm{B}\times(\nabla\times\bm{H})-\frac{\partial }{\partial t}(\bm{D}\times\bm{B})\\
+&=\nabla\cdot(\bm{D}\bm{E})-\nabla_{\bm{E}}(\bm{D}\cdot\bm{E})+\nabla\cdot(\bm{B}\bm{H})-\nabla_{\bm{H}}(\bm{B}\cdot\bm{H})-\frac{\partial }{\partial t}(\bm{D}\times\bm{B}).
+\end{aligned}
+\end{equation}
+$$
+
+在线性介质中
+
+$$
+\begin{aligned}
+\nabla_{\bm{E}}(\bm{D}\cdot\bm{E})&=D_{i}\partial_{j}E_{i}\\
+&=\partial_{j}(D_iE_i)-E_{i}\partial_{j}D_{i}\\
+&=\partial_{j}(D_iE_i)-E_{i}^2\partial_{j}\varepsilon-D_{i}\partial_{j}E_{i}\\
+&=\frac{1}{2}[\nabla(\bm{D\cdot\bm{E}})-\bm{E}^2\nabla\varepsilon],
+\end{aligned}
+$$
+
+同理
+
+$$
+\begin{aligned}
+\nabla_{\bm{H}}(\bm{B}\cdot\bm{H})&=B_{i}\partial_{j}H_{i}\\
+&=\partial_{j}(B_iH_i)-H_{i}\partial_{j}B_{i}\\
+&=\partial_{j}(B_iH_i)-H_{i}^2\partial_{j}\mu-B_{i}\partial_{j}H_{i}\\
+&=\frac{1}{2}[\nabla(\bm{B\cdot\bm{H}})-\bm{H}^2\nabla\mu],
+\end{aligned}
+$$
+
+使用关系$\nabla\varphi=\nabla\cdot(\varphi\mathcal{I})$，其中$\mathcal{I}$表示二阶单位张量$\mathcal{I}_{ij}=\delta_{ij}$，带入(15)式移项得
+
+$$
+\underset{\text{自由电子受力}}{\underline{\rho_{f}\bm{E}+\bm{J}_{f}\times\bm{B}}}\underset{\text{极化效应}}{\underline{-\frac{1}{2}\bm{E}^2\nabla\varepsilon-\frac{1}{2}\bm{H}^2\nabla\mu}}=-\nabla\cdot\underset{\text{动量流密度张量}}{\underline{\left[-\bm{D}\bm{E}-\bm{B}\bm{H}+\frac{1}{2}(\bm{D}\cdot\bm{E}+\bm{B}\cdot\bm{H})\mathcal{I}\right]}}-\frac{\partial }{\partial t}\underset{\text{电磁场动量}}{\underline{(\bm{D}\times\bm{B})}}，
+$$
+
+即
+
+$$
+\begin{equation}
+\bm{f}_{M}+\frac{\partial \bm{g}_{M}}{\partial t}=-\nabla\cdot\mathcal{T},
+\end{equation}
+$$
+
+其中称$\bm{f}_{M}$为线性介质中的*Minkowski*力密度，$\bm{g}_{M}$为电磁场动量密度，$\mathcal{T}$为动量流密度.
+
+### 角动量与角动量流
+
+¶由(16)得线性介质中带电微元所受力矩密度
+
+$$
+\bm{m}_{\text{mech}}=\bm{r}\times\bm{f}_{M}=-\bm{r}\times\frac{\partial \bm{g}_{M}}{\partial t}-\bm{r}\times\nabla\cdot\mathcal{T},
+$$
+
+用角动量密度表示即
+
+$$
+\begin{equation}
+\frac{\mathrm{d}\bm{l}_{\text{mech}}}{\mathrm{d}t}+\frac{\mathrm{d}}{\mathrm{d}t}(\bm{r}\times\bm{g}_{M})=-\bm{r}\times(\nabla\cdot\mathcal{T}),
+\end{equation}
+$$
+
+而
+
+$$
+\begin{aligned}
+\bm{r}\times(\nabla\cdot\mathcal{T})&=x_{i}\hat{\bm{e}}_{i}\times\left(\partial_{j}\mathcal{T}_{jk}\hat{\bm{e}}_{k}\right)\\
+&=\varepsilon_{ikm}x_{i}\partial_{j}\mathcal{T}_{jk}\hat{\bm{e}}_{m}\\
+&=\varepsilon_{ikm}[\partial_{j}(x_{i}\mathcal{T}_{jk})-\delta_{ij}\mathcal{T}_{jk}]\hat{\bm{e}}_{m}\\
+&=\varepsilon_{ikm}\partial_{j}(x_{i}\mathcal{T}_{jk})\hat{\bm{e}}_{m}-\varepsilon_{ikm}\mathcal{T}_{ik}\hat{\bm{e}}_{m}\\
+&\overset{\mathcal{T}_{ij}=\mathcal{T}_{ji}}{=}\varepsilon_{ikm}\partial_{j}(x_{i}\mathcal{T}_{jk})\hat{\bm{e}}_{m}\\
+&=-(\hat{\bm{e}}\partial_{j})\cdot(\mathcal{T}_{lk}\hat{\bm{e}}_{l}\hat{\bm{e}}_{k}\times x_{i}\hat{\bm{e}}_{i})\\
+&=-\nabla\cdot(\mathcal{T}\times\bm{r}),
+\end{aligned}
+$$
+
+带入(17)式
+
+$$
+\frac{\mathrm{d}(\bm{l}_{\text{mech}}+\bm{r}'\times\bm{g}_{M})}{\mathrm{d}t}=-\nabla\cdot(-\mathcal{T}\times\bm{r}'),
+$$
+
+即
+
+$$
+\frac{\mathrm{d}(\bm{l}_{\text{mech}}+\bm{l}_{\text{em}})}{\mathrm{d}t}=-\nabla\cdot\mathcal{M}
+$$
+
+其中称$\bm{l}_{\text{em}}$为电磁场角动量密度，$\mathcal{M}$为角动量流密度.
+
+</script>
+
+<script>
+(function() {
+  var md = window.markdownit({ html: true })
+    .use(texmath, {
+      engine: katex,
+      delimiters: 'dollars',
+      katexOptions: { throwOnError: false }
+    });
+  var src = document.getElementById('source').textContent;
+  document.getElementById('content').innerHTML = md.render(src);
+})();
+</script>
+</body>
+</html>

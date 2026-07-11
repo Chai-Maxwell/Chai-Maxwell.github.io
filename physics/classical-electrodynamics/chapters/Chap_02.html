@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>静电场 | MyBlogs</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1/texmath.min.js"></script>
+</head>
+<body>
+<div class="markdown-body" id="content"></div>
+
+<script id="source" type="text/markdown">
+# 静电场
+
+## 静电势与*Poisson*方程
+
+¶静电场无旋度，可以用标势描述
+
+$$
+\bm{E}=-\nabla\varphi,
+$$
+
+取$\varphi(\infty)=0$后有
+
+$$
+\varphi(\bm{r})=\int_{\bm{r}}^{\infty}\bm{E}\cdot\mathrm{d}\bm{l},
+$$
+
+在线性均匀介质中，带入*Gauss*定律得到*Poisson*方程
+
+$$
+\begin{equation}
+\nabla^2\varphi=-\frac{\rho_{f}}{\varepsilon},
+\end{equation}
+$$
+
+$\rho_{f}=0$时退化为*Laplace*方程.(1)式也可用于推导给定电势对应的电荷密度，参见[点电偶极子的电荷密度](../examples/Chap_02.md#点电偶极子的电荷密度).
+
+¶边值关系
+
+$$
+\begin{aligned}
+\bm{e}_{n}\cdot(\bm{D}_{2}-\bm{D}_{1})&=\sigma_{f},\\
+\bm{e}_{n}\times(\bm{E}_{2}-\bm{E}_{1})&=0,
+\end{aligned}
+$$
+
+用标势表示
+
+$$
+\begin{equation}
+\begin{aligned}
+\varepsilon_{2}\frac{\partial \varphi_{2}}{\partial n}-\varepsilon_{1}\frac{\partial \varphi_{1}}{\partial n}&=-\sigma_{f},\\
+\varphi_{2}-\varphi_{1}&=\text{const}.,
+\end{aligned}
+\end{equation}
+$$
+
+在电场有限大的情况下第二式退化为$\varphi_{2}-\varphi_{1}=0$，非零情况见[电偶极子层两侧电势差](../examples/Chap_02.md#电偶极子层两侧电势差).
+
+## 静电体系的能量
+
+¶静电体系的创造过程可以看作是一定数目的电荷从相距无穷远的分散到一定距离的聚集的搬运做功过程，其能量
+
+$$
+W=\frac{1}{4\pi\varepsilon_{0}}\sum_{j=1}^{n}\sum_{i<j}^{n}\frac{q_{i}q_{j}}{r_{ij}}=\frac{1}{2}\sum_{j=1}^{n}q_{j}\left(\sum_{\substack{i=1\\i\neq j}}^{n}\frac{1}{4\pi\varepsilon}\frac{q_{i}}{r_{ij}}\right)=\frac{1}{2}\sum_{j=1}^{n}q_{j}\varphi_{j},
+$$
+
+其中$\varphi_{j}$表示体系内其余电荷贡献的电势，连续化时电荷密度为有限值，电荷微元在自身处产生电势为$O(r^2)$的小量略去不计
+
+$$
+\begin{equation}
+W=\frac{1}{2}\int_{V}\rho_{f}\varphi\ \mathrm{d}^3\bm{r}'.
+\end{equation}
+$$
+
+用电场能量密度计算静电体系的能量时，注意电场的弥漫性，需要在全空间积分
+
+$$
+\begin{aligned}
+W_{e}&=\frac{1}{2}\int_{\mathbb{R}^3}\mathrm{d}^3\bm{r}'\bm{D}\cdot\bm{E}\\
+&=-\frac{1}{2}\int_{\mathbb{R}^3}\mathrm{d}^3\bm{r}'\bm{D}\cdot\nabla\varphi\\
+&=-\frac{1}{2}\int_{\mathbb{R}^3}\mathrm{d}^3\bm{r}'\nabla\cdot(\varphi\bm{D})+\frac{1}{2}\int_{\mathbb{R}^3}\mathrm{d}^3\bm{r}'\varphi\nabla\cdot\bm{D}\\
+&=\frac{1}{2}\int_{\mathbb{R}^3}\rho_{f}\varphi\ \mathrm{d}^3\bm{r}'=\frac{1}{2}\int_{\{\bm{r}'|\rho_{f}\neq0\}}\rho_{f}\varphi\ \mathrm{d}^3\bm{r}',
+\end{aligned}
+$$
+
+可见与(3)式的一致性.作为特例，见[导体组的能量](../examples/Chap_02.md#导体组的能量).
+¶计算$(\rho_{1},V_{1})$和$(\rho_{2},V_{2})$两个体系间的互能
+
+$$
+\begin{aligned}
+W_{12}&=W_{1+2}-W_{1}-W_{2}\\
+&=\frac{1}{2}\int_{V_1+V_2}(\rho_1+\rho_2)(\varphi_{1}+\rho_{2})\ \mathrm{d}^3\bm{r}'-\frac{1}{2}\int_{V_1}\rho_1\varphi_1\ \mathrm{d}^3\bm{r}'-\frac{1}{2}\int_{V_2}\rho_2\varphi_{2}\ \mathrm{d}^3\bm{r}'\\
+&=\frac{1}{2}\int_{V_1}\rho_1\varphi_2\ \mathrm{d}^3\bm{r}'+\frac{1}{2}\int_{V_2}\rho_2\varphi_{1}\ \mathrm{d}^3\bm{r}',
+\end{aligned}
+$$
+
+而
+
+$$
+\int_{V_1}\rho_1\varphi_2\ \mathrm{d}^3\bm{r}'=\int_{V_1}\rho_{1}\int_{V_{2}}\frac{1}{4\pi\varepsilon_{0}}\frac{\rho_{2}}{\|\bm{r}'-\bm{r}''\|}\mathrm{d}^3\bm{r}''\mathrm{d}^3\bm{r}'=\frac{1}{4\pi\varepsilon_{0}}\int_{V_2}\int_{V_{1}}\frac{\rho_1\rho_2}{\|\bm{r}'-\bm{r}''\|}\mathrm{d}^3\bm{r}'\mathrm{d}^3\bm{r}''=\int_{V_2}\rho_{2}\varphi_{1}\ \mathrm{d}^3\bm{r}'',
+$$
+
+于是
+
+$$
+\begin{equation}
+W_{12}=\int_{V_1}\rho_1\varphi_2\ \mathrm{d}^3\bm{r}'=\int_{V_2}\rho_2\varphi_1\ \mathrm{d}^3\bm{r}',
+\end{equation}
+$$
+
+以上结果也可考虑搬运过程立即得到.
+
+## 电多极展开
+
+¶假定所有电荷分布在$V=\{\|\bm{r}\|<R\}$的范围内，考察此分布在$\bm{r}\ (\|\bm{r}\|\gg R)$处激发的电势
+
+$$
+\begin{aligned}
+\varphi(\bm{r})&=\frac{1}{4\pi\varepsilon_{0}}\int_{V}\mathrm{d}^3\bm{r}'\frac{\rho(\bm{r}')}{\|\bm{r}-\bm{r}'\|}\\
+&=\frac{1}{4\pi\varepsilon_{0}}\int_{V}\mathrm{d}^3\bm{r}'\rho(\bm{r}')\sum_{k=0}^{\infty}\frac{1}{k!}(-\bm{r}'\cdot\nabla)^{k}\frac{1}{r}\\
+&=\frac{1}{4\pi\varepsilon_{0}}\int_{V}\mathrm{d}^3\bm{r}'\rho(\bm{r}')\left(\frac{1}{r}+\frac{\bm{r}'\cdot\bm{r}}{r^3}+\frac{3x_{i}x_{j}-\delta_{ij}r^2}{r^5}x'_{i}x'_{j}+\cdots\right)\\
+&\equiv\varphi^{(0)}+\varphi^{(1)}+\varphi^{(2)}+\cdots,
+\end{aligned}
+$$
+
+其中电四极矩项$\varphi^{(2)}$用等式$r^2(r')^2=\delta_{ij}r^2x'_{i}x'_{j}=\delta_{ij}x_{i}x_{j}(r')^2$改写以提炼出电四极矩
+
+$$
+\varphi^{(2)}=\frac{1}{4\pi\varepsilon_{0}}\int_{V}\mathrm{d}^3\bm{r}'\rho(\bm{r}')(3x'_{i}x'_{j}-\delta_{ij}(r')^2)\frac{x_{i}x_{j}}{2r^5}\equiv\frac{\mathcal{Q}_{ij}x_{i}x_{j}}{2r^5},
+$$
+
+其中电四极矩$\mathcal{Q}$是一个迹为零的对称二阶张量.例子参见[电四极子的电四极矩](../examples/Chap_02.md#电四极子的电四极矩).
+
+## 唯一性定理
+
+### 一般情形
+
+¶对于线性介质，已知区域$\Sigma$内电荷分布$\sigma_f$，其电势满足
+
+$$
+\nabla\cdot(\varepsilon(\bm{r})\nabla\varphi)=-\sigma_f,
+$$
+
+在区域边缘上给定*Dirichlet*或*Neumann*两种边界条件其中之一，区域中电场便唯一确定
+
+$$
+\begin{aligned}
+&(\text{D})\quad\varphi|_{\partial\Sigma}=\varphi_{0},\\
+&(\text{N})\quad\left.\frac{\partial \varphi}{\partial n}\right|_{\partial\Sigma}=\psi_{0},\\
+\end{aligned}
+$$
+
+设有两解$\varphi_{1},\ \varphi_{2}$，令$w=\varphi_1-\varphi_2$
+
+$$
+\begin{aligned}
+\int_{\Sigma}\varepsilon(\nabla w)^2\ \mathrm{d}^3\bm{r}'&=\int_{\Sigma}\varepsilon(\nabla w)^2\ \mathrm{d}^3\bm{r}'+\int_{\Sigma}w\underbrace{\nabla\cdot(\varepsilon\nabla w)}_{=0}\ \mathrm{d}^3\bm{r}'\\
+&=\int_{\Sigma}\nabla\cdot(\varepsilon w\nabla w)\ \mathrm{d}^3\bm{r}'\\
+&=\int_{\partial\Sigma}\varepsilon w\frac{\partial w}{\partial n}\ \mathrm{d} f'\stackrel{(\text{D})or(\text{N})}{=}0,
+\end{aligned},
+$$
+
+立刻得到$w=\text{const}.$说明电场唯一.可以证明，从一类特定的*Robin*边界条件出发也能推导唯一性.
+
+### 导体情形
+
+¶设区域$\Sigma$中有$n$个导体，其余区域$\Sigma'$为线性介质，导体与介质的界面为$S_{i},\ i=1,\cdots,n$，则在给定$\partial\Sigma$的(D)或(N)条件的前提下，需给定$S_{i}$的以下条件两者之一，电场便唯一确定
+
+$$
+\begin{aligned}
+&(\mathrm{I})\quad\varphi|_{S_{i}}=(\varphi_{0})_{i},\\
+&(\mathrm{II})\quad Q|_{S_{i}}=(Q_{0})_{i},
+\end{aligned}
+$$
+
+给定(I)条件相当于给定了$\partial\Sigma$的(D)或(D)(N)混合条件，得到电场分布唯一性.对于(II)条件，令$w=\varphi_{1}-\varphi_{2}$，由$S_{i}$上的边值关系（注意此时$\bm{e}_{n}$由介质指向导体）
+
+$$
+\begin{aligned}
+&\varepsilon\frac{\partial \varphi_{i}}{\partial n}=(\sigma_{f})_{i}\Longrightarrow\int_{S_{i}}\varepsilon\frac{\partial w}{\partial n}\ \mathrm{d} f'=(Q_{0})_{i}-(Q_{0})_{i}=0,\\
+&w_{i}=\text{const}.,
+\end{aligned}
+$$
+
+仿照一般情形的证明得到
+
+$$
+\begin{aligned}
+\int_{\Sigma'}\varepsilon(\nabla w)^2\ \mathrm{d}^3\bm{r}'&=\underbrace{\int_{\partial\Sigma}\varepsilon w\frac{\partial w}{\partial n}\ \mathrm{d} f'}_{=0}+\sum_{i=1}^{n}\int_{S_{i}}\varepsilon w\frac{\partial w}{\partial n}\ \mathrm{d} f'\\
+&=\sum_{i=1}^{n}w_{i}\int_{S_{i}}\varepsilon \frac{\partial w}{\partial n}\ \mathrm{d} f'=0,
+\end{aligned}
+$$
+
+得到$w=\text{const}.$说明电场唯一确定.
+
+## 求解*Poisson*方程
+
+### 镜像法
+
+¶镜像法是将求解区域$\Sigma$的边界条件还原为$\Sigma$外镜像电荷分布，进而利用全空间电势叠加获得电势的方法.因为镜像电荷实时反映$\Sigma$内电荷与边界条件（平面、球面接地，介质分界面等）间的作用，所以利于通过搬运过程等计算体系能量.
+¶例子见[接地金属表面附近的电偶极子](../examples/Chap_02.md#接地金属表面附近的电偶极子)，[金属导体球附近的点电荷](../examples/Chap_02.md#金属导体球附近的点电荷)和[无限大介质分界面附近的点电荷](../examples/Chap_02.md#无限大介质分界面附近的点电荷).
+
+### *Green*函数法
+
+¶*Green*函数描述一个系统对点激发的响应
+
+$$
+\mathcal{L}_{\bm{r}'}G(\bm{r}',\bm{r})=\delta(\bm{r}'-\bm{r}),
+$$
+
+其中$\mathcal{L}_{\bm{r}'}$是关于$\bm{r}'$的微分算子，对于*Poisson*方程，$\mathcal{L}_{\bm{r}'}=\nabla^2$，满足一定边界条件时，$\nabla^2$为*Hermitian*算子.由*Green*第二恒等式
+
+$$
+\begin{equation}
+\langle f,\nabla^2g\rangle-\langle\nabla^2f,g\rangle=\int_{\partial\Sigma}\bar{f}\frac{\partial g}{\partial n}-\frac{\partial \bar{f}}{\partial n}g\ \mathrm{d} f',
+\end{equation}
+$$
+
+(5)式为零时$\nabla^2$为*Hermitian*算子，此时其特征函数族$\{\phi(\bm{r}')\}$完备且可取单位正交，因为任意函数$f(\bm{r})$可被分解为
+
+$$
+\begin{aligned}
+f(\bm{r})&=\sum_{k}\langle\phi_{k}(\bm{r}'),f(\bm{r}')\rangle\phi_{k}(\bm{r})\\
+&=\left\langle\sum_{k}\bar{\phi}_{k}(\bm{r})\phi_{k}(\bm{r}'),f(\bm{r}')\right\rangle\\
+&=\langle\delta(\bm{r}'-\bm{r}),f(\bm{r}')\rangle,
+\end{aligned}
+$$
+
+故
+
+$$
+    \delta(\bm{r}'-\bm{r})=\sum_{k}\bar{\phi}_{k}(\bm{r})\phi_{k}(\bm{r}'),
+$$
+
+将*Green*函数展开
+
+$$
+G(\bm{r}',\bm{r})=\sum_{k}a_{k}(\bm{r})\phi_{k}(\bm{r}'),
+$$
+
+两侧同时应用$\mathcal{L}_{\bm{r}'}$
+
+$$
+    \delta(\bm{r}'-\bm{r})=\sum_{k}\lambda_{k}a_{k}(\bm{r})\phi_{k}(\bm{r}'),
+$$
+
+比对得$a_{k}(\bm{r})=\bar{\phi}_{k}(\bm{r})/\lambda_{k}$，故
+
+$$
+G(\bm{r}',\bm{r})=\sum_{k}\frac{\bar{\phi}_{k}(\bm{r})\phi_{k}(\bm{r}')}{\lambda_{k}}=\bar{G}(\bm{r},\bm{r}'),
+$$
+
+说明*Hermitian*算子情况下，*Green*函数具有*Hermitian*对称性.
+¶针对(1)式的求解，将$\varphi(\bm{r'})$和$G(\bm{r}',\bm{r})$带入*Green*第二恒等式得到
+
+$$
+\varphi(\bm{r})=\int_{\Sigma}\left(-\frac{G(\bm{r}',\bm{r})}{\varepsilon_{0}}\right)\rho_{f}\ \mathrm{d}^3\bm{r}'+\int_{\partial\Sigma}\varphi\frac{\partial G(\bm{r}',\bm{r})}{\partial n}-G(\bm{r}',\bm{r})\frac{\partial \varphi}{\partial n}\ \mathrm{d} f'.
+$$
+
+#### *Dirichlet*条件
+
+¶选择边界条件
+
+$$
+G(\bm{r}',\bm{r})|_{\bm{r}'\in\partial\Sigma}=0,
+$$
+
+得到电势
+
+$$
+\varphi(\bm{r})=\int_{\Sigma}\left(-\frac{G(\bm{r}',\bm{r})}{\varepsilon_{0}}\right)\rho_{f}\ \mathrm{d}^3\bm{r}'+\int_{\partial\Sigma}\varphi\frac{\partial G(\bm{r}',\bm{r})}{\partial n}\ \mathrm{d} f'.
+$$
+
+此时$(5)$式为零，*Green*函数具有对称性.特殊边界的*Dirichlet*条件*Green*函数可以参照镜像法得到.
+
+#### *Neumann*条件
+
+¶选择边界条件（由于$\Sigma$内电荷存在，无法取零值）
+
+$$
+\left.\frac{\partial G(\bm{r}',\bm{r})}{\partial n}\right|_{\bm{r}'\in\partial\Sigma}=\frac{1}{S},
+$$
+
+其中$S$是$\partial S$的面积，得到电势
+
+$$
+\varphi(\bm{r})=\int_{\Sigma}\left(-\frac{G(\bm{r}',\bm{r})}{\varepsilon_{0}}\right)\rho_{f}\ \mathrm{d}^3\bm{r}'-\int_{\partial\Sigma}G(\bm{r}',\bm{r})\frac{\partial \varphi}{\partial n}\ \mathrm{d} f'+\langle\varphi\rangle_{\partial\Sigma}.
+$$
+
+### 分离变量法
+
+¶将*Poisson*方程的解看作齐次解（非齐次边界条件）和非齐次解（齐次边界条件）的叠加，前者符合*Laplace*方程，是自由空间解，后者可考虑镜像法和*Green*函数法等方法.数学上求解*Laplace*方程常用分离变量法.
+¶长方体、球形和柱体区域的解的形式各有不同.以球形为例
+
+$$
+\varphi(r,\theta,\phi)=\sum_{n,m=0}^{\infty}\left(a_{nm}r^{n}+\frac{b_{nm}}{r^{n+1}}\right)P_{n}^{m}(\cos\theta)\cos m\phi+\left(c_{nm}r^n+\frac{d_{nm}}{r^{n+1}}\right)P_{n}^{m}(\cos\theta)\sin m\phi,
+$$
+
+关于极轴对称的情形退化为
+
+$$
+\varphi(r,\theta)=\sum_{n=0}^{\infty}\left(a_{n}r^{n}+\frac{b_{n}}{r^{n+1}}\right)P_{n}(\cos\theta),
+$$
+
+参见[放置于匀强电场中的介质球](../examples/Chap_02.md#放置于匀强电场中的介质球).
+
+</script>
+
+<script>
+(function() {
+  var md = window.markdownit({ html: true })
+    .use(texmath, {
+      engine: katex,
+      delimiters: 'dollars',
+      katexOptions: { throwOnError: false }
+    });
+  var src = document.getElementById('source').textContent;
+  document.getElementById('content').innerHTML = md.render(src);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>*Dirac*函数的展开 | MyBlogs</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1/texmath.min.js"></script>
+</head>
+<body>
+<div class="markdown-body" id="content"></div>
+
+<script id="source" type="text/markdown">
+## *Dirac*函数的展开
+\par因为
+$$
+\begin{aligned}
+\langle\partial_{i}\delta,\phi\rangle&=\int_{\mathbb{R}^3}(\partial_{i}\delta)\phi\ \upd^3\bm{r}'\\
+&=\int_{\mathbb{R}^3}\partial_{i}(\delta\phi)\ \upd^3\bm{r}'-\int_{\mathbb{R}^3}\delta\partial_{i}(\phi)\ \upd^3\bm{r}'\\
+&=-\langle\delta,\partial_{i}\phi\rangle,
+\end{aligned}
+$$
+递推得
+$$
+\langle(\bm{r}\cdot\nabla)^k\delta,\phi\rangle=(-1)^k\langle\delta,(\bm{r}\cdot\nabla)^k\phi\rangle,    
+$$
+故
+$$
+\begin{aligned}
+\langle\delta(\bm{r}-\bm{r}_{0}),\phi(\bm{r})\rangle&=\langle\delta(\bm{r}),\phi(\bm{r}+\bm{r}_{0})\rangle\\
+&=\left\langle\delta(\bm{r}),\sum_{k=0}^{\infty}\frac{1}{k!}(\bm{r}_{0}\cdot\nabla)^{k}\phi(\bm{r})\right\rangle\\
+&=\sum_{k=0}^{\infty}\frac{1}{k!}\left\langle\delta(\bm{r}),(\bm{r}_{0}\cdot\nabla)^{k}\phi(\bm{r})\right\rangle\\
+&=\sum_{k=0}^{\infty}\frac{(-1)^k}{k!}\left\langle(\bm{r}_{0}\cdot\nabla)^{k}\delta(\bm{r}),\phi(\bm{r})\right\rangle\\
+&=\left\langle\sum_{k=0}^{\infty}\frac{1}{k!}(-\bm{r}_{0}\cdot\nabla)^{k}\delta(\bm{r}),\phi(\bm{r})\right\rangle
+\end{aligned}
+$$
+</script>
+
+<script>
+(function() {
+  var md = window.markdownit({ html: true })
+    .use(texmath, {
+      engine: katex,
+      delimiters: 'dollars',
+      katexOptions: { throwOnError: false }
+    });
+  var src = document.getElementById('source').textContent;
+  document.getElementById('content').innerHTML = md.render(src);
+})();
+</script>
+</body>
+</html>

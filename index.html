@@ -5,17 +5,135 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MyBlogs</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    /* Modern blog homepage overrides */
+    body {
+      background: #fafaf8;
+    }
+    .markdown-body {
+      max-width: 720px;
+    }
+    .hero {
+      text-align: center;
+      padding: 3em 0 2em;
+      border-bottom: none;
+    }
+    .hero h1 {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 2.4em;
+      border: none;
+      margin-bottom: 0.15em;
+      color: #2c2c2c;
+    }
+    .hero h1:before { content: none; }
+    .hero p {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 1.05em;
+      color: #888;
+      margin-top: 0;
+    }
+
+    .subject-card {
+      background: #fff;
+      border: 1px solid #e8e8e4;
+      border-radius: 10px;
+      padding: 1.6em 1.8em;
+      margin: 1.2em 0;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .subject-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border-color: #dcb48c;
+    }
+    .subject-card h2 {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 1.25em;
+      margin-top: 0;
+      border: none;
+      padding: 0;
+    }
+    .subject-card h2:before { content: none; }
+    .subject-card h2 a {
+      color: #2c2c2c;
+      border: none;
+    }
+    .subject-card h2 a:hover {
+      color: #dcb48c;
+    }
+    .subject-card .subtitle {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.85em;
+      color: #aaa;
+      margin: 0.1em 0 1em;
+    }
+    .chapter-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3em 1.5em;
+    }
+    .chapter-list a {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.92em;
+      color: #555;
+      border: none;
+      padding: 2px 0;
+    }
+    .chapter-list a:hover {
+      color: #dcb48c;
+    }
+    .chapter-list .more {
+      color: #bbb;
+      font-size: 0.85em;
+      grid-column: 1 / -1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3em 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 0.8em;
+      color: #ccc;
+    }
+
+    @media (max-width: 500px) {
+      .chapter-list { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 <div class="markdown-body">
-  <h1>MyBlogs</h1>
-  <p>物理学习笔记，使用中文撰写，LaTeX 数学公式渲染。</p>
-  <h2>内容目录</h2>
-  <ul>
-    <li><a href="/physics/group-theory/">群论 (Group Theory)</a> — 群的基本概念和群的线性表示理论</li>
-  </ul>
-  <hr>
-  <p><em>Built with markdown-it &amp; KaTeX. Hosted on GitHub Pages.</em></p>
+  <div class="hero">
+    <h1>MyBlogs</h1>
+    <p>物理学习笔记 · Physics Study Notes</p>
+  </div>
+
+  <div class="subject-card">
+    <h2><a href="/physics/classical-electrodynamics/">电动力学</a></h2>
+    <p class="subtitle">Classical Electrodynamics</p>
+    <div class="chapter-list">
+      <a href="/physics/classical-electrodynamics/chapters/Chap_01.html">1. 电磁场基础</a>
+      <a href="/physics/classical-electrodynamics/chapters/Chap_02.html">2. 静电场</a>
+      <a href="/physics/classical-electrodynamics/chapters/Chap_03.html">3. 静磁场</a>
+      <a href="/physics/classical-electrodynamics/chapters/Chap_04.html">4. 电磁波的传播</a>
+      <a href="/physics/classical-electrodynamics/chapters/Chap_05.html">5. 电磁波的辐射</a>
+      <a href="/physics/classical-electrodynamics/chapters/Chap_06.html">6. 狭义相对论</a>
+      <a href="/physics/classical-electrodynamics/chapters/Chap_07.html">7. 运动电荷的势、场与辐射</a>
+      <span class="more">+ 附录 · 例题 · 习题</span>
+    </div>
+  </div>
+
+  <div class="subject-card">
+    <h2><a href="/physics/group-theory/">群论</a></h2>
+    <p class="subtitle">Group Theory</p>
+    <div class="chapter-list">
+      <a href="/physics/group-theory/chapters/chap_01.html">1. 群的基本概念和群的线性表示理论</a>
+      <span class="more">+ 参考文献</span>
+    </div>
+  </div>
+
+  <footer>
+    Built with markdown-it &amp; KaTeX · Hosted on GitHub Pages
+  </footer>
 </div>
 </body>
 </html>
