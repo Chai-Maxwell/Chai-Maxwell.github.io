@@ -1,191 +1,217 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyBlogs</title>
-  <link rel="stylesheet" href="/assets/css/style.css">
-  <style>
-    /* Modern blog homepage overrides */
-    body {
-      background: #fafaf8;
-    }
-    .markdown-body {
-      max-width: 720px;
-    }
-    .hero {
-      text-align: center;
-      padding: 3em 0 2em;
-      border-bottom: none;
-    }
-    .hero h1 {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 2.4em;
-      border: none;
-      margin-bottom: 0.15em;
-      color: #2c2c2c;
-    }
-    .hero h1:before { content: none; }
-    .hero p {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 1.05em;
-      color: #888;
-      margin-top: 0;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyBlogs</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <style>
+      /* Modern blog homepage overrides */
+      body {
+        background: #fafaf8;
+      }
+      .markdown-body {
+        max-width: 720px;
+      }
+      .hero {
+        text-align: center;
+        padding: 3em 0 2em;
+        border-bottom: none;
+      }
+      .hero h1 {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 2.4em;
+        border: none;
+        margin-bottom: 0.15em;
+        color: #2c2c2c;
+      }
+      .hero h1:before {
+        content: none;
+      }
+      .hero p {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 1.05em;
+        color: #888;
+        margin-top: 0;
+      }
 
-    .category {
-      margin: 2.2em 0 1.5em;
-    }
-    .category-header {
-      display: flex;
-      align-items: baseline;
-      gap: 0.6em;
-      margin-bottom: 1em;
-    }
-    .category-header h2 {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 1.1em;
-      font-weight: 600;
-      color: #999;
-      margin: 0;
-      border: none;
-      padding: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .category-header h2:before { content: none; }
-    .category-header .count {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.85em;
-      color: #ccc;
-    }
+      .category {
+        margin: 2.2em 0 1.5em;
+      }
+      .category-header {
+        display: flex;
+        align-items: baseline;
+        gap: 0.6em;
+        margin-bottom: 1em;
+      }
+      .category-header h2 {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #999;
+        margin: 0;
+        border: none;
+        padding: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .category-header h2:before {
+        content: none;
+      }
+      .category-header .count {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 0.85em;
+        color: #ccc;
+      }
 
-    .subject-card {
-      background: #fff;
-      border: 1px solid #e8e8e4;
-      border-radius: 10px;
-      padding: 1.3em 1.6em;
-      margin: 0.7em 0;
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
-    .subject-card:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      border-color: #dcb48c;
-    }
-    .subject-card h3 {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 1.1em;
-      font-weight: 600;
-      margin: 0 0 0.15em;
-      border: none;
-      padding: 0;
-    }
-    .subject-card h3:before { content: none; }
-    .subject-card h3 a {
-      color: #2c2c2c;
-      border: none;
-    }
-    .subject-card h3 a:hover {
-      color: #dcb48c;
-    }
-    .subject-card .subtitle {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.8em;
-      color: #bbb;
-      margin: 0 0 0.7em;
-    }
-    .chapter-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.15em 1.2em;
-    }
-    .chapter-list a {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.88em;
-      color: #777;
-      border: none;
-      padding: 1px 0;
-    }
-    .chapter-list a:hover {
-      color: #dcb48c;
-    }
-    .chapter-list .more {
-      color: #ccc;
-      font-size: 0.8em;
-      grid-column: 1 / -1;
-    }
+      .subject-card {
+        background: #fff;
+        border: 1px solid #e8e8e4;
+        border-radius: 10px;
+        padding: 1.3em 1.6em;
+        margin: 0.7em 0;
+        transition:
+          box-shadow 0.2s,
+          border-color 0.2s;
+      }
+      .subject-card:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        border-color: #dcb48c;
+      }
+      .subject-card h3 {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 1.1em;
+        font-weight: 600;
+        margin: 0 0 0.15em;
+        border: none;
+        padding: 0;
+      }
+      .subject-card h3:before {
+        content: none;
+      }
+      .subject-card h3 a {
+        color: #2c2c2c;
+        border: none;
+      }
+      .subject-card h3 a:hover {
+        color: #dcb48c;
+      }
+      .subject-card .subtitle {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 0.8em;
+        color: #bbb;
+        margin: 0 0 0.7em;
+      }
+      .chapter-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.15em 1.2em;
+      }
+      .chapter-list a {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 0.88em;
+        color: #777;
+        border: none;
+        padding: 1px 0;
+      }
+      .chapter-list a:hover {
+        color: #dcb48c;
+      }
+      .chapter-list .more {
+        color: #ccc;
+        font-size: 0.8em;
+        grid-column: 1 / -1;
+      }
 
-    .placeholder {
-      background: #fff;
-      border: 1.5px dashed #e0e0dc;
-      border-radius: 10px;
-      padding: 2em;
-      text-align: center;
-      color: #ccc;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.95em;
-    }
+      .placeholder {
+        background: #fff;
+        border: 1.5px dashed #e0e0dc;
+        border-radius: 10px;
+        padding: 2em;
+        text-align: center;
+        color: #ccc;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 0.95em;
+      }
 
-    footer {
-      text-align: center;
-      padding: 3em 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 0.8em;
-      color: #ccc;
-    }
+      footer {
+        text-align: center;
+        padding: 3em 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 0.8em;
+        color: #ccc;
+      }
 
-    @media (max-width: 500px) {
-      .chapter-list { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-<div class="markdown-body">
-  <div class="hero">
-    <h1>MyBlogs</h1>
-    <p>笔记 · 思考 · 分享</p>
-  </div>
-
-  <!-- ═══════════════ 物理学笔记 ═══════════════ -->
-  <div class="category">
-    <div class="category-header">
-      <h2>物理学笔记</h2>
-      <span class="count">2 个专题</span>
-    </div>
-
-    <div class="subject-card">
-      <h3><a href="/physics/classical-electrodynamics/">电动力学</a></h3>
-      <p class="subtitle">Classical Electrodynamics</p>
-      <div class="chapter-list">
-        <a href="/physics/classical-electrodynamics/chapters/Chap_01.html">1. 电磁场基础</a>
-        <a href="/physics/classical-electrodynamics/chapters/Chap_02.html">2. 静电场</a>
-        <a href="/physics/classical-electrodynamics/chapters/Chap_03.html">3. 静磁场</a>
-        <a href="/physics/classical-electrodynamics/chapters/Chap_04.html">4. 电磁波的传播</a>
-        <a href="/physics/classical-electrodynamics/chapters/Chap_05.html">5. 电磁波的辐射</a>
-        <a href="/physics/classical-electrodynamics/chapters/Chap_06.html">6. 狭义相对论</a>
-        <a href="/physics/classical-electrodynamics/chapters/Chap_07.html">7. 运动电荷的势、场与辐射</a>
-        <span class="more">+ 附录 · 例题 · 习题</span>
+      @media (max-width: 500px) {
+        .chapter-list {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="markdown-body">
+      <div class="hero">
+        <h1>MyBlogs</h1>
+        <p>笔记 · 思考 · 分享</p>
       </div>
-    </div>
 
-    <div class="subject-card">
-      <h3><a href="/physics/group-theory/">群论</a></h3>
-      <p class="subtitle">Group Theory</p>
-      <div class="chapter-list">
-        <a href="/physics/group-theory/chapters/chap_01.html">1. 群的基本概念和群的线性表示理论</a>
-        <span class="more">+ 参考文献</span>
+      <!-- ═══════════════ 物理学笔记 ═══════════════ -->
+      <div class="category">
+        <div class="category-header">
+          <h2>物理学笔记</h2>
+          <span class="count">2 个专题</span>
+        </div>
+
+        <div class="subject-card">
+          <h3><a href="/physics/classical-electrodynamics/">电动力学</a></h3>
+          <p class="subtitle">Classical Electrodynamics</p>
+          <div class="chapter-list">
+            <a href="/physics/classical-electrodynamics/chapters/Chap_01.html"
+              >1. 电磁场基础</a
+            >
+            <a href="/physics/classical-electrodynamics/chapters/Chap_02.html"
+              >2. 静电场</a
+            >
+            <a href="/physics/classical-electrodynamics/chapters/Chap_03.html"
+              >3. 静磁场</a
+            >
+            <a href="/physics/classical-electrodynamics/chapters/Chap_04.html"
+              >4. 电磁波的传播</a
+            >
+            <a href="/physics/classical-electrodynamics/chapters/Chap_05.html"
+              >5. 电磁波的辐射</a
+            >
+            <a href="/physics/classical-electrodynamics/chapters/Chap_06.html"
+              >6. 狭义相对论</a
+            >
+            <a href="/physics/classical-electrodynamics/chapters/Chap_07.html"
+              >7. 运动电荷的势、场与辐射</a
+            >
+            <span class="more"
+              >+ "他的心儿是一柄诗琴，轻轻一拨就舒扬有声."——Béranger</span
+            >
+          </div>
+        </div>
+
+        <div class="subject-card">
+          <h3><a href="/physics/group-theory/">群论</a></h3>
+          <p class="subtitle">Group Theory</p>
+          <div class="chapter-list">
+            <a href="/physics/group-theory/chapters/chap_01.html"
+              >1. 群的基本概念和群的线性表示理论</a
+            >
+            <span class="more">+ 参考文献</span>
+          </div>
+        </div>
       </div>
+
+      <!-- ═══════════════ 更多内容即将到来 ═══════════════ -->
+      <div class="placeholder">Contents await... &hellip;</div>
+
+      <footer>
+        Built with markdown-it &amp; KaTeX · Hosted on GitHub Pages
+      </footer>
     </div>
-  </div>
-
-  <!-- ═══════════════ 更多内容即将到来 ═══════════════ -->
-  <div class="placeholder">
-    更多内容即将到来 &hellip;
-  </div>
-
-  <footer>
-    Built with markdown-it &amp; KaTeX · Hosted on GitHub Pages
-  </footer>
-</div>
-</body>
+  </body>
 </html>
