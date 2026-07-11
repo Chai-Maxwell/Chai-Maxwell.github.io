@@ -2,8 +2,9 @@ title: MyBlogs
 description: Physics study notes — group theory, classical field theory, and more.
 url: "https://Chai-Maxwell.github.io"
 
-markdown: GFM
-gfm:
+markdown: kramdown
+kramdown:
+  math_engine: null
   smart_quotes: ["apos", "apos", "quot", "quot"]
 
 exclude:

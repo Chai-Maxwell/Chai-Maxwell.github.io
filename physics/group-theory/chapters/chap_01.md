@@ -10,16 +10,16 @@ title: 群的基本概念和群的线性表示理论
 
 ### 线性空间
 
-¶设对于*Hamilton*算符$\hat{H}$, 作用于$m$个线性无关的态${\bm{\psi}_{\mu}},\,\mu=1,\dots,m$, 得到本征值能量$E$,
+¶设对于*Hamilton*算符$\hat{H}$, 作用于$m$个线性无关的态${\bm{\psi}&#95;{\mu}},\,\mu=1,\dots,m$, 得到本征值能量$E$,
 
 $$
-\hat{H}{\bm{\psi}_{\mu}}=E{\bm{\psi}_{\mu}},
+\hat{H}{\bm{\psi}&#95;{\mu}}=E{\bm{\psi}&#95;{\mu}},
 $$
 
-那么${\bm{\phi}}={\bm{\psi}_{\mu}}a^{\mu}$的线性组合仍是本征态.
+那么${\bm{\phi}}={\bm{\psi}&#95;{\mu}}a^{\mu}$的线性组合仍是本征态.
 
 $$
-{\bm{\psi}_{\mu}}a^{\mu}\in\operatorname{span}\{{\bm{\psi}_{\mu}}\}\equiv\mathcal{L},\,\operatorname{dim}\mathcal{L}=m.
+{\bm{\psi}&#95;{\mu}}a^{\mu}\in\operatorname{span}\{{\bm{\psi}&#95;{\mu}}\}\equiv\mathcal{L},\,\operatorname{dim}\mathcal{L}=m.
 $$
 
 设$\mathcal{L}^{(1)},\mathcal{L}^{(2)}\subset\mathcal{L}$, 当
@@ -39,34 +39,34 @@ $$
 \hat{T}(c^{(1)}{\bm{\phi}^{(1)}}+c^{(2)}{\bm{\phi}^{(2)}})=c^{(1)}\hat{T}({\bm{\phi}^{(1)}})+c^{(2)}\hat{T}({\bm{\phi}^{(2)}}),
 $$
 
-因为这种性质, $\hat{T}$在固定基后可被矩阵表示$[\hat{T}]_{\bm{\psi}}=T^{\mu}_{\nu}$. 那么$\hat{T}(\bm{\psi}_{\mu}a^{\mu})$在$\bm{\psi}_{\nu}$上的分量
+因为这种性质, $\hat{T}$在固定基后可被矩阵表示$[\hat{T}]&#95;{\bm{\psi}}=T^{\mu}&#95;{\nu}$. 那么$\hat{T}(\bm{\psi}&#95;{\mu}a^{\mu})$在$\bm{\psi}&#95;{\nu}$上的分量
 
 $$
-[\hat{T}(\bm{\psi}_{\mu}a^{\mu})]^{\nu}=[\hat{T}(\bm{\psi}_{\mu})a^{\mu}]^{\nu}=[\bm{\psi}_{\nu}T^{\nu}_{\mu}a^{\mu}]^{\nu}=T^{\nu}_{\mu}a^{\mu}.
+[\hat{T}(\bm{\psi}&#95;{\mu}a^{\mu})]^{\nu}=[\hat{T}(\bm{\psi}&#95;{\mu})a^{\mu}]^{\nu}=[\bm{\psi}&#95;{\nu}T^{\nu}&#95;{\mu}a^{\mu}]^{\nu}=T^{\nu}&#95;{\mu}a^{\mu}.
 $$
 
 ¶如果算符$\hat{R}$与$\hat{H}$对易, 则
 
 $$
-\hat{H}(\hat{R}\bm{\psi}_{\mu})=E\hat{R}\bm{\psi}_{\mu},
+\hat{H}(\hat{R}\bm{\psi}&#95;{\mu})=E\hat{R}\bm{\psi}&#95;{\mu},
 $$
 
-即$\hat{R}(\bm{\psi}_{\mu})\in\mathcal{L}$.
+即$\hat{R}(\bm{\psi}&#95;{\mu})\in\mathcal{L}$.
 
 ### 相似变换(Similarity Transformation)
 
 ¶设两个基之间有如下变换关系
 
 $$
-e'_{\mu}=\bm{e}_{\nu}S^{\nu}_{\mu},
+e'&#95;{\mu}=\bm{e}&#95;{\nu}S^{\nu}&#95;{\mu},
 $$
 
 则同一线性算符$\hat{R}$在不同基下的矩阵表示存在关系
 
 $$
 \left\{\begin{aligned}
-&\hat{R}(e'_{\mu})=e'_{\nu}R^{\nu}_{\mu}=\bm{e}_{\sigma}S^{\sigma}_{\nu}(R')^{\nu}_{\mu},\\
-&\hat{R}(e'_{\mu})=\hat{R}(\bm{e}_{\nu}S^{\nu}_{\mu})=\bm{e}_{\sigma}R^{\sigma}_{\nu}S^{\nu}_{\mu},
+&\hat{R}(e'&#95;{\mu})=e'&#95;{\nu}R^{\nu}&#95;{\mu}=\bm{e}&#95;{\sigma}S^{\sigma}&#95;{\nu}(R')^{\nu}&#95;{\mu},\\
+&\hat{R}(e'&#95;{\mu})=\hat{R}(\bm{e}&#95;{\nu}S^{\nu}&#95;{\mu})=\bm{e}&#95;{\sigma}R^{\sigma}&#95;{\nu}S^{\nu}&#95;{\mu},
 \end{aligned}\right.
 \Longrightarrow \bm{R}'=\bm{S}^{-1}\bm{R}\bm{S}.
 $$
@@ -74,7 +74,7 @@ $$
 相似变换不改变$\hat{R}$的作用效果
 
 $$
-b'^{\mu}=(R')^{\mu}_{\nu}a'^{\nu}=(S^{-1}RS)^{\mu}_{\nu}(S^{-1}a)^{\nu}=(S^{-1})^{\mu}_{\nu}b^{\nu}.
+b'^{\mu}=(R')^{\mu}&#95;{\nu}a'^{\nu}=(S^{-1}RS)^{\mu}&#95;{\nu}(S^{-1}a)^{\nu}=(S^{-1})^{\mu}&#95;{\nu}b^{\nu}.
 $$
 
 ¶称拥有如下性质的空间$\mathcal{K}$为算子$\hat{R}$的不变空间(invariant space)
@@ -84,7 +84,7 @@ $$
 $$
 
 设$\mathcal{L}^{(1)}$是$\hat{R}$的不变空间, 而$\mathcal{L}^{(2)}$是其互补子空间, 取
-$\bm{e}_{\mu}\in\mathcal{L}^{(1)},\,\mu=1,\dots,n;\ \bm{e}_{\nu}\in\mathcal{L}^{(2)},\,\nu=n+1,\dots,m,$则$\hat{R}$在基下表示为上三角矩阵
+$\bm{e}&#95;{\mu}\in\mathcal{L}^{(1)},\,\mu=1,\dots,n;\ \bm{e}&#95;{\nu}\in\mathcal{L}^{(2)},\,\nu=n+1,\dots,m,$则$\hat{R}$在基下表示为上三角矩阵
 
 $$
 \bm{R}=\left(
@@ -127,13 +127,13 @@ $$
 规定度规
 
 $$
-g_{\mu\nu}=\braket{\bm{e}_{\mu}|\bm{e}_{\nu}},
+g&#95;{\mu\nu}=\braket{\bm{e}&#95;{\mu}|\bm{e}&#95;{\nu}},
 $$
 
 则内积用度规表示
 
 $$
-\braket{\bm{\phi}|\bm{\psi}}=(\phi^{\mu})^{*}g_{\mu\nu}\psi^{\nu}.
+\braket{\bm{\phi}|\bm{\psi}}=(\phi^{\mu})^{*}g&#95;{\mu\nu}\psi^{\nu}.
 $$
 
 ¶共轭算符$\hat{R}^{\dag}$定义为满足
@@ -155,12 +155,12 @@ $$
 ¶定义张量积
 
 $$
-\bm{A}_{m\times n}\otimes\bm{B}_{r\times s}=
+\bm{A}&#95;{m\times n}\otimes\bm{B}&#95;{r\times s}=
 \left(\begin{matrix}
-a_{11}\bm{B}_{r\times s}&\cdots&a_{1n}\bm{B}_{r\times s}\\
+a&#95;{11}\bm{B}&#95;{r\times s}&\cdots&a&#95;{1n}\bm{B}&#95;{r\times s}\\
 \vdots&&\vdots\\
-a_{m1}\bm{B}_{r\times s}&\cdots&a_{mn}\bm{B}_{r\times s}
-\end{matrix}\right)_{mr\times ns},
+a&#95;{m1}\bm{B}&#95;{r\times s}&\cdots&a&#95;{mn}\bm{B}&#95;{r\times s}
+\end{matrix}\right)&#95;{mr\times ns},
 $$
 
 可以证明
@@ -168,9 +168,9 @@ $$
 $$
 \begin{aligned}
 &\operatorname{tr}(\bm{A}\otimes\bm{B})=\operatorname{tr}(\bm{A})\operatorname{tr}(\bm{B}),\\
-&[(\bm{A}_{1})_{m\times n}\otimes(\bm{B}_{1})_{r\times s}][(\bm{A}_{2})_{n\times m}\otimes(\bm{B}_{2})_{s\times r}]=(\bm{A}_{1}\bm{A}_{2})\otimes(\bm{B}_{1}\bm{B}_{2}),\\
+&[(\bm{A}&#95;{1})&#95;{m\times n}\otimes(\bm{B}&#95;{1})&#95;{r\times s}][(\bm{A}&#95;{2})&#95;{n\times m}\otimes(\bm{B}&#95;{2})&#95;{s\times r}]=(\bm{A}&#95;{1}\bm{A}&#95;{2})\otimes(\bm{B}&#95;{1}\bm{B}&#95;{2}),\\
 &(\bm{A}\otimes\bm{B})^{-1}=\bm{A}^{-1}\otimes\bm{B}^{-1},\\
-&\det(\bm{A}_{n}\bm{B}_{m})=(\det\bm{A})^{n}(\det\bm{B})^{m}.
+&\det(\bm{A}&#95;{n}\bm{B}&#95;{m})=(\det\bm{A})^{n}(\det\bm{B})^{m}.
 \end{aligned}
 $$
 
@@ -216,7 +216,7 @@ $$
   <img src="../figurebank/chap_01_01.png">
   <figcaption>
 
-  $D_{4}$(Dihedral Group of the Square)乘法表</figcaption>
+  $D&#95;{4}$(Dihedral Group of the Square)乘法表</figcaption>
 </figure>
 
 ### 群的同态与同构
