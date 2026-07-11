@@ -4,7 +4,7 @@ url: "https://Chai-Maxwell.github.io"
 
 markdown: kramdown
 kramdown:
-  math_engine: null
+  math_engine: mathjax
   smart_quotes: ["apos", "apos", "quot", "quot"]
 
 exclude:
