@@ -2,6 +2,7 @@
 layout: default
 title: 群的基本概念和群的线性表示理论
 ---
+{% raw %}
 
 # 群的基本概念和群的线性表示理论
 
@@ -225,3 +226,4 @@ $$
 >则称$\mathcal{G}$与$\mathcal{G}$同态.
 >
 >==同构== 若$f$还是双射(bijection), 则称$\mathcal{G}$与$\mathcal{G}'$同构, 记$\mathcal{G}\cong\mathcal{G}'$.
+{% endraw %}
