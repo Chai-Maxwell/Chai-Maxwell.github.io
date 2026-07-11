@@ -1,0 +1,289 @@
+/*
+ * 【字体加载】
+ * 通过 jsDelivr CDN 加载 cn-fontsource 字体（方正楷体 + 方正仿宋）。
+ * 与本地 markdown-preview.nvim 使用相同的字体源。
+ */
+@import url("https://cdn.jsdelivr.net/npm/cn-fontsource-fz-kai-z-03-regular/font.css");
+@import url("https://cdn.jsdelivr.net/npm/cn-fontsource-fz-fang-song-z-02-s/font.css");
+
+/*
+ * QuoteSerifItalic — 仅对字母和数字提供 Times New Roman 意大利体，
+ * 标点符号（[]、: 等）不在 unicode-range 中，会穿透到下一个字体。
+ * 用于 blockquote / em 等需要"英文斜体、中文正体"的场景。
+ */
+@font-face {
+  font-family: "QuoteSerifItalic";
+  src: local("Times New Roman");
+  font-style: italic;
+  unicode-range: U+41-5A, U+61-7A, U+30-39;
+}
+
+.markdown-body {
+  background-color: rgba(255, 255, 255, 0.85);
+  font-family: "Times New Roman", "FZFangSong-Z02S", serif;
+  font-weight: normal;
+  color: #1a1a1a;
+  counter-reset: h2-counter;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  /* 代码块样式 - 针对pre code */
+  /* 语法高亮颜色方案 */
+  /* 各种语法元素的高亮 */
+}
+.markdown-body h1 {
+  font-family: "Times New Roman", "FZKai-Z03";
+  font-size: 2.2em;
+  font-weight: normal;
+  margin-top: 0em;
+  margin-bottom: 0.2em;
+  padding-bottom: 0.2em;
+  border-bottom: 2px solid #dcb48c;
+  color: #1a1a1a;
+}
+.markdown-body h2 {
+  font-family: "Times New Roman", "FZKai-Z03";
+  counter-reset: h3-counter h4-counter;
+  font-size: 1.8em;
+  font-weight: normal;
+  margin-top: 2em;
+  margin-bottom: 0.1em;
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid #dcb48c;
+  color: #1a1a1a;
+}
+.markdown-body h2:before {
+  font-family: "Times New Roman";
+  counter-increment: h2-counter;
+  content: "§" counter(h2-counter) " ";
+  font-weight: normal;
+  color: #dcb48c;
+}
+.markdown-body h3 {
+  font-family: "Times New Roman", "FZKai-Z03";
+  counter-reset: h4-counter;
+  font-size: 1.4em;
+  font-weight: normal;
+  margin-top: 1.6em;
+  margin-bottom: 0.4em;
+  padding-bottom: 0.2em;
+  border-bottom: 0.5px solid #dcb48c;
+  color: #1a1a1a;
+}
+.markdown-body h3:before {
+  font-family: "Times New Roman";
+  counter-increment: h3-counter;
+  content: "§" counter(h2-counter) "." counter(h3-counter) " ";
+  font-weight: normal;
+  color: #dcb48c;
+}
+.markdown-body h4 {
+  font-family: "Times New Roman", "FZKai-Z03";
+  font-size: 1em;
+  font-weight: normal;
+  margin-top: 1.2em;
+  margin-bottom: 0.8em;
+  padding-bottom: 0em;
+  color: #1a1a1a;
+}
+.markdown-body h4:before {
+  font-family: "Times New Roman";
+  counter-increment: h4-counter;
+  content: "§" counter(h2-counter) "." counter(h3-counter) "."
+    counter(h4-counter) " ";
+  font-weight: normal;
+  color: #dcb48c;
+}
+.markdown-body em {
+  font-family: "QuoteSerifItalic", "FZKai-Z03";
+  font-style: italic;
+  font-synthesis-style: none;
+  color: #1a1a1a;
+}
+.markdown-body blockquote {
+  font-family: "QuoteSerifItalic", "FZKai-Z03";
+  font-style: italic;
+  font-synthesis-style: none;
+  margin: 1.5em 0;
+  padding: 0.2em 1em;
+  color: #1a1a1a;
+  border-left: 4px solid #dcb48c;
+  background-color: #fdfffd;
+  border-radius: 6px;
+  position: relative;
+  padding: 5px 10px 5px 10px;
+  margin: 12px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.markdown-body pre code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: block;
+  margin: 1em 0;
+  overflow: auto;
+  background: #f6f8fa;
+  /* 或使用您的主题色 */
+  border: 0.4px solid rgba(220, 180, 140, 0.4);
+  font-size: 0.8em;
+  line-height: 1.5;
+  /* 移除行内样式继承 */
+  padding: 1em !important;
+  border-radius: 4px !important;
+  background: rgba(220, 180, 140, 0.1) !important;
+}
+.markdown-body .hljs {
+  color: #24292e;
+  background: #f6f8fa;
+}
+.markdown-body .hljs-keyword {
+  color: #d73a49;
+  font-weight: bold;
+}
+.markdown-body .hljs-string {
+  color: #032f62;
+}
+.markdown-body .hljs-comment {
+  color: #6a737d;
+  font-style: italic;
+}
+.markdown-body .hljs-number {
+  color: #005cc5;
+}
+.markdown-body .hljs-function {
+  color: #6f42c1;
+}
+.markdown-body .hljs-params {
+  color: #24292e;
+}
+.markdown-body .hljs-built_in {
+  color: #e36209;
+}
+.markdown-body .hljs-title {
+  color: #6f42c1;
+}
+.markdown-body .hljs-attr {
+  color: #005cc5;
+}
+.markdown-body .hljs-tag {
+  color: #22863a;
+}
+.markdown-body .hljs-name {
+  color: #22863a;
+}
+.markdown-body .hljs-attribute {
+  color: #6f42c1;
+}
+.markdown-body a {
+  font-family: "Times New Roman", "FZKai-Z03";
+  font-weight: normal;
+  color: #dcb48c;
+  text-decoration: none;
+  border-bottom: 0.2px dashed #dcb48c;
+}
+.markdown-body mark {
+  background-color: #ffffcd;
+  padding: 2px 4px;
+  border-radius: 3px;
+  color: #000000;
+  font-family: "QuoteSerifItalic", "FZKai-Z03";
+  font-style: italic;
+  font-synthesis-style: none;
+  border-left: 2px solid #dcb48c;
+}
+.markdown-body .gold {
+  color: #b8860b;
+  font-weight: normal;
+}
+.markdown-body .image-round {
+  text-align: center;
+  margin: 2em auto;
+  max-width: 800px;
+  --image-width: 80%;
+  --broader-radius: 10px;
+}
+.markdown-body .image-round img {
+  border-radius: var(--broader-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border: 1px solid #eee;
+  width: var(--image-width);
+}
+.markdown-body .image-round figcaption {
+  margin-top: 4px;
+  color: #666;
+  font-family: "Times New Roman", "FZKai-Z03";
+  font-size: 0.8em;
+  font-style: italic;
+  border-right: 3px solid #dcb48c;
+  padding-right: 6px;
+  text-align: right;
+  margin-right: calc((100% - var(--image-width)) / 2);
+  /* 对应图片的 10% 空白 */
+  box-sizing: border-box;
+  /* 确保边框和内边距包含在宽度内 */
+}
+.markdown-body hr {
+  border: none;
+  border-bottom: 2px solid #dcb48c;
+  margin: 2em 0;
+}
+.markdown-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5em 0;
+  font-size: 0.95em;
+}
+.markdown-body th {
+  background: rgba(220, 180, 140, 0.15);
+  border-bottom: 2px solid #dcb48c;
+  padding: 10px 14px;
+  font-family: "FZKai-Z03", "Times New Roman";
+  font-weight: normal;
+  text-align: left;
+}
+.markdown-body td {
+  padding: 8px 14px;
+  border-bottom: 1px solid rgba(220, 180, 140, 0.3);
+}
+.markdown-body tr:nth-child(even) td {
+  background: rgba(220, 180, 140, 0.05);
+}
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 1.8em;
+  margin: 0.8em 0;
+}
+.markdown-body li {
+  margin: 0.3em 0;
+  line-height: 1.7;
+}
+.markdown-body ul li::marker {
+  color: #dcb48c;
+}
+.markdown-body ol li::marker {
+  color: #dcb48c;
+  font-family: "Times New Roman";
+}
+.markdown-body li ul,
+.markdown-body li ol {
+  margin: 0.2em 0;
+}
+.markdown-body .footnote {
+  font-size: 0.85em;
+  color: #666;
+  border-top: 1px solid rgba(220, 180, 140, 0.4);
+  margin-top: 3em;
+  padding-top: 1em;
+}
+.markdown-body .footnote p {
+  margin: 0.3em 0;
+}
+.markdown-body .katex {
+  font-size: 1em;
+}
+.markdown-body .katex-display {
+  font-size: 1em;
+  margin-top: 20px !important;
+  margin-bottom: -10px !important;
+}
+.markdown-body .katex {
+  padding: 0 4px;
+}

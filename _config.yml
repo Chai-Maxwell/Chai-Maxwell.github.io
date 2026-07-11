@@ -1,0 +1,11 @@
+title: MyBlogs
+description: Physics study notes — group theory, classical field theory, and more.
+url: "https://Chai-Maxwell.github.io"
+
+markdown: kramdown
+kramdown:
+  math_engine: null
+
+exclude:
+  - README.md
+  - .gitignore
