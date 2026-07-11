@@ -51,6 +51,7 @@ TEMPLATE = '''<!DOCTYPE html>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-anchor@9/dist/markdownItAnchor.umd.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1/texmath.min.js"></script>
 </head>
 <body>
@@ -63,6 +64,7 @@ TEMPLATE = '''<!DOCTYPE html>
 <script>
 (function() {{
   var md = window.markdownit({{ html: true }})
+    .use(markdownItAnchor)
     .use(texmath, {{
       engine: katex,
       delimiters: 'dollars',

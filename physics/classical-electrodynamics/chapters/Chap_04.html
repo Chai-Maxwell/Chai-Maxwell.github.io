@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>电磁波的传播 | MyBlogs</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-anchor@9/dist/markdownItAnchor.umd.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -689,7 +690,7 @@ $$
 
 <script>
 (function() {
-  var md = window.markdownit({ html: true })
+  var md = window.markdownit({ html: true }).use(markdownItAnchor)
     .use(texmath, {
       engine: katex,
       delimiters: 'dollars',

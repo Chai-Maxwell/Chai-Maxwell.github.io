@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>静电场 | MyBlogs</title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-anchor@9/dist/markdownItAnchor.umd.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -135,7 +136,7 @@ $$
 \varphi^{(2)}=\frac{1}{4\pi\varepsilon_{0}}\int_{V}\mathrm{d}^3\bm{r}'\rho(\bm{r}')(3x'_{i}x'_{j}-\delta_{ij}(r')^2)\frac{x_{i}x_{j}}{2r^5}\equiv\frac{\mathcal{Q}_{ij}x_{i}x_{j}}{2r^5},
 $$
 
-其中电四极矩$\mathcal{Q}$是一个迹为零的对称二阶张量.例子参见[电四极子的电四极矩](../examples/Chap_02.html#电四极子的电四极矩).
+其中电四极矩$\mathcal{Q}$是一个迹为零的对称二阶张量.例子参见[电四极子的电四极矩](../examples/Chap_02.html#点电四极子的电四极矩).
 
 ## 唯一性定理
 
@@ -314,7 +315,7 @@ $$
 
 <script>
 (function() {
-  var md = window.markdownit({ html: true })
+  var md = window.markdownit({ html: true }).use(markdownItAnchor)
     .use(texmath, {
       engine: katex,
       delimiters: 'dollars',
