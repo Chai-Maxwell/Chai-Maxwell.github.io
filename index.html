@@ -30,7 +30,12 @@
       .hero h1:before {
         content: none;
       }
-      .hero p {
+      .hero .poem-wrap {
+        width: fit-content;
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      .hero .poem-wrap p {
         font-family: "FZKai-Z03", "STKaiti", "Kaiti SC", "KaiTi", "楷体", serif;
         font-size: 1.15em;
         color: #888;
@@ -167,8 +172,10 @@
     <div class="markdown-body">
       <div class="hero">
         <h1>ZeoliteBlogs</h1>
-        <p>"他的心儿是一柄诗琴，轻轻一拨就舒扬有声."</p>
-        <p class="author-line">——<span class="author-name">Béranger</span></p>
+        <div class="poem-wrap">
+          <p>"他的心儿是一柄诗琴，轻轻一拨就舒扬有声."</p>
+          <p class="author-line">——<span class="author-name">Béranger</span></p>
+        </div>
       </div>
 
       <!-- ═══════════════ 物理学笔记 ═══════════════ -->
