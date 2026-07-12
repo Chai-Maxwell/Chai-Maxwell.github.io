@@ -14,17 +14,14 @@
 
     .music-player-card {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 1.2em;
       background: #242426;
       border-radius: 10px;
       padding: 1.2em 1.4em;
-      text-decoration: none;
       border: 1px solid #2e2e30;
-      transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
-      cursor: pointer;
     }
 
     /* Subtle pink accent bar on the left edge — like a soap bar */
@@ -38,19 +35,6 @@
       background: #e8748a;
       border-radius: 0 3px 3px 0;
       opacity: 0.5;
-      transition: opacity 0.3s ease, height 0.3s ease, top 0.3s ease;
-    }
-
-    .music-player-card:hover::before {
-      opacity: 1;
-      top: 8%;
-      height: 84%;
-    }
-
-    .music-player-card:hover {
-      border-color: #3a3a3e;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 28px rgba(0, 0, 0, 0.45);
     }
 
     /* ── Album cover ── */
@@ -81,11 +65,6 @@
       background: #e8748a;
       border-radius: 8px;
       opacity: 0.12;
-      transition: opacity 0.3s ease;
-    }
-
-    .music-player-card:hover .cover-soap::before {
-      opacity: 0.2;
     }
 
     .cover-play-icon {
@@ -95,12 +74,6 @@
       height: 26px;
       color: #e8748a;
       opacity: 0.8;
-      transition: all 0.3s ease;
-    }
-
-    .music-player-card:hover .cover-play-icon {
-      opacity: 1;
-      transform: scale(1.1);
     }
 
     /* ── Track info ── */
@@ -133,52 +106,28 @@
     .music-player-artist {
       font-size: 0.8em;
       color: #8a8a86;
-      margin-bottom: 0.5em;
+      margin-bottom: 0.6em;
     }
 
-    /* ── Progress bar ── */
-    .music-player-progress {
+    /* ── Embedded audio element ── */
+    .music-player-audio {
       width: 100%;
-      max-width: 220px;
-      height: 3px;
-      background: #2e2e30;
-      border-radius: 2px;
-      overflow: hidden;
+      max-width: 320px;
+      height: 32px;
+      border-radius: 6px;
     }
 
-    .music-player-progress-fill {
-      width: 72%;
-      height: 100%;
-      background: linear-gradient(90deg, #e8748a 0%, #e8748a 50%, #c44b3c 100%);
-      border-radius: 2px;
-      animation: progress-breathe 3.2s ease-in-out infinite;
+    /* WebKit dark theme for native audio controls */
+    .music-player-audio::-webkit-media-controls-panel {
+      background: #1e1e20;
     }
-
-    @keyframes progress-breathe {
-      0%, 100% { opacity: 0.7; width: 68%; }
-      50%      { opacity: 1;   width: 76%; }
+    .music-player-audio::-webkit-media-controls-current-time-display,
+    .music-player-audio::-webkit-media-controls-time-remaining-display {
+      color: #e4e4e0;
     }
-
-    /* ── CTA badge ── */
-    .music-player-cta {
-      flex-shrink: 0;
-    }
-
-    .music-player-note {
-      display: inline-block;
-      font-size: 0.78em;
-      color: #e8748a;
-      padding: 0.45em 0.85em;
-      border: 1px solid rgba(232, 116, 138, 0.25);
-      border-radius: 20px;
-      transition: all 0.25s ease;
-      white-space: nowrap;
-    }
-
-    .music-player-card:hover .music-player-note {
-      background: rgba(232, 116, 138, 0.08);
-      border-color: rgba(232, 116, 138, 0.45);
-      color: #f0909e;
+    .music-player-audio::-webkit-media-controls-play-button,
+    .music-player-audio::-webkit-media-controls-mute-button {
+      filter: invert(0.85);
     }
 
     /* ── Responsive ── */
@@ -188,18 +137,14 @@
         gap: 0.9em;
       }
       .music-player-cover {
-        width: 56px;
-        height: 56px;
+        width: 48px;
+        height: 48px;
       }
       .music-player-title {
         font-size: 1em;
       }
-      .music-player-cta {
-        width: 100%;
-      }
-      .music-player-note {
-        display: block;
-        text-align: center;
+      .music-player-audio {
+        max-width: 100%;
       }
     }
   </style>
@@ -314,10 +259,7 @@
 
   <!-- ═══════════ Music Player ═══════════ -->
   <div class="music-player">
-    <a href="https://music.163.com/#/song?id=4236643"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="music-player-card">
+    <div class="music-player-card">
 
       <!-- Album art -->
       <div class="music-player-cover" aria-hidden="true">
@@ -328,23 +270,18 @@
         </div>
       </div>
 
-      <!-- Track info -->
+      <!-- Track info + embedded audio -->
       <div class="music-player-info">
         <span class="music-player-eyebrow">电影片尾曲</span>
         <span class="music-player-title">Where Is My Mind?</span>
         <span class="music-player-artist">Pixies · Surfer Rosa, 1988</span>
 
-        <!-- Fake progress bar -->
-        <div class="music-player-progress" aria-hidden="true">
-          <div class="music-player-progress-fill"></div>
-        </div>
+        <audio class="music-player-audio" controls preload="metadata">
+          <source src="https://music.163.com/song/media/outer/url?id=4236643.mp3" type="audio/mpeg">
+          <p>你的浏览器不支持音频播放。<a href="https://music.163.com/#/song?id=4236643" target="_blank" rel="noopener">在网易云音乐收听 →</a></p>
+        </audio>
       </div>
-
-      <!-- CTA -->
-      <div class="music-player-cta" aria-hidden="true">
-        <span class="music-player-note">♪ 网易云音乐</span>
-      </div>
-    </a>
+    </div>
   </div>
 
   <!-- ═══════════ Footer ═══════════ -->
