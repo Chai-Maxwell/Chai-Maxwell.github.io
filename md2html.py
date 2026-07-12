@@ -47,7 +47,7 @@ TEMPLATE = '''<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title} | MyBlogs</title>
-  <link rel="stylesheet" href="{css_path}assets/css/style.css">
+  <link rel="stylesheet" href="{css_path}assets/css/style_note.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -95,10 +95,10 @@ def extract_title(md_path):
 def css_path_for(target_dir):
     """
     计算从目标 HTML 目录到 myBlogs 根目录的相对路径，
-    使 <link href="{css_path}assets/css/style.css"> 正确指向 style.css。
-    例如: chapters/  → ../  → ../assets/css/style.css
-          physics/   → ../  → ../assets/css/style.css
-         根目录     → ./  → ./assets/css/style.css
+    使 <link href="{css_path}assets/css/style_note.css"> 正确指向 style_note.css。
+    例如: chapters/  → ../  → ../assets/css/style_note.css
+          physics/   → ../  → ../assets/css/style_note.css
+         根目录     → ./  → ./assets/css/style_note.css
     """
     # 标准化为相对路径
     rel = os.path.relpath(target_dir, os.path.dirname(os.path.abspath(__file__)))

@@ -1,0 +1,203 @@
+/*
+ * style_blog.css — Blog article style
+ * Palette: near-black + rust-red + muted sage
+ *   bg:     #1a1a1c
+ *   text:   #e4e4e0
+ *   accent: #c44b3c (rust red — industrial, raw)
+ *   sage:   #5a6b5d
+ *   card:   #242426
+ *   muted:  #8a8a86
+ */
+
+/* ===== Reset & Base ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #1a1a1c;
+  color: #e4e4e0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 17px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Article Container ===== */
+.article {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3em 1.5em 5em;
+}
+
+/* ===== Hero / Header ===== */
+.article-header {
+  padding: 4em 0 2em;
+  text-align: center;
+  border-bottom: 1px solid #2a2a2c;
+  margin-bottom: 2.5em;
+}
+.article-header h1 {
+  font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  font-size: 2.6em;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  color: #f0f0ec;
+  margin-bottom: 0.3em;
+}
+.article-header .meta {
+  font-size: 0.85em;
+  color: #8a8a86;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.article-header .meta span { margin: 0 0.5em; }
+.article-header .meta span:first-child { margin-left: 0; }
+
+/* Rust-red accent line under headings */
+.article h2 {
+  font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  font-size: 1.45em;
+  font-weight: 600;
+  color: #f0f0ec;
+  margin: 2.2em 0 0.6em;
+  padding-bottom: 0.35em;
+  border-bottom: 3px solid #c44b3c;
+  display: inline-block;
+}
+.article h3 {
+  font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  font-size: 1.15em;
+  font-weight: 600;
+  color: #e4e4e0;
+  margin: 1.6em 0 0.4em;
+}
+
+.article p {
+  margin: 1em 0;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* ===== Links ===== */
+.article a {
+  color: #c44b3c;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(196, 75, 60, 0.4);
+  transition: border-color 0.2s;
+}
+.article a:hover {
+  border-bottom-color: #c44b3c;
+}
+
+/* ===== Images — full-width with subtle shadow ===== */
+.article img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 2em 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+.article figure {
+  margin: 2.5em 0;
+}
+.article figcaption {
+  text-align: center;
+  font-size: 0.82em;
+  color: #8a8a86;
+  margin-top: 0.6em;
+  font-style: italic;
+}
+
+/* ===== Blockquote ===== */
+.article blockquote {
+  margin: 1.8em 0;
+  padding: 0.8em 1.2em;
+  background: #242426;
+  border-left: 4px solid #c44b3c;
+  border-radius: 0 4px 4px 0;
+  font-style: italic;
+  color: #b0b0ac;
+}
+.article blockquote p { margin: 0.3em 0; }
+
+/* ===== Sidebar (metadata card) ===== */
+.article-sidebar {
+  float: left;
+  width: 180px;
+  margin-left: -210px;
+  margin-top: 0;
+  position: sticky;
+  top: 2em;
+}
+@media (max-width: 960px) {
+  .article-sidebar {
+    float: none;
+    width: auto;
+    margin: 0 0 2em;
+    position: static;
+  }
+}
+.article-sidebar .meta-card {
+  background: #242426;
+  border-radius: 8px;
+  padding: 1em 1.2em;
+  font-size: 0.82em;
+  color: #8a8a86;
+  line-height: 1.6;
+}
+.article-sidebar .meta-card dt {
+  font-size: 0.72em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #5a6b5d;
+  margin-top: 0.8em;
+}
+.article-sidebar .meta-card dt:first-child { margin-top: 0; }
+.article-sidebar .meta-card dd {
+  color: #c4c4be;
+  margin-left: 0;
+}
+
+/* ===== Divider ===== */
+.article hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #3a3a3c 20%, #3a3a3c 80%, transparent);
+  margin: 2.5em 0;
+}
+
+/* ===== Footer nav ===== */
+.article-footer {
+  margin-top: 4em;
+  padding-top: 1.5em;
+  border-top: 1px solid #2a2a2c;
+  text-align: center;
+  font-size: 0.85em;
+}
+.article-footer a {
+  color: #8a8a86;
+  border-bottom: none;
+}
+.article-footer a:hover { color: #c44b3c; }
+
+/* ===== Code ===== */
+.article code {
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 0.88em;
+  background: #242426;
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  color: #cfa07e;
+}
+
+/* ===== Emphasis ===== */
+.article em { color: #cfa07e; font-style: italic; }
+.article strong { color: #f0f0ec; }
+
+/* ===== Selection ===== */
+::selection {
+  background: rgba(196, 75, 60, 0.3);
+  color: #f0f0ec;
+}
