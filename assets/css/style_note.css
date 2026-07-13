@@ -368,7 +368,7 @@
 .markdown-body .katex-display {
   font-size: 1em;
   margin-top: 20px !important;
-  margin-bottom: -10px !important;
+  margin-bottom: 0 !important;
 }
 .markdown-body .katex {
   padding: 0 4px;
