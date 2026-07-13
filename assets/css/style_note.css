@@ -245,6 +245,93 @@
 .markdown-body tr:nth-child(even) td {
   background: rgba(220, 180, 140, 0.05);
 }
+
+/* ===== 双表头表格 =====
+ * 第一行（列标题）+ 第一列（行标题）同时作为表头。
+ * 用法：用 <div class="dual-header"> 包裹 Markdown 表格，
+ * 标签与表格之间需有空行。
+ *
+ *   <div class="dual-header">
+ *
+ *   |        | 列A | 列B |
+ *   |--------|-----|-----|
+ *   |  行X   | ... | ... |
+ *
+ *   </div>
+ */
+
+/* 第一列 td — 模拟行表头，列间不分隔，仅与数据区之间有强分隔 */
+.markdown-body table.dual-header td:first-child,
+.markdown-body .dual-header table td:first-child {
+  background: rgba(220, 180, 140, 0.15);
+  border-right: 2px solid #dcb48c;
+  border-bottom: none;
+  font-family: "FZKai-Z03", "Times New Roman";
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* 左上角交叉格 */
+.markdown-body table.dual-header thead th:first-child,
+.markdown-body .dual-header table thead th:first-child {
+  background: rgba(220, 180, 140, 0.08);
+  border-right: 2px solid #dcb48c;
+  border-bottom: 2px solid #dcb48c;
+}
+
+/* 数据区单元格 — 列间加弱分隔，与行间风格一致 */
+.markdown-body table.dual-header td:not(:first-child),
+.markdown-body .dual-header table td:not(:first-child) {
+  border-right: 1px solid rgba(220, 180, 140, 0.3);
+  font-family: inherit;
+  text-align: inherit;
+  white-space: inherit;
+}
+
+/* thead 列标题 */
+.markdown-body table.dual-header thead th,
+.markdown-body .dual-header table thead th {
+  background: rgba(220, 180, 140, 0.15);
+}
+.markdown-body table.dual-header thead th:first-child,
+.markdown-body .dual-header table thead th:first-child {
+  background: rgba(220, 180, 140, 0.08);
+}
+
+/* ===== 表格标题 =====
+ * 用 <figure class="table-caption"> 包裹表格并添加标题。
+ *
+ *   <figure class="table-caption">
+ *
+ *   | a | b |
+ *   |---|---|
+ *   | 1 | 2 |
+ *
+ *   <figcaption>表 1：示例表格</figcaption>
+ *   </figure>
+ */
+.markdown-body .table-caption {
+  text-align: center;
+  margin: 2em auto;
+  max-width: 900px;
+}
+.markdown-body .table-caption table {
+  width: 100%;
+  margin: 0;
+}
+.markdown-body .table-caption figcaption {
+  margin-top: 4px;
+  color: #666;
+  font-family: "Times New Roman", "FZKai-Z03";
+  font-size: 0.8em;
+  font-style: italic;
+  font-synthesis-style: none;
+  border-right: 3px solid #dcb48c;
+  padding-right: 6px;
+  text-align: right;
+}
+
 .markdown-body ul,
 .markdown-body ol {
   padding-left: 1.8em;

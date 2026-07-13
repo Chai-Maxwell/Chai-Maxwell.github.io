@@ -1,20 +1,3 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>群的基本概念和群的线性表示理论 | MyBlogs</title>
-  <link rel="stylesheet" href="../../../assets/css/style_note.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/markdown-it@14/dist/markdown-it.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/markdown-it-anchor@9/dist/markdownItAnchor.umd.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1/texmath.min.js"></script>
-</head>
-<body>
-<div class="markdown-body" id="content"></div>
-
-<script id="source" type="text/markdown">
 # 群的基本概念和群的线性表示理论
 
 ## 线性代数回顾
@@ -266,21 +249,3 @@ $$
 >则称$\mathcal{G}$与$\mathcal{G}$同态.
 >
 >==同构== 若$f$还是双射(bijection), 则称$\mathcal{G}$与$\mathcal{G}'$同构, 记$\mathcal{G}\cong\mathcal{G}'$.
-
-</script>
-
-<script>
-(function() {
-  var md = window.markdownit({ html: true })
-    .use(markdownItAnchor)
-    .use(texmath, {
-      engine: katex,
-      delimiters: 'dollars',
-      katexOptions: { throwOnError: false }
-    });
-  var src = document.getElementById('source').textContent;
-  document.getElementById('content').innerHTML = md.render(src);
-})();
-</script>
-</body>
-</html>
