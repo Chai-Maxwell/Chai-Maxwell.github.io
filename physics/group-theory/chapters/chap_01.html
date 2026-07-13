@@ -10,7 +10,6 @@
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-anchor@9/dist/markdownItAnchor.umd.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1/texmath.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/markdown-it-mark@4/dist/markdown-it-mark.min.js"></script>
 </head>
 <body>
 <div class="markdown-body" id="content"></div>
@@ -190,7 +189,7 @@ $$
 
 ### 群的定义和乘法表
 
-> ==群== 称保持系统不变的变换为系统的对称变换, 研究一个系统的对称变换集合$\mathcal{G}$总结出群的概念：
+><mark>群</mark> 称保持系统不变的变换为系统的对称变换, 研究一个系统的对称变换集合$\mathcal{G}$总结出群的概念：
 >一个满足以下性质的系统$(\mathcal{G},\cdot)$, 一个配有复合乘法$(\cdot)$的非空集合$\mathcal{G}$
 
 >
@@ -223,10 +222,10 @@ $$
 
 说明左乘法元就是右乘法元.
 
-> ==复元素== 将群$\mathcal{G}$的子集视为整体, 称作复元素. 复元素逐元素参与运算（如复合乘法、求逆和共轭运算）.
+><mark>复元素</mark>将群$\mathcal{G}$的子集视为整体, 称作复元素. 复元素逐元素参与运算（如复合乘法、求逆和共轭运算）.
 
 >
-> ==重排定理== 设$t\in\mathcal{G}$, 则$t\cdot\mathcal{G}=\mathcal{G}\cdot{t}=\mathcal{G}^{-1}=\mathcal{G}$
+><mark>重排定理</mark> 设$t\in\mathcal{G}$, 则$t\cdot\mathcal{G}=\mathcal{G}\cdot{t}=\mathcal{G}^{-1}=\mathcal{G}$
 
 >
 >[证明] 证明两个集合相等就是证明互为子集. 以$t\cdot\mathcal{G}$为例, 因为
@@ -265,12 +264,12 @@ $$
 
 ### 群的同态与同构
 
-> ==同态== 若群$\mathcal{G}$和$\mathcal{G}'$间
+><mark>同态</mark> 若群$\mathcal{G}$和$\mathcal{G}'$间
 >$$\exist f:(\mathcal{G},\cdot)\to(\mathcal{G}',*)\ \text{s.t.}\ f(r\cdot s)=f(r)*f(s),$$
 >则称$\mathcal{G}$与$\mathcal{G}$同态.
 
 >
-> ==同构== 若$f$还是双射(bijection), 则称$\mathcal{G}$与$\mathcal{G}'$同构, 记$\mathcal{G}\cong\mathcal{G}'$.
+><mark>同构</mark> 若$f$还是双射(bijection), 则称$\mathcal{G}$与$\mathcal{G}'$同构, 记$\mathcal{G}\cong\mathcal{G}'$.
 
 </script>
 
@@ -278,7 +277,6 @@ $$
 (function() {
   var md = window.markdownit({ html: true })
     .use(markdownItAnchor)
-    .use(markdownItMark)
     .use(texmath, {
       engine: katex,
       delimiters: 'dollars',

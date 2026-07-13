@@ -52,7 +52,6 @@ TEMPLATE_NOTE = '''<!DOCTYPE html>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-anchor@9/dist/markdownItAnchor.umd.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1/texmath.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/markdown-it-mark@4/dist/markdown-it-mark.min.js"></script>
 </head>
 <body>
 <div class="markdown-body" id="content"></div>
@@ -65,7 +64,6 @@ TEMPLATE_NOTE = '''<!DOCTYPE html>
 (function() {{
   var md = window.markdownit({{ html: true }})
     .use(markdownItAnchor)
-    .use(markdownItMark)
     .use(texmath, {{
       engine: katex,
       delimiters: 'dollars',
@@ -135,11 +133,9 @@ def preprocess_markdown(content):
     2. 确保 block 级元素（标题、代码块、列表、表格、引用等）之间有
        空行分隔，避免 markdown-it 将它们粘连成一个段落。
     """
-    # --- 1. ==highlight== 边界修复 ---
-    # ==text==后紧跟非空白字符（如中文）：==text==中文 → ==text== 中文
-    content = re.sub(r'==([^=]+)==(?!\s)', r'==\1== ', content)
-    # 非空白字符紧贴 ==text== 前（不处理行首和已有空格的情况）
-    content = re.sub(r'(?<!\s)==([^=]+)==', r' ==\1==', content)
+    # --- 1. ==highlight== → <mark> ---
+    # 将 ==text== 转为 <mark>text</mark>，不依赖外部 JS 插件
+    content = re.sub(r'==(.+?)==', r'<mark>\1</mark>', content)
 
     # --- 2. block 元素间空行 ---
     # 标题前确保有空行（不在文档开头时）
