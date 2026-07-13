@@ -29,6 +29,7 @@ import os
 import sys
 import argparse
 import glob
+import re
 
 # ═══════════ CSS 预设 ═══════════
 CSS_PRESETS = {
@@ -51,6 +52,7 @@ TEMPLATE_NOTE = '''<!DOCTYPE html>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-anchor@9/dist/markdownItAnchor.umd.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it-texmath@1/texmath.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/markdown-it-mark@4/dist/markdown-it-mark.min.js"></script>
 </head>
 <body>
 <div class="markdown-body" id="content"></div>
@@ -63,6 +65,7 @@ TEMPLATE_NOTE = '''<!DOCTYPE html>
 (function() {{
   var md = window.markdownit({{ html: true }})
     .use(markdownItAnchor)
+    .use(markdownItMark)
     .use(texmath, {{
       engine: katex,
       delimiters: 'dollars',
@@ -124,6 +127,35 @@ TEMPLATE_BLOG = '''<!DOCTYPE html>
 '''
 
 
+def preprocess_markdown(content):
+    """预处理 markdown 内容，修复渲染问题。
+
+    1. ==highlight== 标记首尾与中文字符相邻时，markdown-it-mark 插件
+       依赖单词边界无法匹配，因此在 == 两侧插入空格。
+    2. 确保 block 级元素（标题、代码块、列表、表格、引用等）之间有
+       空行分隔，避免 markdown-it 将它们粘连成一个段落。
+    """
+    # --- 1. ==highlight== 边界修复 ---
+    # ==text==后紧跟非空白字符（如中文）：==text==中文 → ==text== 中文
+    content = re.sub(r'==([^=]+)==(?!\s)', r'==\1== ', content)
+    # 非空白字符紧贴 ==text== 前（不处理行首和已有空格的情况）
+    content = re.sub(r'(?<!\s)==([^=]+)==', r' ==\1==', content)
+
+    # --- 2. block 元素间空行 ---
+    # 标题前确保有空行（不在文档开头时）
+    content = re.sub(r'([^\n])\n(#{1,6}\s)', r'\1\n\n\2', content)
+    # 代码块前后
+    content = re.sub(r'([^\n])\n(```)', r'\1\n\n\2', content)
+    content = re.sub(r'(```)\n([^\n`])', r'\1\n\n\2', content)
+    # 水平线前后
+    content = re.sub(r'([^\n])\n(---)', r'\1\n\n\2', content)
+    content = re.sub(r'(---)\n([^\n])', r'\1\n\n\2', content)
+    # 列表、引用块前有空行
+    content = re.sub(r'([^\n])\n([-*+>]\s)', r'\1\n\n\2', content)
+
+    return content
+
+
 def extract_title(md_path):
     """从 .md 文件中提取第一个 # 或 ## 标题"""
     with open(md_path, 'r', encoding='utf-8') as f:
@@ -160,6 +192,8 @@ def convert_file(src_path, dst_path=None, title=None, css_style='note',
 
     with open(src_path, 'r', encoding='utf-8') as f:
         content = f.read()
+
+    content = preprocess_markdown(content)
 
     if title is None:
         title = extract_title(src_path)
