@@ -172,8 +172,8 @@ def preprocess_markdown(content):
     # 水平线前后
     content = re.sub(r'([^\n])\n(---)', r'\1\n\n\2', content)
     content = re.sub(r'(---)\n([^\n])', r'\1\n\n\2', content)
-    # 列表、引用块前有空行
-    content = re.sub(r'([^\n])\n([-*+>]\s)', r'\1\n\n\2', content)
+    # 列表、引用块前有空行（[^\S\n] = 空白但不含换行，避免拆散 quote 续行 ">\n>"）
+    content = re.sub(r'([^\n])\n([-*+>][^\S\n])', r'\1\n\n\2', content)
 
     return content
 

@@ -191,7 +191,6 @@ $$
 
 ><mark>群</mark> 称保持系统不变的变换为系统的对称变换, 研究一个系统的对称变换集合$\mathcal{G}$总结出群的概念：
 >一个满足以下性质的系统$(\mathcal{G},\cdot)$, 一个配有复合乘法$(\cdot)$的非空集合$\mathcal{G}$
-
 >
 >1. 封闭性
 >$$rs\in \mathcal{G},\quad\forall r,s\in \mathcal{\mathcal{G}}.$$
@@ -201,6 +200,7 @@ $$
 >$$\exist e'\in \mathcal{G}\ \text{s.t.}\ \forall r\in \mathcal{G},\ e'r=r.$$
 >4. 每个元素都存在左逆
 >$$\forall r\in \mathcal{G},\ \exist r'\in \mathcal{G}\ \text{s.t.}\ r'r=e'.$$
+>定义群元素的个数为群的阶(order), 无限群的阶记为$\infty$.
 
 ¶设$r'$的左逆为$r''$则
 
@@ -223,10 +223,8 @@ $$
 说明左乘法元就是右乘法元.
 
 ><mark>复元素</mark>将群$\mathcal{G}$的子集视为整体, 称作复元素. 复元素逐元素参与运算（如复合乘法、求逆和共轭运算）.
-
 >
 ><mark>重排定理</mark> 设$t\in\mathcal{G}$, 则$t\cdot\mathcal{G}=\mathcal{G}\cdot{t}=\mathcal{G}^{-1}=\mathcal{G}$
-
 >
 >[证明] 证明两个集合相等就是证明互为子集. 以$t\cdot\mathcal{G}$为例, 因为
 >$$t\cdot\mathcal{G}=\{t\cdot{e},t\cdot{r},t^2,\dots\}\subset\mathcal{G},$$
@@ -236,7 +234,25 @@ $$
 >$$t\cdot\mathcal{G}=\mathcal{G}.$$
 >如果事先为$\mathcal{G}$的元素标号, 那么$(t\cdot),(\cdot t),(\mathcal{G}^{-1})$这些操作不过改变了标号的顺序, 故称重排定理.
 
-¶对于*有限大*的群, 可以制作群的乘法表以便利查阅
+¶对于*有限大*的群, 可以制作群的乘法表以便利查阅. 以$D_{4}$(Dihedral Group of the Square)为例, 记置换
+
+$$
+e=
+\left(\begin{matrix}
+1&2&3&4\\
+1&2&3&4
+\end{matrix}\right),
+\,r=
+\left(\begin{matrix}
+1&2&3&4\\
+4&1&2&3
+\end{matrix}\right),
+\,s=
+\left(\begin{matrix}
+1&2&3&4\\
+1&4&3&2
+\end{matrix}\right).
+$$
 
 </figure>
 
@@ -244,30 +260,60 @@ $$
 
 <div class="dual-header">
 
-|      |  e  |  r  | r²  | r³  |  s  | sr  | sr² | sr³ |
-|------|-----|-----|-----|-----|-----|-----|-----|-----|
-|  e   |  e  |  r  | r²  | r³  |  s  | sr  | sr² | sr³ |
-|  r   |  r  | r²  | r³  |  e  | sr³ |  s  | sr  | sr² |
-|  r²  | r²  | r³  |  e  |  r  | sr² | sr³ |  s  | sr  |
-|  r³  | r³  |  e  |  r  | r²  | sr  | sr² | sr³ |  s  |
-|  s   |  s  | sr  | sr² | sr³ |  e  |  r  | r²  | r³  |
-|  sr  | sr  | sr² | sr³ |  s  | r³  |  e  |  r  | r²  |
-|  sr² | sr² | sr³ |  s  | sr  | r²  | r³  |  e  |  r  |
-|  sr³ | sr³ |  s  | sr  | sr² |  r  | r²  | r³  |  e  |
+|   $D_{4}$   | $e$ | $r$ | $r^2$ | $r^3$ | $s$ | $sr$ | $sr^2$ | $sr^3$ |
+|------|-----|-----|-------|-------|-----|------|--------|--------|
+| $e$   | $e$ | $r$ | $r^2$ | $r^3$ | $s$ | $sr$ | $sr^2$ | $sr^3$ |
+| $r$   | $r$ | $r^2$ | $r^3$ | $e$ | $sr^3$ | $s$ | $sr$ | $sr^2$ |
+| $r^2$ | $r^2$ | $r^3$ | $e$ | $r$ | $sr^2$ | $sr^3$ | $s$ | $sr$ |
+| $r^3$ | $r^3$ | $e$ | $r$ | $r^2$ | $sr$ | $sr^2$ | $sr^3$ | $s$ |
+| $s$   | $s$ | $sr$ | $sr^2$ | $sr^3$ | $e$ | $r$ | $r^2$ | $r^3$ |
+| $sr$  | $sr$ | $sr^2$ | $sr^3$ | $s$ | $r^3$ | $e$ | $r$ | $r^2$ |
+| $sr^2$ | $sr^2$ | $sr^3$ | $s$ | $sr$ | $r^2$ | $r^3$ | $e$ | $r$ |
+| $sr^3$ | $sr^3$ | $s$ | $sr$ | $sr^2$ | $r$ | $r^2$ | $r^3$ | $e$ |
 
 </div>
 
 <figcaption>
 
-  $D_{4}$(Dihedral Group of the Square)乘法表</figcaption>
+$D_{4}$ 群乘法表</figcaption>
 </figure>
+
+¶研究$D_{N}$, 将正$N$边形放在$xy$平面上, 其几何中心取为原点, 标号$1$的点置于$x$轴上, 编号逆时针增大. 令$s_{j},\, j=0,\dots,N-1$代表将正$N$边关于与$x$轴成$2\pi j/N$夹角的轴做对称操作, 那么$s_{j+1}=rs_{j}=r^{j+1}s_{0}$. 总结得到三条有利计算的规则
+
+$$
+\left\{\begin{aligned}
+&r^{N}=s_{j}^2=e,\\
+&r^{m}s_{j}=s_{\operatorname{mod}(j+m,N)}
+\end{aligned}\right.\Longrightarrow
+s_{j}r^{m}=(r^{N-m}s_{j})^{-1}=s_{\operatorname{mod}(j-m,N)}.
+$$
+
+### 群的各种子集
+
+><mark>元素的阶</mark> 若对于$r\in\mathcal{G}$, 存在一个最小的非负整数使得$r^{n}=e$成立, 则称$r$的阶为$n$, 若这样的$n$不存在, 则记$r$的阶为$\infty$. 容易知道, 有限群的元素阶也有限.
+>
+><mark>子群</mark> 对于群$(\mathcal{G},\cdot)$若其子集$(\mathcal{H},\cdot)$也构成群, 则称$(\mathcal{H},\cdot)$为子群.
+>
+><mark>循环子群</mark> 包含$e$和指定元素$r$的最小子群. 对于有限阶元素, 循环子群可以只用正幂表示. 一般起见, $r$的循环子群表示为
+>$$\braket{r}=\{r^{k}|k\in\mathbb{Z}\}.$$
+><mark>陪集</mark> 对于群$(\mathcal{G},\cdot)$和子群$(\mathcal{H},\cdot)$, 取$r\in\mathcal{G}/\mathcal{H}$, 定义左陪集和右陪集(left and right coset)
+>$$r\cdot\mathcal{H},\quad\mathcal{H}\cdot r,$$
+>由反证法可证陪集与$\mathcal{H}$没有公共元素, 且陪集也没有重复元素.
+>
+><mark>子群的指数</mark> 构造两个左陪集$r_{j}\cdot\mathcal{H}$和$r_{k}\cdot\mathcal{H}\ (r_{j}\neq r_{k})$, 则要么两个陪集相同, 要么没有公共元素, 这是因为
+>$$\exist h_{\mu},h_{\nu}\ \text{s.t.} \ r_{j}h_{\mu}=r_{k}h_{\nu}\Longrightarrow r_{j}\cdot\mathcal{H}=r_{k}\cdot[(h_{\nu}h_{\mu}^{-1})\cdot{H}]=r_{k}\cdot\mathcal{H},$$
+>于是群可按如下步骤分解
+>$$\mathcal{G}=\mathcal{H}\cup(r_{1}\cdot\mathcal{H})\cup\dots\cup(r_{d}\cdot\mathcal{H}),\ r_{k+1}\in[(\mathcal{G}/\mathcal{H})/\dots]/(r_{k}\cdot\mathcal{H}),$$
+>其中$d$称为子群$\mathcal{H}$的指数(index), 得到群与子群的阶的倍数关系$\#\mathcal{G}=d\#\mathcal{H}$（素指数的群只有平庸子群）.
+>
+><mark>正规子群</mark> 任何左陪集和右陪集均相同的子群称为正规子群(normal subgroup),
+>$$r_{j}\cdot\mathcal{H}=\mathcal{H}\cdot r_{j},\forall j=1,\dots,(\#\mathcal{G}-\#\mathcal{H}).$$
 
 ### 群的同态与同构
 
 ><mark>同态</mark> 若群$\mathcal{G}$和$\mathcal{G}'$间
 >$$\exist f:(\mathcal{G},\cdot)\to(\mathcal{G}',*)\ \text{s.t.}\ f(r\cdot s)=f(r)*f(s),$$
 >则称$\mathcal{G}$与$\mathcal{G}$同态.
-
 >
 ><mark>同构</mark> 若$f$还是双射(bijection), 则称$\mathcal{G}$与$\mathcal{G}'$同构, 记$\mathcal{G}\cong\mathcal{G}'$.
 
@@ -284,6 +330,19 @@ $$
     });
   var src = document.getElementById('source').textContent;
   document.getElementById('content').innerHTML = md.render(src);
+
+  // 合并被 texmath 拆散的相邻 <blockquote> 元素
+  (function mergeBlockquotes() {
+    var bqs = Array.prototype.slice.call(
+      document.getElementById('content').getElementsByTagName('blockquote')
+    );
+    for (var i = bqs.length - 1; i > 0; i--) {
+      if (bqs[i].previousElementSibling === bqs[i - 1]) {
+        while (bqs[i].firstChild) bqs[i - 1].appendChild(bqs[i].firstChild);
+        bqs[i].parentNode.removeChild(bqs[i]);
+      }
+    }
+  })();
 })();
 </script>
 </body>
