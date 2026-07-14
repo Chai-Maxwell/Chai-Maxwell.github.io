@@ -71,6 +71,19 @@ TEMPLATE_NOTE = '''<!DOCTYPE html>
     }});
   var src = document.getElementById('source').textContent;
   document.getElementById('content').innerHTML = md.render(src);
+
+  // 合并被 texmath 拆散的相邻 <blockquote> 元素
+  (function mergeBlockquotes() {{
+    var bqs = Array.prototype.slice.call(
+      document.getElementById('content').getElementsByTagName('blockquote')
+    );
+    for (var i = bqs.length - 1; i > 0; i--) {{
+      if (bqs[i].previousElementSibling === bqs[i - 1]) {{
+        while (bqs[i].firstChild) bqs[i - 1].appendChild(bqs[i].firstChild);
+        bqs[i].parentNode.removeChild(bqs[i]);
+      }}
+    }}
+  }})();
 }})();
 </script>
 </body>
@@ -118,6 +131,19 @@ TEMPLATE_BLOG = '''<!DOCTYPE html>
     .use(markdownItAnchor);
   var src = document.getElementById('source').textContent;
   document.getElementById('content').innerHTML = md.render(src);
+
+  // 合并相邻 <blockquote> 元素
+  (function mergeBlockquotes() {{
+    var bqs = Array.prototype.slice.call(
+      document.getElementById('content').getElementsByTagName('blockquote')
+    );
+    for (var i = bqs.length - 1; i > 0; i--) {{
+      if (bqs[i].previousElementSibling === bqs[i - 1]) {{
+        while (bqs[i].firstChild) bqs[i - 1].appendChild(bqs[i].firstChild);
+        bqs[i].parentNode.removeChild(bqs[i]);
+      }}
+    }}
+  }})();
 }})();
 </script>
 </body>
