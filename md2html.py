@@ -15,7 +15,7 @@ md2html.py — 将 Markdown 笔记转换为博客 HTML 页面
   python3 md2html.py notes/chap_01.md -o output/chap_01.html
 
   # 批量转换整个目录（保持目录结构）
-  python3 md2html.py physics/electrodynamics/
+  python3 md2html.py note/ClasssicalElectrodynamics/
 
   # 指定 CSS 风格（默认 note）
   python3 md2html.py notes/chap_01.md -c blog
@@ -194,7 +194,7 @@ def css_path_for(target_dir):
     """
     计算从目标 HTML 目录到 myBlogs 根目录的相对路径。
     例如: chapters/  → ../  → ../assets/css/style_note.css
-          physics/   → ../  → ../assets/css/style_note.css
+          note/      → ../  → ../assets/css/style_note.css
          根目录     → ./  → ./assets/css/style_note.css
     """
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -276,7 +276,7 @@ def main():
 示例:
   python3 md2html.py notes/chap_01.md
   python3 md2html.py notes/chap_01.md -o out/chap_01.html -t "自定义标题"
-  python3 md2html.py physics/new-topic/
+  python3 md2html.py note/new-topic/
   python3 md2html.py notes/chap_01.md -c blog
         '''
     )
