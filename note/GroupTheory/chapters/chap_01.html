@@ -254,9 +254,7 @@ e=
 \end{matrix}\right).
 $$
 
-</figure>
-
-<figure class="table-caption">
+<figure class="table-caption th-center td-center">
 
 <div class="dual-header">
 
@@ -296,18 +294,52 @@ $$
 >
 ><mark>循环子群</mark> 包含$e$和指定元素$r$的最小子群. 对于有限阶元素, 循环子群可以只用正幂表示. 一般起见, $r$的循环子群表示为
 >$$\braket{r}=\{r^{k}|k\in\mathbb{Z}\}.$$
-><mark>陪集</mark> 对于群$(\mathcal{G},\cdot)$和子群$(\mathcal{H},\cdot)$, 取$r\in\mathcal{G}/\mathcal{H}$, 定义左陪集和右陪集(left and right coset)
+><mark>陪集</mark> 对于群$(\mathcal{G},\cdot)$和子群$(\mathcal{H},\cdot)$, 取$r\in\mathcal{G}\setminus\mathcal{H}$, 定义左陪集和右陪集(left and right coset)
 >$$r\cdot\mathcal{H},\quad\mathcal{H}\cdot r,$$
 >由反证法可证陪集与$\mathcal{H}$没有公共元素, 且陪集也没有重复元素.
 >
 ><mark>子群的指数</mark> 构造两个左陪集$r_{j}\cdot\mathcal{H}$和$r_{k}\cdot\mathcal{H}\ (r_{j}\neq r_{k})$, 则要么两个陪集相同, 要么没有公共元素, 这是因为
 >$$\exist h_{\mu},h_{\nu}\ \text{s.t.} \ r_{j}h_{\mu}=r_{k}h_{\nu}\Longrightarrow r_{j}\cdot\mathcal{H}=r_{k}\cdot[(h_{\nu}h_{\mu}^{-1})\cdot{H}]=r_{k}\cdot\mathcal{H},$$
 >于是群可按如下步骤分解
->$$\mathcal{G}=\mathcal{H}\cup(r_{1}\cdot\mathcal{H})\cup\dots\cup(r_{d}\cdot\mathcal{H}),\ r_{k+1}\in[(\mathcal{G}/\mathcal{H})/\dots]/(r_{k}\cdot\mathcal{H}),$$
+>$$\mathcal{G}=\mathcal{H}\cup(r_{1}\cdot\mathcal{H})\cup\dots\cup(r_{d}\cdot\mathcal{H}),\ r_{k+1}\in[(\mathcal{G}\setminus\mathcal{H})\setminus\dots]\setminus(r_{k}\cdot\mathcal{H}),$$
 >其中$d$称为子群$\mathcal{H}$的指数(index), 得到群与子群的阶的倍数关系$\#\mathcal{G}=d\#\mathcal{H}$（素指数的群只有平庸子群）.
 >
 ><mark>正规子群</mark> 任何左陪集和右陪集均相同的子群称为正规子群(normal subgroup),
->$$r_{j}\cdot\mathcal{H}=\mathcal{H}\cdot r_{j},\forall j=1,\dots,(\#\mathcal{G}-\#\mathcal{H}).$$
+>$$r_{j}\cdot\mathcal{H}=\mathcal{H}\cdot r_{j},\forall j=1,\dots,(\#\mathcal{G}-\#\mathcal{H}),$$
+>记为$\mathcal{H}\trianglelefteq\mathcal{G}$. 显然, 指数为$2$的子群都是正规子群.
+>
+><mark>商群</mark> 将正规子群$\mathcal{H}$和其指数个互补相交的陪集$r_{j}\mathcal{H}$视为复元素组成集合, 复元素乘法规定$\mathcal{K}\mathcal{R}=\{kr|k\in\mathcal{K},r\in\mathcal{H}\}$, 对于子群$\mathcal{H}\mathcal{H}=\mathcal{H}$. $\mathcal{H}$的正规性使此集合成为群, 称为商群(quotient group), 记为$\mathcal{G}/\mathcal{H}$.
+>
+><mark>共轭元素</mark> 对任意$s\in\mathcal{G}$, 若$r'=srs^{-1}$则称$r'$与$r$相互共轭(conjugate), 共轭是一种关系, 具有反身性、对称性和传递性.
+>
+><mark>类</mark> 类(class)是所有互相共轭元素的集合, 记为
+>$$\mathcal{C}_{\alpha}=\{r_{k}|r_{k}=sr_{j}s^{-1},s\in\mathcal{G}\},$$
+>其中下角标$\alpha$用于索引类. 由共轭的传递性, 两个类要么无公共元素, 要么全等. 因此, 除$\{e\}$类, 其余类不构成子群.
+>
+><mark>相逆类</mark> 对于共轭关系$r'=srs^{-1}$取逆, 逆元也保持共轭$(r')^{-1}=sr^{-1}s^{-1}$, 定义相逆类(reciprocal class)
+>$$\mathcal{C}_{\alpha}^{-1}=\{r_{k}^{-1}|r_{k}\in\mathcal{C}_{\alpha}\},$$
+>若$\mathcal{C}_{\alpha}^{-1}=\mathcal{C}_{\alpha}$, 称这样的类为自逆类.
+
+¶以$D_{4}$为例
+
+<figure class="table-caption">
+
+|概念|说明|
+|-----|-----|
+|子群|$\mathcal{R}=\{e,r,r^2,r^3\}$|
+|陪集分解|$D_{4}=\mathcal{R}\cup(s\cdot\mathcal{R}),\,d=2$|
+|正规子群|$\mathcal{R}\trianglelefteq D_{4}$|
+|商群|$D_{4}/\mathcal{R}=\{\mathcal{R},s\cdot\mathcal{R}\}$|
+|类|$\mathcal{C}_{0}=\{e\},\mathcal{C}_{1}=\{r,r^3\},\mathcal{C}_{2}=\{r^2\},\mathcal{C}_{3}=\{s,sr^2\},\mathcal{C}_{4}=\{sr,sr^3\}$|
+|相逆类|四个类均自逆|
+
+<figcaption>
+
+$D_{4}$的子集
+</figcaption>
+</figure>
+
+### 作用于子集的稳定化子、正规化子和中心化子
 
 ### 群的同态与同构
 

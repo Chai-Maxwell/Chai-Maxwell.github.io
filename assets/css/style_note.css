@@ -1,10 +1,20 @@
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
 /*
- * 【字体加载】
- * 通过 jsDelivr CDN 加载 cn-fontsource 字体（方正楷体 + 方正仿宋）。
- * 与本地 markdown-preview.nvim 使用相同的字体源。
+ * 【字体加载原理】
+ * markdown-preview.nvim 在 nvim 的 localhost 服务器上渲染预览页。
+ * 服务器将 /_static/* 路径映射到插件的 app/_static/ 目录。
+ * nvim 配置中自动创建了符号链接：
+ *   app/_static/font → 本项目 .config/font/
+ * 因此浏览器中 @import "font/..." 会解析为
+ *   /_static/font/... → 本地 WOFF2 文件（零网络请求，断网可用）
+ *
+ * 字体来源：cn-fontsource（方正楷体 + 方正仿宋），通过
+ *   .config/setup-fonts.sh 一次性从 CDN 下载到本地。
  */
-@import url("https://cdn.jsdelivr.net/npm/cn-fontsource-fz-kai-z-03-regular/font.css");
-@import url("https://cdn.jsdelivr.net/npm/cn-fontsource-fz-fang-song-z-02-s/font.css");
+@import url("font/fz-kai-z-03.css");
+@import url("font/fz-fang-song-z-02-s.css");
 
 /*
  * QuoteSerifItalic — 仅对字母和数字提供 Times New Roman 意大利体，
@@ -184,8 +194,9 @@
   padding: 2px 4px;
   border-radius: 3px;
   color: #000000;
-  font-family: "Times New Roman", "FZKai-Z03", serif;
+  font-family: "QuoteSerifItalic", "FZKai-Z03";
   font-style: italic;
+  font-synthesis-style: none;
   border-left: 2px solid #dcb48c;
 }
 .markdown-body .gold {
@@ -208,9 +219,10 @@
 .markdown-body .image-round figcaption {
   margin-top: 4px;
   color: #666;
-  font-family: "Times New Roman", "FZKai-Z03";
+  font-family: "QuoteSerifItali", "FZKai-Z03";
   font-size: 0.8em;
   font-style: italic;
+  font-synthesis-style: none;
   border-right: 3px solid #dcb48c;
   padding-right: 6px;
   text-align: right;
@@ -284,23 +296,39 @@
 .markdown-body table.dual-header td:not(:first-child),
 .markdown-body .dual-header table td:not(:first-child) {
   border-right: 1px solid rgba(220, 180, 140, 0.3);
-  font-family: inherit;
-  text-align: inherit;
-  white-space: inherit;
 }
 
-/* thead 列标题 */
+/* thead 列标题 — 居中 */
 .markdown-body table.dual-header thead th,
 .markdown-body .dual-header table thead th {
   background: rgba(220, 180, 140, 0.15);
+  text-align: center;
 }
 .markdown-body table.dual-header thead th:first-child,
 .markdown-body .dual-header table thead th:first-child {
   background: rgba(220, 180, 140, 0.08);
 }
 
+/* ===== 表格对齐控件 =====
+ * th-center — 列标题居中（默认居左）
+ * td-center — 数据单元格居中（默认居左）
+ *
+ * 可与 dual-header 或 table-caption 组合：
+ *   <div class="dual-header th-center td-center">
+ *   <div class="table-caption th-center">
+ */
+.markdown-body table.th-center thead th,
+.markdown-body .th-center table thead th {
+  text-align: center;
+}
+.markdown-body table.td-center tbody td,
+.markdown-body .td-center table tbody td {
+  text-align: center;
+}
+
 /* ===== 表格标题 =====
  * 用 <figure class="table-caption"> 包裹表格并添加标题。
+ * figcaption 可直接用于标题。
  *
  *   <figure class="table-caption">
  *
@@ -312,7 +340,6 @@
  *   </figure>
  */
 .markdown-body .table-caption {
-  text-align: center;
   margin: 2em auto;
   max-width: 900px;
 }
@@ -320,10 +347,11 @@
   width: 100%;
   margin: 0;
 }
-.markdown-body .table-caption figcaption {
+.markdown-body .table-caption figcaption,
+.markdown-body .table-caption .table-caption-text {
   margin-top: 4px;
   color: #666;
-  font-family: "Times New Roman", "FZKai-Z03";
+  font-family: "QuoteSerifItali", "FZKai-Z03";
   font-size: 0.8em;
   font-style: italic;
   font-synthesis-style: none;
